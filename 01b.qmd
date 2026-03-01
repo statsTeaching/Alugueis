@@ -1,0 +1,660 @@
+---
+title: "Engenharia Econômica"
+subtitle: "Avaliação de Aluguéis"
+author: "Eng.º Luiz F. P. Droubi"
+date: last-modified
+date-format: long
+bibliography: referencias.bib
+title-slide-attributes:
+  data-background-image: img/Fundo_Capa.png
+  data-background-size: cover
+  #data-background-opacity: "0.5"
+# format: 
+#   pptx:
+#     reference-doc: TEMPLATE_EDUFOR.pptx
+lang: pt
+format:
+  revealjs:
+#    background-image: "./img/FACULDADE_INBEC_16_9.jpg"
+    parallax-background-size: cover 
+    width: 1280
+    height: 720
+    # margin-top: 20%
+    theme: [default, style.scss]
+    # logo: img/logo.png
+    # theme: beige
+    # smaller: true
+    slide-number: true
+    scrollable: true
+    incremental: true
+    transition: slide
+    background-transition: fade
+fontsize: 1.8em
+---
+
+```{r}
+library(ggplot2)
+set_theme(theme_bw())
+library(knitr)
+CashFlowDiagram <- function(periods, incomes, expenses) {
+  df <- data.frame(Periodo = seq(0, periods, by = 1),
+                   Positive = incomes, Negative = expenses)
+  p <- ggplot(data = df, aes(x = Periodo, xend = Periodo)) +
+  geom_segment(aes(y = 0, yend = Positive, colour = "Positive"),
+    position = "stack", arrow = arrow(length = unit(0.1, "inches")), 
+    linewidth = 1) + 
+  geom_segment(aes(y = 0, yend = Negative, colour = "Negative"), 
+    position = "stack", arrow = arrow(length = unit(0.1, "inches")), 
+    linewidth = 1) + 
+  geom_segment(x = 0, xend = 13, y = 0, yend = 0, linewidth = 1, 
+               arrow = arrow(length = unit(0.1, "inches"))) +
+  scale_x_continuous(breaks = seq(0,periods, by = 1)) +
+  scale_y_continuous(labels = scales::label_currency(),
+    breaks = seq(round(max(expenses, na.rm = T), -2), 
+                 round(max(incomes, na.rm = T), -2), length.out = 5)) +
+  scale_colour_manual("Direction", 
+    values = c("Negative" = "red", "Positive" = "blue")) + 
+  labs(title = "<b style='color:blue'>Entradas</b> e 
+  <b style='color:red'>Saídas</b>", 
+       x = "Período (meses)",
+       y = "Montante") +
+  theme_grey(base_size = 20) +
+  theme(plot.title = ggtext::element_markdown(lineheight = 1.1)) +
+  ggeasy::easy_remove_legend()
+  return(p)
+}
+```
+
+<!-- # Engenharia Econômica -->
+
+## Essencial de Engenharia Econômica {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- A Engenharia Econômica é a técnica que estuda a viabilidade econômica de
+projetos
+  - A Engenharia Econômica, assim permite respondermos questões do tipo:
+    - Comprar um equipamento mais barato, com menor vida útil, ou comprar um
+    equipamento mais caro, com maior vida útil?
+    - Construir uma nova planta (fábrica)?
+    - Comprar um apartamento à vista ou financiar?
+    - Comprar ou *alugar* um apartamento?
+    
+## Essencial de Engenharia Econômica {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- Para ser possível comparar projetos com investimentos financeiros, é importante
+conhecermos um pouco do mercado financeiro:
+  - Quais são os principais tipos de investimentos disponíveis?
+  - Quais são as principais formas de financiamento?
+
+<!-- # Valor Presente Líquido -->
+  
+## Valor Presente Líquido {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- O Valor Presente Líquido, ou VPL, de um fluxo de caixa, é um parâmetro que 
+pode ser utilizado para a admissão ou rejeição da viabilidade de um projeto de 
+investimento:
+
+- O VPL pode ser calculado pela @eq-vpl:
+  - $$VPL = -I + \sum_{t=1}^T \frac{R_t - C_t}{(1+i)^t}$$ {#eq-vpl}
+    - $I$ é o investimento, em geral realizado no início do projeto;
+    - $R_t$ são as receitas do projeto em cada período $t$;
+    - $C_t$ são custos necessários ocorridos no decorrer do projeto, como
+    manutenções, impostos, etc.
+    - $i$ é uma taxa de desconto a ser definida pelo investidor
+
+## Valor Presente Líquido {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- Quando o fluxo de caixa é constante, o VPL também pode ser escrito em função
+do *Fator de Recuperação do Capital* (FRC):
+  - $$VPL = -I + \frac{R_l}{\text{FRC}(i,T)}$$ {#eq-vpl2}
+    - $R_l = R - C$
+
+- Pode-se considerar, ainda, um valor residual, $D$, ao final do período de
+análise:
+  - $$VPL = -I + \frac{R_l}{\text{FRC}(i,T)} + D.\text{FAC}(i,T)$$ {#eq-vpl3}
+
+## FRC e FAC {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+- $$\text{FRC}(i, T) = \frac{i.(1+i)^T}{(1+i)^T-1}$$ {#eq-frc}
+:::
+
+::: {.column width="50%"}
+- $$\text{FAC}(i,T) = \frac{1}{(1+i)^T}$$ {#eq-fac}
+:::
+
+::::
+
+## FRC e FAC {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- FRC e FAC podem ser tabelados!
+
+- FRC:
+
+. . . 
+
+```{r}
+# library(kableExtra)
+FRC <- function(i, t) {
+  i*(1+i)^t/((1+i)^t-1)
+}
+library(tibble)
+frc <- tribble(
+  ~n,       ~`1%`,       ~`2%`,       ~`3%`,       ~`4%`,       ~`5%`,       ~`6%`,       ~`7%`,      ~`8%`,        ~`9%`,      ~`10%`, 
+   1, FRC(.01, 1), FRC(.02, 1), FRC(.03, 1), FRC(.04, 1), FRC(.05, 1), FRC(.06, 1), FRC(.07, 1), FRC(.08, 1), FRC(.09, 1), FRC(.10, 1),
+   2, FRC(.01, 2), FRC(.02, 2), FRC(.03, 2), FRC(.04, 2), FRC(.05, 2), FRC(.06, 2), FRC(.07, 2), FRC(.08, 2), FRC(.09, 2), FRC(.10, 2),
+   3, FRC(.01, 3), FRC(.02, 3), FRC(.03, 3), FRC(.04, 3), FRC(.05, 3), FRC(.06, 3), FRC(.07, 3), FRC(.08, 3), FRC(.09, 3), FRC(.10, 3),
+   4, FRC(.01, 4), FRC(.02, 4), FRC(.03, 4), FRC(.04, 4), FRC(.05, 4), FRC(.06, 4), FRC(.07, 4), FRC(.08, 4), FRC(.09, 4), FRC(.10, 4),
+   5, FRC(.01, 5), FRC(.02, 5), FRC(.03, 5), FRC(.04, 5), FRC(.05, 5), FRC(.06, 5), FRC(.07, 5), FRC(.08, 5), FRC(.09, 5), FRC(.10, 5),
+   6, FRC(.01, 6), FRC(.02, 6), FRC(.03, 6), FRC(.04, 6), FRC(.05, 6), FRC(.06, 6), FRC(.07, 6), FRC(.08, 6), FRC(.09, 6), FRC(.10, 6)
+)
+frc |>
+  kable(digits = 4,
+        format.args = list(big.mark = ".", decimal.mark = ","))
+```
+
+## FRC e FAC {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+-   FAC:
+
+. . . 
+
+```{r}
+FAC <- function(i, t) {
+  1/(1+i)^t
+}
+library(tibble)
+fac <- tribble(
+  ~n,       ~`1%`,       ~`2%`,       ~`3%`,       ~`4%`,       ~`5%`,       ~`6%`,       ~`7%`,      ~`8%`,        ~`9%`,      ~`10%`, 
+   1, FAC(.01, 1), FAC(.02, 1), FAC(.03, 1), FAC(.04, 1), FAC(.05, 1), FAC(.06, 1), FAC(.07, 1), FAC(.08, 1), FAC(.09, 1), FAC(.10, 1),
+   2, FAC(.01, 2), FAC(.02, 2), FAC(.03, 2), FAC(.04, 2), FAC(.05, 2), FAC(.06, 2), FAC(.07, 2), FAC(.08, 2), FAC(.09, 2), FAC(.10, 2),
+   3, FAC(.01, 3), FAC(.02, 3), FAC(.03, 3), FAC(.04, 3), FAC(.05, 3), FAC(.06, 3), FAC(.07, 3), FAC(.08, 3), FAC(.09, 3), FAC(.10, 3),
+   4, FAC(.01, 4), FAC(.02, 4), FAC(.03, 4), FAC(.04, 4), FAC(.05, 4), FAC(.06, 4), FAC(.07, 4), FAC(.08, 4), FAC(.09, 4), FAC(.10, 4),
+   5, FAC(.01, 5), FAC(.02, 5), FAC(.03, 5), FAC(.04, 5), FAC(.05, 5), FAC(.06, 5), FAC(.07, 5), FAC(.08, 5), FAC(.09, 5), FAC(.10, 5),
+   6, FAC(.01, 6), FAC(.02, 6), FAC(.03, 6), FAC(.04, 6), FAC(.05, 6), FAC(.06, 6), FAC(.07, 6), FAC(.08, 6), FAC(.09, 6), FAC(.10, 6)
+)
+fac |>
+  kable(digits = 4,
+        format.args = list(big.mark = ".", decimal.mark = ","))
+```
+
+## Exemplo 1: enunciado {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- Compra de um carro por R$ 95.000,00 à vista, deixando de pagar aluguel de R$ 24.000,00/ano.
+- Em 5 anos, a uma TMA de 8,0% a.a., este investimento se paga?
+- Desconsiderar seguros, IPVA, etc.
+
+## Exemplo 1: diagrama {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+```{r}
+#| label: fig-FCEx1
+#| fig-cap: "Exemplo 1: Diagrama de Fluxo de Caixa."
+#| out-width: "50%"
+p <- CashFlowDiagram(periods = 5, 
+                     incomes = c(NA, rep(24, 5)), 
+                     expenses = c(-95, rep(NA, 5)))
+
+p +
+  annotate("text", x = .5, y = -90, label = "PV (C)", size = 5, color = "red") +
+  annotate("text", x = seq(1, 5, by = 1),  y = rep(-5.5, 5),
+           label = paste(rep("R[", 5), 1:5, "]", sep = ""), parse = TRUE,
+           size = 5, color = "blue") +
+  annotate("label", x = 2.5, y = -17.5, label = "i = 8%", size = 7) +
+  xlab("Período (anos)") +
+  ylab("Montante (x R$ 1.000)")
+```
+
+
+## Exemplo 1: solução {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- Dados:
+  - $I = 95.000,00$; $R = 30.000,00$; $i=8,00\% a.a.$; $T=5$
+- Solução:
+  - $\text{FRC}(8\%, 5) = \frac{0,08.(1+0,08)^{5}}{(1+0,08)^{5}-1} \approx 0,25$
+  - $\text{VPL} = -95.000 + 30.000/0,25$
+  - $\text{VPL} = -95.000 + 60.000$
+  - $\text{VPL} = + 25.000,00$
+  
+- O projeto é viável, pois $\text{VPL} > 0$!
+        
+## Exemplo 2: enunciado {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- Mesmo exemplo anterior, considerando que o carro pode ser vendido a 52,5% do 
+valor de aquisição ao final do período.
+- Considerar também, por outro lado, um custo de R$ 15.000,00 por ano em
+manutenções, IPVA, etc.
+
+## Exemplo 2: diagrama {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+```{r}
+#| label: fig-FCEx2
+#| fig-cap: "Exemplo 2: Diagrama de Fluxo de Caixa."
+#| out-width: "50%"
+p <- CashFlowDiagram(periods = 5, 
+                     incomes = c(NA, rep(15, 4), 49.875 + 15), 
+                     expenses = c(-95, rep(NA, 5)))
+
+p +
+  annotate("text", x = .5, y = -90, label = "PV (C)", size = 5, color = "red") +
+  annotate("text", x = seq(1, 5, by = 1),  y = rep(-5.5, 5),
+           label = paste(rep("R[", 5), 1:5, "]", sep = ""), parse = TRUE,
+           size = 5, color = "blue") +
+  annotate("label", x = 2.5, y = -17.5, label = "i = 8%", size = 7) +
+  xlab("Período (anos)") +
+  ylab("Montante (x R$ 1.000)")
+```
+
+## Exemplo 2: solução {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- Dados:
+  - $I = 95.000,00$, $R = 30.000,00$, $C = 15.000$, $i=8,00\% a.a.$, $T=5$, $D = 49.875,00$
+- Solução:
+  - $\text{FAC}(8\%,5) = 1/(1 +.08)^5 =0,6806$
+  - $\text{VPL} = -95.000 + (30.000-15.000)/0,25 +  49.875\times0,6806$
+  - $\text{VPL} = -95.000 + 60.000 + 33.945,00$
+  - $\text{VPL} = -1.055,00$
+  
+- O projeto é inviável, pois $\text{VPL} < 0$!
+    
+## Exemplo 2: alternativa {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- O período de capitalização importa!
+  - Dados:
+    - $I = 95.000,00$, $R = 2.500,00$, $C = 1.250$, $i=0,64\% a.m.$, $T=60$, $D = 49.875,00$
+  - Solução:
+    - $\text{FRC}(0,64\%, 60) = \frac{0,0064.(1+0,0064)^{60}}{(1+0,0064)^{60}-1} \approx 0,02$
+    - $\text{FAC}(0,64\%, 60) \approx \text{FAC}(8\%, 5) = 0,6806$
+    - $\text{VPL} = -95.000 + \frac{2.500-1.250}{0,02} +  49.875\times 0,6806$
+    - $\text{VPL} = -95.000 + 62.500 +  33.945,00$
+    - $\text{VPL} = + 1.445,00$
+    
+- O projeto é viável, pois $\text{VPL} > 0$!
+
+## Exemplo 3 {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- Compra de uma geladeira de R$ 4.000,00 em 12 prestações ~mensais de R$ 400,00,
+com uma *Taxa Mínima de Atratividade* (TMA) igual a 10,0 % a.a.:
+  - Dados:
+    - $I = -4.000$; $R = -400$; $i = (1+0,01)^{1/12} - 1 = 0,80\% a.m.$
+  - Solução:  
+    - $\text{FRC}(0,8\%, 12) = \frac{0,008.(1+0,008)^{12}}{(1+0,008)^{12}-1} = 0,0877$
+    - $VPL = -(-4.000) + (-400)/0,0877$
+    - $VPL = 4.000 - 4.561,00$
+    - $VPL \approx -560,00$
+        
+## Exemplo 4 {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- Considerar que com a nova geladeira haverá uma economia de R$ 50,00 mensais 
+com energia:
+  - Dados:
+    - $I = -4.000$; $R = -400$; $C = -50,00$; $i = (1+0,08)^{1/12} - 1 = 0,80\% a.m.$
+  - Solução:
+    - $\text{FRC}(0,8\%, 12) = 0,0877$
+    - $VPL = -(-4.000) + [-400 - (-50)]/0,0877$
+    - $VPL = 4.000 - 350/0,0877$
+    - $VPL  \approx 10,00$
+
+## Reflexões {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- O importante é compreender o problema, ao invés de apenas aplicar as fórmulas
+  - No caso do carro, a ideia geral não é um cálculo exato, mas apenas criar uma
+  percepção se vale a pena comprar ou alugar um carro
+    
+- Dificilmente os valores do fluxo de caixa real serão idênticos aos previstos
+  - O problema pode ser posto de maneira simplificada, inicialmente.
+  - Após uma primeira conta para aferir a ordem de grandeza das parcelas, o 
+  problema pode ser feito mais complexo
+        
+## Reflexões {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- No caso da geladeira, o importante é perceber:
+  - A decisão pode ser entre comprar a geladeira agora de forma parcelada, ou 
+  guardar o dinheiro das prestações para comprar depois, à vista!
+  - Se a pessoa opta por comprar a geladeira à vista após o período de 12 meses,
+  ela deixou de economizar R$ 50,00 mensais com a conta de energia durante este
+  período
+    - Seria um erro desconsiderar esta economia "operacional"
+    - A decisão entre comprar agora ou comprar depois depende também de outras 
+    coisas. Quem garante que a geladeira estará por R$ 4.000,00 daqui a 12 meses?
+    
+## Reflexões {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- A TMA é exclusividade do empreendedor/indivíduo!
+  - Se o cidadão tem guardado apenas R$ 4.000,00, ele só irá comprar a geladeira
+  à vista se ele tiver um ótimo desconto!
+  - Se o cidadão possui uma boa poupança e R$ 4.000,00 não é para ele um montante
+  significativo, então ele pode comprar a vista, por mínimo que seja o desconto.
+    
+## Reflexões {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- @Machline [p. 60]:
+
+. . . 
+
+> Como calcular a taxa de retorno? Ela será, em geral, igual, no mínimo, à taxa
+de retorno que a empresa desfruta em suas operações habituais. Se o empresário
+achar que as oportunidades de lucro elevado se estão esgotando, ele pode
+contentar-se, em determinado investimento, com uma taxa de retorno inferior à
+que costuma obter. De qualquer maneira, ele é o único juiz da taxa de retorno
+que deseja. Se o empresário achar o negócio seguro, poderá contentar-se com uma
+taxa de retorno pequena, igual ou pouco superior à taxa de juros cobrada, na
+praça, para empréstimo de dinheiro. Se o empresário considerar o empreendimento
+arriscado, desejará uma taxa de retorno bem mais elevada. A taxa de retorno,
+em suma, depende das diretrizes financeiras da empresa; terá um valor 
+eminentemente individual, variando com a conjuntura econômica, no momento de
+tomar a decisão de investir, e refletindo a personalidade e a atitude do 
+empresário.
+
+## Perpetuidade {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- Para períodos muito longos ($n \rightarrow \infty$), $\text{FRC} = i$!
+
+- Exemplo: taxa de 10%a.a., durante 30/40/50 anos, calcule a FRC:
+
+    - $\text{FRC}(10\%,30) = \frac{10\%.(1+10\%)^{30}}{(1+10\%)^{30}-1} = \frac{10\%.17,45}{16,45} = 0,1061 = 10,61\%$
+    - $\text{FRC}(10\%,40) = \frac{10\%.(1+10\%)^{40}}{(1+10\%)^{40}-1} = \frac{10\%.45,26}{44,26} = 0,1023 = 10,23\%$
+    - $\text{FRC}(10\%,50) = \frac{10\%.(1+10\%)^{50}}{(1+10\%)^{50}-1} = \frac{10\%.117,39}{116,39} = 0,1009 = 10,09\%$
+
+- Assim, para investimentos com FC muito longos, a equação [-@eq-vpl2] torna-se:
+  - $$VPL = -I + \frac{R}{i}$$ {#eq-vpl3}
+    
+## Perpetuidade {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- Da equação [-@eq-vpl3] derivam (VPL = 0):
+  - O *Método da Renda*
+  - O *Método da Remuneração do Capital*
+  
+. . . 
+
+:::: {.columns}
+
+::: {.column width="50%"}
+-   O *Método da Renda*: 
+  - $$V_{imóvel} = \frac{Al}{i}$$ {#eq-metodoRenda}
+:::
+
+::: {.column width="50%"}
+-   O *Método da Remuneração do Capital*: 
+  - $$Al = V_{imóvel}.i$$ {#eq-metodoRemuneracaoCapital}
+:::
+
+::::
+
+    
+## Métoda da Renda {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- Um imóvel tem aluguel igual a R$ 3.000,00 mensais, calcule seu valor de venda:
+  - $$V_{imóvel} = \frac{Al}{i} = \frac{12.3000}{6\%}=\text{ R\$ }\, 600.000,00$$ 
+
+- Mais preciso: 
+  - $$V_{imóvel} = \frac{Al}{i} = \frac{3000}{(1+6\%)^{1/12}-1}=\text{ R\$ }\, 616.326,40$$
+
+## Método da Remuneração do Capital {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- Um imóvel possui VM de R$ 500.000,00, calcule o valor justo do aluguel, 
+para uma taxa de 6% a.a.
+  - $$Al = V_{imóvel}.i = \frac{500.000\times6\%}{12}=\text{ R\$ }\, 2.500,00$$
+    
+- Mais preciso:
+  - $$Al = V_{imóvel}.i = 500.000\times[(1+6\%)^{1/12}-1] \approx \text{ R\$ }\, 2.435,00$$
+
+
+<!-- # Taxa interna de retorno -->
+
+## Taxa interna de retorno {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- Segundo @barbieri [p. 132]:
+  - >A literatura especializada define Taxa Interna de Retorno - TIR como sendo
+  a taxa de juros que anula o VPL do fluxo de caixa de um investimento
+  
+- A TIR é muito utilizada nas empresas para **comparar** diferentes projetos
+
+## Taxa interna de retorno {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- Dados os valores do investimento ($I$), a Renda ($R$), o Custo ($C$) e o 
+número de períodos ($T$), a TIR é o valor da taxa $i$ que zera o VPL na equação
+[-@eq-vpl]:
+
+- $$0 = -I  + \sum_{t=1}^T \frac{R_t - C_t}{(1+TIR)^t}$$ {#eq-tir}
+  - Se $TIR > TMA$: aceita-se o projeto!
+  - Caso contrário, rejeita-se!
+
+
+## Comparação de Projetos {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- Exemplo:
+
+  - Construtora pode investir R$ 1.000.000,00 num terreno cujo VGV estimado 
+  é de R$ 10.000.000,00, com prazo de entrega de 5 anos
+  - Ou pode investir R$ 800.000,00 em outro terreno cujo VGV estimado é de 
+  R$ 8.000.000,00, com prazo de entrega de 4 anos
+  - Considere que as receitas sejam constantes, anualmente.
+  - Considere que o lucro sobre as receitas seja de 20%
+  - Se a TMA da construtora é de 15% a.a., qual projeto escolher?
+
+## Comparação de Projetos {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+- Cálculo do FRC:
+  - $\text{FRC}(15\%, 5) = \frac{0,15.(1+0,15)^5}{(1+0,15)^5-1} = 0,2983$
+  
+- Cálculo do VPL:
+  - $$VPL_1 = -1.000.000 + \frac{20\% 2.000.000}{0,2983}$$
+  - $$VPL_1 = \frac{400.000}{0,2983} = R\$ 340.931,90$$  
+:::
+
+::: {.column width="50%"}
+- Cálculo do FRC:
+  - $\text{FRC}(15\%, 4) = \frac{0,15.(1+0,15)^4}{(1+0,15)^4-1} = 0,3503$
+  
+- Cálculo do VPL:
+  - $$VPL_2 = -800.000 + \frac{20\% 2.000.000}{0,3503}$$
+  - $$VPL_2 = \frac{400.000}{0,3503} = R\$ 341.878,40$$
+:::
+
+::::
+
+- Os dois projetos são aceitáveis! Os VPL's são praticamente idênticos!
+
+## Comparação por VPL {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- Analisando os FC e os VPL, algumas pessoas podem pensar:
+  - "Os dois projetos são similares, porém no primeiro a construtora lucra por 1
+  ano a mais"
+  - "A construtora investe 200.000 a mais, porém fatura 25% mais e portanto 
+  lucra 400.000 a mais"!
+    - "Portanto, vale a pena investir 200.000 mais e fazer o projeto com maior 
+    VGV!"
+  
+## Comparação por TIR {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- Cálculos das TIR:
+    - $$TIR_1 \Rightarrow 0 = -1.000.000  + \sum_{t=1}^5 \frac{400.000}{(1+TIR_1)^5}$$
+      - $$TIR_1 = 28,65\%$$
+    - $$TIR_2 \Rightarrow 0 = -800.000  + \sum_{t=1}^4 \frac{400.000}{(1+TIR_2)^4}$$
+      - $$TIR_2 = 34,90\%$$
+    
+- Ao contrário do raciocínio falacioso do último slide, a TIR elenca o projeto 2
+como o mais rentável para a construtora!
+    
+<!-- # Rentabilidade e Lucratividade -->
+
+## Indicadores: rentabilidade e lucratividade {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- Lucratividade: 
+  - é a razão entre o lucro líquido ($L_{líquido}$) e a receita bruta ($R_{bruta}$):
+  - $$L = \frac{L_{líquido}}{R_{bruta}}$${#eq-lucratividade}
+
+- Rentabilidade: 
+  - é a razão entre o lucro líquido e o investimento ($I$):
+  - $$\text{ROI} = \frac{L_{líquido}}{I}$${#eq-rentabilidade}
+  
+## Lucratividade {background-image="./img/FACULDADE_INBEC_16_9.png"}
+  
+:::: {.columns}
+
+::: {.column width="50%"}
+- Projeto 1: $$L_1 = \frac{L_{líquido}}{R_{bruta}} = \frac{400.000}{2.000.000} = 20\%/\text{ano}$$
+:::
+
+::: {.column width="50%"}
+- Projeto 2: $$L_2 = \frac{L_{líquido}}{R_{bruta}} = \frac{400.000}{2.000.000} = 20\%/\text{ano}$$
+:::
+
+::::
+
+
+## Rentabilidade {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+- Projeto 1: $$\text{ROI}_1 = \frac{VPL_1}{I_1} = \frac{341.000}{1.000.000} = 34,10\%$$
+:::
+
+::: {.column width="50%"}
+- Projeto 2: $$\text{ROI}_2 = \frac{VPL_2}{I_2}= \frac{341.000}{800.000} = 42,625\%$$
+:::
+
+::::
+
+## Lucratividade *vs.* Rentabilidade {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- O raciocínio é o seguinte: 
+  - o VPL é o mesmo para ambos os projetos
+  - porém, no projeto 2 o investimento é menor (e retorna mais rápido)!
+
+## Comparação por TIR {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- Um bom exercício para este momento é:
+  - Imagine que o Projeto 2 atrasou. 
+    - Irá apresentar o mesmo resultado (20% de R$ 8.000.000,00)
+    - Porém, agora com prazo de 5 anos
+    - Calcule a nova TIR do Projeto 2.
+    - Compare-a à TIR inicial e à TIR do primeiro projeto
+    - Faça também o cálculo do novo VPL e das rentabilidades!
+    
+<!-- # Aspectos Legais -->
+
+## Lei do Inquilinato {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+-   A partir da entrada em vigor do Código Civil, em jan/1917, a legislação do 
+inquilinato evoluindo em fases alternadas, ora favorecendo os proprietários, ora
+os inquilinos [@damato, p. 38].
+
+-   Lei em vigor: a Lei nº 8.245, de 18/10/1991 é uma **lei de ordem pública**, 
+ou seja, atinge os contratos celebrados em particulares, impedindo o 
+estabelecimento de cláusulas contrárias aos seus dispositivos, protegendo assim 
+a parte economicamente mais fraca.
+
+## Lei do Inquilinato {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+-   Continam regulados pelo Código Civil e pelas leis especiais, portanto fora
+da Lei do Inquilinato:
+  - As locações:
+    - de imóveis de propriedade da União, dos Estados e Municípios, de suas 
+    autarquias e fundações públicas
+    - de vagas autônomas de garagem ou de espaços para estacionamento de 
+    veículos;
+      - de espaços destinados à publicidade;
+      - em apart-hotéis, hotéis-residência ou equiparados, assim considerados 
+      aqueles que prestam serviços regulares a seus usuários e como tais sejam 
+      autorizados a funcionar;
+    - o arrendamento mercantil, em qualquer de suas modalidades
+
+## Direito de Preferência {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+> Art. 27. No caso de venda, promessa de venda, cessão ou promessa de cessão de 
+direitos ou dação em pagamento, o locatário tem preferência para adquirir o 
+imóvel locado, em igualdade de condições com terceiros, devendo o locador 
+dar-lhe conhecimento do negócio mediante notificação judicial, extrajudicial ou
+outro meio de ciência inequívoca. Parágrafo único. A comunicação deverá conter 
+todas as condições do negócio e, em especial, o preço, a forma de pagamento, a 
+existência de ônus reais, bem como o local e horário em que pode ser examinada a
+documentação pertinente.
+
+> Art. 28. O direito de preferência do locatário caducará se não manifestada, de
+maneira inequívoca, sua aceitação integral à proposta, no prazo de trinta dias.
+
+> Art. 29. Ocorrendo aceitação da proposta, pelo locatário, a posterior 
+desistência do negócio pelo locador acarreta, a este, responsabilidade pelos 
+prejuízos ocasionados, inclusive lucros cessantes.
+
+## Direito de Preferência {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+> Art. 30. Estando o imóvel sublocado em sua totalidade, caberá a preferência ao
+sublocatário e, em seguida, ao locatário. Se forem vários os sublocatários, a 
+preferência caberá a todos, em comum, ou a qualquer deles, se um só for o 
+interessado. Parágrafo único. Havendo pluralidade de pretendentes, caberá a 
+preferência ao locatário mais antigo, e, se da mesma data, ao mais idoso.
+
+> Art. 31. Em se tratando de alienação de mais de uma unidade imobiliária, o 
+direito de preferência incidirá sobre a totalidade dos bens objeto da alienação.
+
+> Art. 32. O direito de preferência não alcança os casos de perda da propriedade
+ou venda por decisão judicial, permuta, doação, integralização de capital, 
+cisão, fusão e incorporação.
+
+## Ação Revisional de Aluguel {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+> Art. 68. Na ação revisional de aluguel, que terá o rito sumaríssimo, 
+observar-se-á o seguinte:\
+> I – além dos requisitos exigidos pelos arts. 276 e 282 do Código de Processo 
+Civil, a petição inicial deverá indicar o valor do aluguel cuja fixação é 
+pretendida. (Vide Nota mental na página seguinte).\
+> II – ao designar a audiência de instrução e julgamento, o juiz, se houver 
+pedido e com base nos elementos fornecidos pelo autor ou nos que indicar, 
+fixará aluguel provisório, não excedente a oitenta por cento do pedido, que 
+será devido desde a citação.\
+> III – sem prejuízo da contestação e até a audiência, o réu poderá pedir seja 
+revisto o aluguel provisório, fornecendo os elementos para tanto.\
+> IV – na audiência de instrução e julgamento, apresentada a contestação, que 
+deverá conter contraproposta se houver discordância quanto ao valor pretendido, 
+o juiz tentará a conciliação e, não sendo esta possível, suspenderá o ato para 
+a **realização de perícia**, se necessária, designando, desde logo, audiência em
+continuação.
+
+## Ação Renovatória de aluguel {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+> Art. 51. Nas locações de imóveis destinados ao comércio, o locatário terá 
+direito à renovação do contrato, por igual prazo, desde que, cumulativamente:
+> I. o contrato a renovar tenha sido celebrado por escrito e com prazo 
+determinado;
+> II. o prazo mínimo do contrato a renovar ou a soma dos prazos ininterruptos 
+dos contratos escritos seja de **cinco anos**; (g. n.)
+> III. o locatário esteja explorando seu comércio, no mesmo ramo, pelo prazo 
+mínimo e ininterrupto de três anos.
+> Art. 52. O locador não estará obrigado a renovar o contrato se:
+> I – por determinação do Poder Público, tiver que realizar no imóvel obras que 
+importarem na sua radical transformação; **ou para fazer modificação de tal 
+natureza que aumente o valor do negócio ou da propriedade**;(g. n.)
+> II – o imóvel vier a ser utilizado por ele próprio ou para transferência de 
+fundo de comércio existente há mais de um ano, sendo detentor da maioria do 
+capital o locador, seu cônjuge, ascendente ou descendente.
+
+-   Este direito de renovação pelo locatário nos contratos com prazo maior ou 
+igual a 5 anos é que enseja a cobrança de luvas!
+
+## Ação Renovatória de aluguel {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+### Contestação
+
+> Art. 72. A contestação do locador, além da defesa de direito que possa caber,
+ficará adstrita, quanto à matéria de fato, ao seguinte:
+> ...\
+> II – não atender, a proposta do locatário, o valor locativo real do imóvel na 
+época da renovação, excluída a valorização trazida por aquele ao ponto ou lugar;
+> III – ter proposta de terceiro para a locação, em condições melhores;
+> IV – não estar obrigado a renovar a locação (incisos I e II do art. 52).
+> § 1o . No caso do inciso II, o locador deverá apresentar, em contraproposta, 
+as condições que repute compatíveis com o valor locativo real e atual do imóvel.
+> § 2o .\
+> § 3o . No caso do inciso I do art. 52, a contestação deverá trazer prova da
+determinação do Poder Público ou relatório pormenorizado das obras a serem 
+realizadas e da estimativa de valorização que sofrerá o imóvel, **assinado por
+engenheiro devidamente habilitado**. (Grifo nosso!!)
+
+## Referências {background-image="./img/FACULDADE_INBEC_16_9.png"}

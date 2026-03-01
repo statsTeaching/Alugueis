@@ -1,0 +1,690 @@
+---
+title: "Método Comparativo (2)"
+subtitle: "Avaliação de Aluguéis"
+author: "Eng.º Luiz F. P. Droubi"
+date: last-modified
+date-format: long
+bibliography: referencias.bib
+title-slide-attributes:
+  data-background-image: img/Fundo_Capa.png
+  data-background-size: cover
+lang: pt
+format: 
+  # pptx:
+  #   reference-doc: TEMPLATE_EDUFOR.pptx
+  revealjs:
+#    background-image: "./img/FACULDADE_INBEC_16_9.jpg"
+    parallax-background-size: cover 
+    width: 1280
+    height: 720
+    # margin-top: 20%
+    theme: [default, style.scss]
+    # logo: img/logo.png
+    # theme: beige
+    # smaller: true
+    slide-number: true
+    scrollable: true
+    incremental: true
+    transition: slide
+    background-transition: fade
+fontsize: 1.8em
+---
+
+<!-- # O Método Comparativo -->
+
+## Apartamentos {.smaller background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+### @damato [p. 263-264]
+    
+```{r}
+# Comparacao do tratamento por fatores e tratamento por regressao linear
+
+# Carregamento dos pacotes necessarios
+library(tibble)
+library(effects)
+library(broom)
+library(appraiseR)
+library(knitr)
+
+# Insercao manual dos dados
+# Dados de Alonso, Foz do Iguacu (2019, p. 48)
+
+dados <- tribble(
+  ~id, ~Area,  ~Aluguel, ~Condo, ~Padrao, ~Idade,
+  1,    90,      2755,    285,  "Alto",     25,
+  2,    87,      2310,    285, "Médio",     25,
+  3,    90,      2215,    230,  "Alto",     30,
+  4,    95,      1830,    230, "Baixo",     30,
+  5,    90,      2000,    230,  "Alto",     30,
+  6,   105,      1830,    290, "Médio",     25,
+  7,   100,      1640,    250, "Baixo",     30,
+  8, 93.69,        NA,    250, "Médio",     25,
+)
+dados <- within(dados, {
+  Foferta <- 0.9
+  PU <- Foferta*Aluguel/Area
+})
+kable(dados)
+```
+    
+## Apartamentos {.smaller background-image="./img/FACULDADE_INBEC_16_9.png"}
+  
+### Análise Exploratória
+  
+```{r}
+plotdf(PU ~ Area + Padrao, data = dados, labels = T)
+```
+    
+## Apartamentos {.smaller background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+### Análise de regressão
+
+```{r}
+# 1.2 Metodo Comparativo, tratamento por regressao linear
+
+# Ajuste do modelo
+library(kableExtra)
+
+fit <- lm(PU ~ Area + Padrao, data = dados)
+# s <- summary(fit)
+fit |>
+  tidy() |>
+  kable(digits = 2, format = "simple")|>
+  footnote(general = paste("Erro-padrão dos resíduos: ", 
+                           brf(sigma(fit), digits = 2), 
+                           " em ", df.residual(fit), " graus de liberdade."),
+           alphabet = c(paste("R2: ", 
+                              brf(R2(fit), digits = 2)),
+                        paste("R2ajustado: ", 
+                              brf(adjR2(fit), digits = 2)),
+                        paste("RMSE: ",
+                              brf(modelr::rmse(fit, data = dados), digits = 2))
+           ),
+           escape = F) 
+```
+    
+## Apartamentos {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+### Análise de regressão
+
+```{r}
+# Analise dos residuos
+# plot(fit)
+
+# Graficos do Modelo
+#
+plot(predictorEffects(fit, residuals = T), id = T,
+     axes=list(grid=TRUE, x=list(rotate=45)),
+     partial.residuals=list(smooth=TRUE, span=1.25, lty = "dashed"))
+```
+
+## Apartamentos {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+### Previsão de Valores
+
+```{r}
+# Computo do valor do aluguel atraves do modelo
+
+p <- predict(fit, newdata = list(Area = 93.69, Padrao = "Médio"),
+             interval = "confidence", level = .80)
+p 
+
+# Obs.: Praticamente o mesmo valor obtido no tratamento por fatores.
+```
+
+## Apartamentos {.smaller background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+### Alternativa (não-recomendado!)
+    
+```{r}
+dados <- within(dados, {
+  k <- (1-.025)^Idade
+  PVendaProxy <- Area*k*ifelse(Padrao == "Alto", 2.16,
+                               ifelse(Padrao == "Médio", 1.926,
+                                      ifelse(Padrao == "Baixo", 1.692, NA)))*1000
+})
+library(ggpmisc)
+ggplot(dados, aes(x = PVendaProxy, y = PU)) +
+  geom_point() +
+  stat_poly_line(formula = y ~ x - 1) +
+  stat_poly_eq(use_label(c("eq", "R2")), size = 6, formula = y ~ x - 1) +
+  geom_segment(x = 0, xend = 95821.93, y = 21.25, yend = 21.25, color = "red", size=1.5) +
+  geom_segment(x = 95821.93, xend = 95821.93, y = 0, yend = 21.25, color = "red", size=1.5) + 
+  theme_grey(base_size = 20)
+```
+        
+
+## Apartamentos {.smaller background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+### Alternativa
+
+```{r}
+fit1 <- lm(PU ~ I(Area-93.7) + I(PVendaProxy-95821.93), data = dados)
+# s1 <- summary(fit1)
+fit1 |>
+  tidy() |>
+  kable(digits = 3, format = "simple") |>
+  footnote(general = paste("Erro-padrão dos resíduos: ", 
+                           brf(sigma(fit1), digits = 2), 
+                           " em ", df.residual(fit1), " graus de liberdade."),
+           alphabet = c(paste("R2: ", 
+                              brf(R2(fit1), digits = 2)),
+                        paste("R2ajustado: ", 
+                              brf(adjR2(fit1), digits = 2)),
+                        paste("RMSE: ",
+                              brf(modelr::rmse(fit1, data = dados), digits = 2))
+           ),
+           escape = F)
+```
+
+## Apartamentos {.smaller background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+### Análise de regressão
+
+```{r}
+# Analise dos residuos
+# plot(fit)
+
+# Graficos do Modelo
+#
+plot(predictorEffects(fit1, residuals = T), id = T,
+     axes=list(grid=TRUE, x=list(rotate=45)),
+     partial.residuals=list(smooth=TRUE, span=1.25, lty = "dashed"))
+```
+
+## Apartamentos (2) {.smaller .scrollable background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+### @damato [p. 372]
+
+```{r}
+library(readxl)
+dados <- read_excel("data/DamatoAlonso_p372.xlsx")
+kable(dados, digits = 2, 
+      format.args = list(big.mark = ".", decimal.mark = ","),
+      col.names =c("Id", "Aluguel (R$)", "Venda (R$)", "Área Útil (m2)", 
+                   "Condomínio (R$)", "Local", "Padrao", "Idade", "Vida útil",
+                   "Conservação")) 
+```
+
+## Apartamentos (2) {.smaller background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+```{r}
+dados <- within(dados, {
+  C <- 1-sapply(dados$Conservacao, Heideck)
+  k <- (1-C)*(1-.5*(Idade/VidaUtil + Idade^2/VidaUtil^2))
+  Foc <- .2+.8*k
+  PU <- .9*Aluguel/AreaUtil
+  Condo <- Condominio/AreaUtil
+  Padrao <- factor(Padrao)
+  PadraoProxy <- ifelse(Padrao == "Medio", 1.926, 
+                        ifelse(Padrao == "Superior", 2.406,
+                               ifelse(Padrao == "Fino", 3.066, NA)))
+})
+dados <- within(dados,{
+  FArea <- 78/AreaUtil
+  FCondo <- 6.37/Condo
+  FLocal <- 796/Local
+  FPadrao <- 2.406/PadraoProxy
+  FFoc <- .753/Foc
+})
+dados <- within(dados, SumFatores <- 1+ FArea + FCondo + FLocal + FPadrao + FFoc - 5)
+dados <- within(dados, PUhom <- SumFatores*PU)
+kable(dados, digits = 2, 
+      format.args = list(big.mark = ".", decimal.mark = ","))
+```
+    
+## Apartamentos (2) {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+-   Saneamento da amostra:
+  
+. . . 
+
+```{r}
+#| echo: true
+outlier_analysis(dados$PUhom, criterion = "Chauvenet")
+```
+
+-   $PU_{hom} =$ `r mean(dados$PUhom[-c(8,11)], na.rm = T)`
+
+
+## Lojas: Tratamento Científico {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+### @damato [p. 240]
+
+-   37 dados de lojas de diferentes ramos
+
+```{r}
+library(forcats)
+dados <- read_excel("./data/DamatoAlonso_p240.xlsx")
+dados$Atividade <- factor(dados$Atividade)
+dados$Atividade <- fct_reorder(dados$Atividade, dados$VU)
+kable(head(dados, 6), digits = 2, 
+      format.args = list(big.mark = ".", decimal.mark = ","))
+```
+
+## Lojas (análise exploratória) {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+```{r, fig.cap="Lojas de shopping por atividade. Relação VU vs. Área."}
+my.formula <- y ~ x
+ggplot(dados, aes(x = Area, y = VU)) +
+  stat_smooth(method = "lm") +
+  geom_point(aes(x = Area, y = VU, color = Atividade)) +
+  stat_poly_eq(formula = my.formula,
+               eq.with.lhs = "italic(hat(y))~`=`~",
+               label.x = "right", label.y = "top",
+               aes(label = paste(..eq.label.., ..rr.label.., sep = "~~~")), 
+               parse = TRUE) +
+  theme(legend.position = "bottom")
+```
+    
+## Lojas (modelo) {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+```{r, out.width="100%", fig.width=12, fig.height=6}
+fit <- lm(log(VU) ~ log(Area) + Andar + Atividade, dados)
+plot(predictorEffects(fit, predictors = c("Area", "Atividade"), 
+                      residuals = T), 
+     id = T, axes=list(x=list(rotate=45)))
+```
+
+## Lojas {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+```{r}
+plot(predictorEffect("Andar", fit),
+     axes=list(y=list(transform=exp, lab="VU")))
+```
+
+## Lojas {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+```{r}
+s <- summary(fit)
+tabela <- tidy(fit)
+tabela$term <- c("Intercepto", "log(Area)", "Andar Térreo", "Importados", 
+                 "Tapetes", "Informática", "Fast-Food", "Esportes", 
+                 "Roupas Masc.", "Roupas Fem.", "Bancos", "Jóias"
+)
+kable(tabela, digits = 2, format = "simple",
+      format.args = list(big.mark = ".", decimal.mark = ","),
+      col.names = c("Termo", "Estimativa", "Erro-padrão",
+                    "Estatística t", "p-valor")) |>
+  footnote(general = paste("Erro-padrão dos resíduos: ", 
+                           brf(sigma(fit), digits = 2), 
+                           " em ", df.residual(fit), " graus de liberdade."),
+           alphabet = c(paste("R2: ", 
+                              brf(R2(fit), digits = 2)),
+                        paste("R2ajustado: ", 
+                              brf(adjR2(fit), digits = 2)),
+                        paste("RMSE: ",
+                              brf(modelr::rmse(fit, data = dados), 
+                                  digits = 2))
+           ),
+           escape = F)
+```
+
+## Lojas (avaliação) {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+-   De posse do modelo acima, avaliar o valor mínimo do aluguel de uma loja 
+de 110m2, de roupas masculinas no piso térreo neste shopping center.
+    
+```{r}
+p <- predict(fit, newdata = list(Area = 110, Atividade = "roupas masculinas",
+                                 Andar = "térreo"), 
+             interval = "confidence", level = 0.80)
+```
+
+-   O valor calculado foi de: `r brf(exp(p[, "fit"]))` \[`r brf(exp(p[, "lwr"]))`; `r brf(exp(p[, "upr"]))`\]
+
+## Terrenos {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+### Considerações importantes
+
+-   Primeiro há de se considerar o melhor uso, se comercial ou residencial
+-   Terrenos residenciais, em geral, não são para locar.
+-   Apenas os terrenos comerciais nos interessam aqui.
+-   Deve-se dar preferência ao Método Comparativo
+-   Problema: pode haver falta de dados para comparação
+-   Com poucos dados, pode ser viável apenas o tratamento por fatores
+-   Pode-se buscar dados de terrenos com construções para aumentar a amostra, 
+descontando, é claro, o valor das construções para efeito de comparativo
+-   Na ausência de dados em número suficiente, deve-se utilizar o Método da 
+Remuneração do Capital
+
+## Terrenos {.smaller background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+### @damato [p. 204]
+
+```{r}
+dadosTerrenos <- read_excel("./data/Alonso_p61.xlsx")
+kable(head(dadosTerrenos[, -c(4, 11, 13)], 6), digits = 2, 
+      format.args = list(big.mark = ".", decimal.mark = ","),
+      col.names = c("Id", "Índice Local", "Preço", "Preço (FO)",
+                    "Área", "Frente Principal", "Prof. Eq.", "Frente Sec.", 
+                    "A. Construída", "Padrão", "Fd"))
+```
+
+
+## Terrenos (análise exploratória) {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+```{r}
+my.formula <- y ~ x
+ggplot(dadosTerrenos, aes(x = Area, y = Valor)) +
+  geom_point() + 
+  stat_smooth(method = "lm") +
+  labs(x = "Área do Terreno (m2)") +
+  stat_poly_eq(formula = my.formula,
+               eq.with.lhs = "italic(hat(y))~`=`~",
+               label.x = "left",
+               aes(label = paste(..eq.label.., ..rr.label.., sep = "~~~")), 
+               parse = TRUE) +
+  scale_y_continuous(labels = scales::label_number_auto()) + 
+  scale_x_continuous(labels = scales::label_number_auto()) 
+```
+
+## Terrenos (análise exploratória) {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+```{r}
+my.formula <- y ~ x
+ggplot(dadosTerrenos[-6, ], aes(x = Area, y = Valor)) +
+  geom_point() + 
+  stat_smooth(method = "lm") +
+  labs(x = "Área do Terreno (m2)") +
+  stat_poly_eq(formula = my.formula,
+               eq.with.lhs = "italic(hat(y))~`=`~",
+               label.x = "left",
+               aes(label = paste(..eq.label.., ..rr.label.., sep = "~~~")), 
+               parse = TRUE) +
+  scale_y_continuous(labels = scales::label_number_auto()) + 
+  scale_x_continuous(labels = scales::label_number_auto()) 
+```
+
+## Terrenos {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+### Cálculo do valor residual
+
+```{r}
+CB <- 1372.53
+dadosTerrenos <- within(dadosTerrenos, {
+  ValorConstrucao <- CB*AreaConstruida*FatorPadrao*Foc
+  ValorConstrucao[is.na(ValorConstrucao)] <- 0
+  ValorResidual <- Valor-ValorConstrucao
+})
+kable(head(dadosTerrenos[, c("Id", "Preco", "AreaConstruida", "FatorPadrao", "Foc", 
+                             "ValorConstrucao", "ValorResidual")], 10), 
+      digits = 2, 
+      format.args = list(big.mark = ".", decimal.mark = ","),
+      col.names = c("Id", "Preço", "A. Construída", "Padrão", "Fd", "Valor da Construção", "Valor Residual"))
+```
+
+## Terrenos {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+```{r}
+my.formula <- y ~ x
+ggplot(dadosTerrenos[-6, ], aes(x = Area, y = ValorResidual)) +
+  geom_point() + 
+  stat_smooth(method = "lm") +
+  labs(x = "Área do Terreno (m2)") +
+  stat_poly_eq(formula = my.formula,
+               eq.with.lhs = "italic(hat(y))~`=`~",
+               label.x = "left",
+               aes(label = paste(..eq.label.., ..rr.label.., sep = "~~~")), 
+               parse = TRUE) +
+  scale_y_continuous(labels = scales::label_number_auto()) + 
+  scale_x_continuous(labels = scales::label_number_auto()) 
+```
+
+## Terrenos {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+```{r}
+my.formula <- y ~ x
+ggplot(dadosTerrenos[-c(6), ], aes(x = Area, y = ValorResidual)) +
+  geom_point() + 
+  stat_smooth(method = "lm") +
+  labs(x = "Área do Terreno (m2)") +
+  # xlim(c(155-0, 650))+
+  stat_poly_eq(formula = my.formula,
+               eq.with.lhs = "italic(hat(y))~`=`~",
+               label.x = "right", label.y = "bottom",
+               aes(label = paste(..eq.label.., ..rr.label.., sep = "~~~")), 
+               parse = TRUE) +
+  scale_y_continuous(transform = "log"
+                     #, labels = scales::label_number_auto()
+                     ) + 
+  scale_x_continuous(transform = "log"
+                     # , labels = scales::label_number_auto()
+                     )
+```
+
+## Terrenos {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+```{r}
+my.formula <- y ~ x
+ggplot(dadosTerrenos[-c(1, 6), ], aes(x = Area, y = ValorResidual)) +
+  geom_point() + 
+  stat_smooth(method = "lm") +
+  labs(x = "Área do Terreno (m2)") +
+  # xlim(c(155-0, 650))+
+  stat_poly_eq(formula = my.formula,
+               eq.with.lhs = "italic(hat(y))~`=`~",
+               label.x = "right", label.y = "bottom",
+               aes(label = paste(..eq.label.., ..rr.label.., sep = "~~~")), 
+               parse = TRUE) +
+  scale_y_continuous(transform = "log"
+                     # , labels = scales::label_number_auto()
+                     ) + 
+  scale_x_continuous(transform = "log"
+                     # , labels = scales::label_number_auto()
+                     )
+```
+
+## Terrenos (modelo) {.smaller background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+```{r}
+fit <- lm(log(ValorResidual) ~ log(Area), dadosTerrenos, subset = -c(1, 6))
+s <- summary(fit)
+tabela <- tidy(fit)
+kable(tabela, digits = 2, format = "simple",
+      format.args = list(big.mark = ".", decimal.mark = ","),
+      col.names = c("Termo", "Estimativa", "Erro-padrão", 
+                    "Estatística t", "p-valor")) |>
+  footnote(general = paste("Erro-padrão dos resíduos: ", 
+                           brf(s$sigma, digits = 2), 
+                           " em ", s$df[2], " graus de liberdade."),
+           alphabet = c(paste("R2: ", 
+                              brf(s$r.squared, digits = 2)),
+                        paste("R2ajustado: ", 
+                              brf(s$adj.r.squared, digits = 2)),
+                        paste("RMSE: ",
+                              brf(modelr::rmse(fit, data = dadosTerrenos), 
+                                  digits = 2))
+           ),
+           escape = F)
+```
+
+## Terrenos (avaliação) {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+-   Valor de venda:
+  
+  
+
+```{r}
+p <- predict(fit, newdata = list(Area = 881.76), 
+             interval = "confidence", level = 0.80)
+exp(p)
+```
+
+-   Valor de Locação: $1.060.000,00*[(1+0,06)^{1/12}-1]=$ `r brf(1060000*((1+.06)^(1/12)-1))`
+
+## Armazéns {.smaller background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+### @damato [p. 251]
+
+```{r}
+dadosArmazens <- read_excel("./data/DamatoAlonso_p251.xlsx", 
+                            col_types = c(rep("numeric", 6), "text", rep("numeric", 4)))
+dadosArmazens <- within(dadosArmazens, VU <- Aluguel/AreaTerreno)
+kable(head(dadosArmazens[, -11], 7), digits = 2, 
+      format.args = list(big.mark = ".", decimal.mark = ","),
+      col.names = c("Id", "A. terreno", "A. Construída", "Galpão",
+                    "Escrit.", "Docas", "Padrão", "Idade", "Aluguel",
+                    "VU"))
+```
+
+-   Considerado: $VU = \frac{Aluguel}{AreaTerreno}$
+  
+## Armazéns (análise exploratória) {background-image="./img/FACULDADE_INBEC_16_9.png"}
+  
+```{r, fig.cap="Lojas de shopping por atividade. Relação VU vs. Área."}
+my.formula <- y ~ x
+ggplot(dadosArmazens, aes(x = AreaTerreno, y = VU)) +
+  stat_smooth(method = "lm") +
+  geom_point(aes(x = AreaTerreno, y = VU, color = Padrao)) +
+  stat_poly_eq(formula = my.formula,
+               eq.with.lhs = "italic(hat(y))~`=`~",
+               label.x = "right", label.y = "top",
+               aes(label = paste(..eq.label.., ..rr.label.., sep = "~~~")), 
+               parse = TRUE) +
+  theme(legend.position = "bottom")
+```
+
+## Armazéns (análise exploratória) {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+```{r, fig.cap="Lojas de shopping por atividade. Relação VU vs. Área."}
+my.formula <- y ~ x
+ggplot(dadosArmazens, aes(x = AreaTerreno, y = VU)) +
+  stat_smooth(method = "lm") +
+  geom_point(aes(x = AreaTerreno, y = VU, color = Idade)) +
+  stat_poly_eq(formula = my.formula,
+               eq.with.lhs = "italic(hat(y))~`=`~",
+               label.x = "right", label.y = "top",
+               aes(label = paste(..eq.label.., ..rr.label.., sep = "~~~")), 
+               parse = TRUE) +
+  theme(legend.position = "bottom")
+```
+
+## Armazéns (modelo) {.smaller}
+
+```{r}
+fit <- lm(log(VU) ~ log(AreaTerreno/15000) + log(AreaConstruida/12086.22) + I(Idade-10), 
+          data = dadosArmazens)
+tabela <- tidy(fit)
+kable(tabela, digits = 2, 
+      format.args = list(big.mark = ".", decimal.mark = ","),
+      col.names = c("Termo", "Estimativa", "Erro-padrão", "Estatística t", "p-valor"))
+```
+    
+- Equação de Estimação: 
+  - $$VU = 5,99.\left(\frac{AreaTerreno}{15000}\right)^{-1,03}.\left(\frac{AreaConstruida}{12.086,22}\right)^{0,83}.0,98^{Idade-10}$$
+      
+## Armazéns (modelo) {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+```{r}
+#| fig-cap: "Gráficos de efeitos marginais."
+#| fig-width: 12
+#| fig-height: 6
+plot(predictorEffects(fit, predictors = c("AreaTerreno", "AreaConstruida"), 
+                      residuals = T), 
+     id = T, axes=list(x=list(rotate=45)))
+```
+
+## Armazéns (modelo) {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+```{r, fig.cap="Gráfico marginal da variável Idade."}
+plot(predictorEffect("Idade", fit, residuals = T), 
+     id = T, axes=list(x=list(rotate=45)))
+```
+
+## Armazéns (Poder de Predição) {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+```{r}
+powerPlot(fit, system = "ggplot2", axis = "inverted")
+```
+
+## Armazéns (Poder de Predição) {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+```{r}
+fit1 <- update(fit, subset = -4)
+powerPlot(fit1, system = "ggplot2", Smooth = TRUE, axis = "inverted")
+```
+
+## Armazéns (Avaliação) {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+-   De posse do modelo acima, avaliar o valor do aluguel de um armazém com 
+terreno de área igual a 15.000 m2, com Área Construída de 12.086,22 e Idade 
+igual a 5 anos.
+
+. . . 
+
+```{r echo = T}
+p <- predict(fit1, newdata = list(AreaTerreno = 15000, AreaConstruida = 12086.22,
+                                  Idade = 5),
+             interval = "confidence", level = 0.80)
+exp(p)
+```
+
+-   O valor calculado foi de: `r brf(15000*0.9*exp(p[, "fit"]))` \[`r brf(15000*0.9*exp(p[, "lwr"]))`; `r brf(15000*0.9*exp(p[, "upr"]))`\]
+
+## Armazéns (Avaliação) {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- @damato [p. 254]: R\$ 90.936,00
+
+- Modelo: $\frac{1}{Area} = 2,5765.10^{-5}+\frac{0,09618}{\text{Area Construida}}-3,7878.10^{-6}.\text{Conservacao}$
+  
+<!-- # Casos Especiais -->
+
+## Cinemas {background-image="./img/FACULDADE_INBEC_16_9.png"}
+  
+  -   Em casos especiais, como nos cinemas, pode ser utilizado o *Método da Participação*
+  -   Tal método consiste em:
+  -   Aferir a renda líquida do estabelecimento
+-   Aplicar a esta renda líquida um percentual médio de mercado para calcular o aluguel justo ao locador
+-   Segundo @damato [p. 296]:
+  
+. . . 
+    
+> Obtida a média final (das rendas líquidas), seria a mesma capitalizada em base às taxas de renda usuais para cinemas que são: 10% quando os equipamentos e instalações são de propriedade do inquilino e 15% quando pertencem ao proprietário do imóvel.
+    
+## Cinemas {.smaller background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+### Exemplo [@damato, p. 297]
+
+```{r}
+dadosCinema <- read_excel("data/DamatoAlonso_p296.xlsx")
+kable(head(dadosCinema), digits = 2,
+     format.args = list(big.mark = ".", decimal.mark =","))
+```
+
+```{r}
+library(lubridate)
+dadosCinema$Ano <- year(dadosCinema$Mês)
+```
+
+-   @damato [p. 297]: $Al = 185.358,54\times12\% =\text{R\$ }22.240,00$
+ 
+## Problema {background-image="./img/FACULDADE_INBEC_16_9.png"}
+ 
+```{r}
+#| echo: true
+tapply(dadosCinema$`Renda Líquida Descontada`, dadosCinema$Ano, mean)
+```
+
+-   O resultado tem aumentado anualmente em torno de 10% a.a.
+-   Ao considerar a média dos rendimentos anuais, @damato obtiveram um aluguel condizente com o ano de 2016!
+ -   Isto não me parece correto!
+      
+## Problemas com o Método da Participação {.smaller background-image="./img/FACULDADE_INBEC_16_9.png"}
+      
+> Foram apresentados métodos de participação para "postos de gasolina" e para
+"cinemas". O método para "postos de serviços" foi desenvolvido pelo engenheiro
+José Carlos Pellegrino e para os "cinemas", pelo engenheiro Nelson Roberto
+Pereira Alonso. Nesses processos de participação, o aluguel é vinculado ao
+resultado comercial do estabelecimento empresarial do inquilino. Se, por um
+lado, possui a vantagem de permitir o estabelecimento do aluguel para imóveis
+com destinação específica, tem, na opinião do autor, as desvantagens de punir o
+bom e permiar o mau comerciante, e ainda de impedir que o proprietário usufrua
+da renda de seu patrimônio de uma forma mais lucrativa do que aquela para o qual
+originalmente foi destinado.
+    
+> Se, por qualquer motivo, a destinação original que foi dada ao imóvel passar a
+ser inviável, não é dado ao proprietário do prédio o direito de se afastar desse
+"prejuízo"...
+    
+## Referências {background-image="./img/FACULDADE_INBEC_16_9.png"}

@@ -1,0 +1,813 @@
+---
+title: "Introdução"
+subtitle: "Avaliação de Aluguéis"
+author: "Eng.º Luiz F. P. Droubi"
+date: last-modified
+date-format: long
+bibliography: referencias.bib
+title-slide-attributes:
+  data-background-image: img/Fundo_Capa.png
+  data-background-size: cover
+  #data-background-opacity: "0.5"
+# format: 
+#   pptx:
+#     reference-doc: TEMPLATE_EDUFOR.pptx
+lang: pt
+format:
+  revealjs:
+#    background-image: "./img/FACULDADE_INBEC_16_9.png"
+    parallax-background-size: cover
+    width: 1280
+    height: 720
+    # margin-top: 20%
+    theme: [default, style.scss]
+    # logo: img/logo.png
+    # theme: beige
+    # smaller: true
+    slide-number: true
+    scrollable: true
+    incremental: true
+    transition: slide
+    background-transition: fade
+fontsize: 1.8em
+---
+
+<!-- # Introdução -->
+
+## Introdução {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- Os imóveis são bens heterogêneos:
+  - Assim como utilizamos os imóveis para morar
+  - Utilizamos os imóveis para auferir renda imobiliária
+  - Assim, os imóveis são bens de consumo ("*service logement*", de acordo com
+  [@granelle; *apud* @lacerda2020]
+  - Mas também são "*bien d’investissement*" (Idem)
+  
+## Introdução {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+:::: {.columns}
+
+::: {.column width="50%"}  
+- Olhando para os imóveis como *bem de consumo*:
+  - Consumimos imóveis todos os dias, seja para morar, seja para trabalhar!
+  - O custo deste consumo pode estar implícito (imóvel próprio)
+
+:::
+
+::: {.column width="50%"}
+
+- Olhando para o imóvel como um *bem de investimento*:
+  - Quando um investidor compra um título de renda fixa, ele espero ganhar
+  juros
+  - Quando o investidor compra um imóvel, ele espero ganhar renda!
+    - Explícita (aluguéis)
+    - Implícita (imóvel próprio)
+:::
+
+::::
+
+## Relação entre Estoque e Fluxo {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- O entendimento da formação dos Aluguéis é essencial para a compreensão do 
+mercado imobiliário 
+
+. . . 
+
+
+```{r}
+#| label: tab-StockFlow
+#| fig-cap: "Relação entre Estoque e Fluxo. Fonte: Adaptada de @Malpezzi2002TheRO"
+library(knitr)
+df <- data.frame(
+  Estoque = c("Riqueza", "Dívida Pública", "Ação", "Valor de uma propriedade"),
+  Fluxo = c("Renda", "Déficit Público", "Dividendo", "Aluguel"))
+kable(df)
+```
+
+
+<!-- # Matemática Financeira -->
+
+## Fluxo de Caixa {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+```{r}
+library(FinCal)
+CashFlowDiagram <- function(periods, incomes, expenses) {
+  df <- data.frame(Periodo = seq(0, periods, by = 1),
+                   Positive = incomes, Negative = expenses)
+  p <- ggplot(data = df, aes(x = Periodo, xend = Periodo)) +
+  geom_segment(aes(y = 0, yend = Positive, colour = "Positive"),
+    position = "stack", arrow = arrow(length = unit(0.1, "inches")), 
+    linewidth = 1) + 
+  geom_segment(aes(y = 0, yend = Negative, colour = "Negative"), 
+    position = "stack", arrow = arrow(length = unit(0.1, "inches")), 
+    linewidth = 1) + 
+  geom_segment(x = 0, xend = 13, y = 0, yend = 0, linewidth = 1, 
+               arrow = arrow(length = unit(0.1, "inches"))) +
+  scale_x_continuous(breaks = seq(0,periods, by = 1)) +
+  scale_y_continuous(labels = scales::label_currency(),
+    breaks = seq(round(max(expenses, na.rm = T), -2), 
+                 round(max(incomes, na.rm = T), -2), length.out = 5)) +
+  scale_colour_manual("Direction", 
+    values = c("Negative" = "red", "Positive" = "blue")) + 
+  labs(title = "<b style='color:blue'>Entradas</b> e 
+  <b style='color:red'>Saídas</b>", 
+       x = "Período (meses)",
+       y = "Montante") +
+  theme_grey(base_size = 20) +
+  theme(plot.title = ggtext::element_markdown(lineheight = 1.1)) +
+  ggeasy::easy_remove_legend()
+  return(p)
+}
+```
+
+```{r}
+#| label: fig-FC
+#| fig-cap: "Um Fluxo de Caixa Simples"
+#| out-width: "50%"
+library(ggplot2)
+set_theme(theme_bw())
+
+p <- CashFlowDiagram(periods = 12, 
+                     incomes = c(10000, rep(NA, 11), 2000), 
+                     expenses = c(NA, rep(-1000,12)))
+
+p +
+  annotate("text", x = 1, y = 9500, label = "PV (C)", size = 5, color = "blue") +
+  annotate("text", x = 12, y = 2500, label = "FV (M)", size = 5, color = "blue") +
+  annotate("text", x = seq(1.5, 12.5, by = 1),  y = rep(-500, 12),
+           label = paste(rep("R[", 12), 1:12, "]", sep = ""), parse = TRUE,
+           size = 5, color = "red") +
+  annotate("label", x = 6, y = 1000, label = "i(%)", size = 7)
+```
+
+## Essencial de Matemática Financeira {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- É necessário um conhecimento básico de matemática financeira para compreender
+e aplicar a Engenharia de Avaliações de Aluguéis
+
+- A matemática financeira é o ramo da matemática aplicado à análise e solução de
+problemas financeiros
+
+- Envolve conceitos como:
+  - Juros
+  - Descontos
+  - Amortizações
+  - Investimentos
+  - Etc.
+  
+## Juros Simples {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- Juros simples são juros que incidem apenas em cima de um capital investido 
+($C$), durante $T$ períodos em um negócio a uma taxa $i$ pré-determinada:
+  - $$J = C\cdot i \cdot T$$ {#eq-JurosSimples}
+
+- **Ex.**: uma incorporadora procura investidores para viabilização de um
+  empreendimento imobiliário
+  - Então ela oferece ao mercado cotas com rentabilidade de 36% num prazo de 24 
+  meses
+  - O montante de juros obtido pelo investidor ao final do perí0do de 24 meses
+  será:
+    - $J = C\cdot i \cdot T = 100.000 \cdot 36\% \cdot 1 = \text{R\$ } 36.000,00$
+    
+## Juros Simples {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- Com juros simples não importa o período da capitalização:
+  - Transformando para rentabilidade anual ($i = 36/2 = 18\% \text{ a.a.}$):
+    - $J = C\cdot i \cdot T = 100.000 \cdot 18,0\% \cdot 2 = \text{R\$ } 36.000,00$
+  - Transformando para rentabilidade mensal ($i = 36/24 = 1,5\% \text{ a.m.}$):
+    - $J = C\cdot i \cdot T = 100.000 \cdot 1,5\% \cdot 24 = \text{R\$ } 36.000,00$
+  - Transformando para rentabilidade semestral ($i = 36/4 = 9\% \text{ a.s.}$):
+    - $J = C\cdot i \cdot T = 100.000 \cdot 9\% \cdot 4 = \text{R\$ } 36.000,00$
+  - Transformando para rentabilidade trimestral ($i = 36/8 = 4,5\% \text{ a.b.}$):
+    - $J = C\cdot i \cdot T = 100.000 \cdot 4,5\% \cdot 8 = \text{R\$ } 36.000,00$
+
+## Desconto comercial simples {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- É comum a aplicação de *desconto comercial simples* (por fora) a títulos 
+recebíveis, tais como notas promissórias e duplicatas, conforme a 
+@eq-DescontoComercial:
+  - $$D_C = M\cdot i \cdot T$$ {#eq-DescontoComercial}
+
+- **Ex.**: Uma duplicata de R$ 1.800,00 apresenta taxa de desconto para resgate 
+antecipado de 2,5% a.m. Calcule o desconto a ser aplicado para o recebimento a 
+10 dias do vencimento!
+  - O desconto deverá ser proporcional ao número de dias
+    - $D_C = M\cdot i \cdot T$
+    - $D_C = 1.800\cdot 2,5\% \cdot 10/30$
+    - $D_C = 45 \cdot 1/3 = \text{R\$ }15,00$
+    
+## Desconto racional simples {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- O *desconto racional simples* (por dentro), também é calculado com juros
+simples:
+  - $$D_R = \frac{M\cdot i \cdot T}{1 + i \cdot T}$$ {#eq-DescontoRacional}
+
+- **Ex.**: Uma empresa tem obrigações (notas promissórias) que totalizam 
+R$ 154.500,00 a serem pagas num prazo de 4 meses. Caso opte pelo pagamento
+antecipado, ela tem direito a um *desconto racional* de 9% a.a. Calcule o valor
+para o pagamento antecipado!
+  - O desconto racional é por dentro, ou seja:
+    - $D_R = M\cdot i \cdot T/(1 + i \cdot T) = 154.500 \cdot 9\%/12 \cdot 4 \cdot /(1 + 9,0\%/12 \cdot 4)$
+    - $D_R = 154.500 \cdot 0,75\% \cdot 4/(1+0,75\% \cdot 4)$
+    - $D_R = 154.500 \cdot 0,03/1,03 = \text{R\$ }4.500,00$
+    
+## Desconto comercial vs. desconto racional simples {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+- O desconto comercial é *por fora*:
+  - $$D_C = M\cdot i \cdot T$$
+:::
+
+::: {.column width="50%"}
+- O desconto racional é *por dentro*:
+  - $$D_R = M\cdot i \cdot T/(1+ i \cdot T)$$
+:::
+
+::::
+
+- O desconto comercial será maior e irá representar uma taxa maior do valor a
+ser efetivamente pago:
+  - $$D_C = D_R (1 + iT)$$ {#eq-RelacaoDescontos}
+
+- O desconto comercial só deve ser utilizado para curtos períodos. Em periodos
+muito longos, o desconto comercial pode ser maior do que o valor do título.
+
+- O desconto racional é mais complexo, porém é preciso para grandes períodos de
+tempo.
+
+## Juros Compostos {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- Os juros compostos também são comuns na análise de investimentos e 
+financiamentos
+
+- Estes incidem não apenas sobre o capital inicial investido, mas
+também sobre os juros auferidos a cada período, conforme a @eq-JurosCompostos:
+  - $$J = C[(1+i)^n - 1]$$ {#eq-JurosCompostos}
+  
+- **Ex.**: Calcular os juros a que o investidor teria direito se a incorporadora
+o remunerasse a uma taxa de juros composta de 1,5% a.m.:
+  - $J = 100.000,00[(1+1,5\%)^{24} - 1]$
+  - $J \approx 100.000,00\cdot 0,4295$
+  - $J \approx 42.950,00$
+  
+## Valor Futuro {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- O Valor Futuro ($VF$), ou Montante ($M$), de um investimento a juros compostos
+após $T$ períodos, a uma taxa de juros composta $i$ pode ser calculado
+conforme a @eq-VF:
+  - $$M = C(1+i)^T$$ {#eq-VF}
+  
+- **Ex.**: ao investir na caderneta de poupança o montante de R$ 10.000,00,
+  calcule o saldo após um período de 1 ano, considerando a remuneração da 
+  caderneta a uma taxa de 0,5% a.m.
+    - $M = C(1+i)^T$
+    - $M = 10.000(1+0,5\%)^{12}$
+    - $M = 10.000\cdot 1,061678$
+    - $M = 10.616,78$
+    
+## Juros Simples vs. Juros Compostos {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+- Os juros simples não incidem sobre os juros do período anterior, então podem
+ser simplesmente multiplicados:
+  - $$\text{VF} = \text{VP}\cdot (1 + iT)$$
+:::
+
+::: {.column width="50%"}
+- Os juros compostos incidem sobre os juros do período anterior, então deve-se 
+utilizar a lei da potência:
+  - $$\text{VF} = \text{VP}\cdot (1 + i)^T$$
+:::
+
+::::
+
+## Taxas nominais vs. Taxas efetivas {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- Quanto trabalhando com juros compostos, é importante conhecer o período de
+capitalização.
+
+- Por exemplo:
+  - Uma taxa de juros (nominal) de 12% a.a., capilizada mensalmente, qual o juro
+  efetivo anual?
+    - $i_{ef} = i_{nom}/T = 12\%/12 = 1\% \text{ a.m.}$
+    - $i_{ef} = (1 + 1\%)^{12} - 1 = 12,6825\% \text{ a.a.}$
+    
+## Taxas de juros equivalentes {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- Duas taxas expressas em períodos diferentes são equivalentes quando, aplicadas 
+a uma mesmo capital e em um mesmo intervalo de tempo, produzem o mesmo montante.
+
+- Uma taxa anual pode ser transformada para uma taxa semestral ou uma taxa 
+mensal (ou bimestral, trimestral, etc.) ou ainda para uma taxa ao dia, ou ao dia
+útil, da maneira que for mais conveniente.
+
+- **Ex.**: a caderneta de poupança remunera a uma taxa de 0,50% a.m.,
+acrescida da Taxa Referencial (TR):
+  - $i = 0,5\% \text{ a.m.} + \text{TR}$
+  - Qual a taxa equivalente anual, trimestral e diária da poupança?
+    - $i = (1 + 0,5\%)^{12} - 1 \approx 6,17\% \text{ a.a.}$
+    - $i = (1 + 0,5\%)^{4} - 1 \approx 2,015\% \text{ a.t.}$
+    - $i = (1 + 0,5\%)^{1/30} - 1 \approx 0,0166 \% \text{ a.d.}$
+    
+```{r}
+#| eval: false
+# Taxas de juros equivalentes:
+# Poupança: .5% a.m., taxa equivalente a.a.:
+EIR(12*.5/100, n = 12, p = 1)
+# Poupança: taxa anual, equivalente a.m:
+EIR(6.167781/100, n = 1, p = 12)
+```
+    
+## Taxa de juros real {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- A taxa de juros real, $i_r$, é igual à taxa de juros nominal (ou aparente), 
+$i$, descontada da taxa de inflação, $i_{\text{inf}}$, da seguinta maneira
+[@Machline, p. 60-]:
+  - $$i_r = \frac{1 + i}{1 + i_{\text{inf}}} - 1$$ {#eq-TaxaReal}
+  
+- Exemplo: Dado um CDB que remunera 100% da taxa CDI de 15% a.a., a uma taxa de
+inflação de 5% a.a., calcule a taxa real de rendimento da aplicação:
+  - $$i = \frac{1 + 15\%}{1 + 5\%} - 1 = 9,524\%$$
+  
+## Taxa de juros real {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- De outra maneira, a taxa de juros nominal é composta da taxa de juros real e
+de uma "correção monetária" [@ufrrj, p. 49-50]:
+  - $$i = (1+i_r)(1+i_{\text{inf}}) - 1$$ {#eq-TaxaNominal}
+  
+- Exemplo: corrigir uma dívida de R$ 10.000,00, contratada em jan/2015, para 
+pagamento em jan/2025, a uma taxa real de juros de 6% a.a., corrigindo para a 
+inflação do período, que foi de 74,895 % (5,75% a.a.):
+  - $i = (1+0,06)(1+0,0575) - 1 = 12,09% a.a.$
+  - $M = 10.000 (1 + 0,1209)^{10} = 31.308,96$
+  
+## Taxa legal {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- Art. 406 do CC [@codigoCivil], a partir de 30/08/2024 (inclusive), 
+após Lei 14.905 [@Lei14905]:
+  - Art. 406. Quando não forem convencionados, ou quando o forem sem taxa 
+  estipulada, ou quando provierem de determinação da lei, os juros serão fixados
+  de acordo com a taxa legal. (Redação dada pela Lei nº 14.905, de 2024) 
+    - § 1º A taxa legal corresponderá à taxa referencial do Sistema Especial de 
+  Liquidação e de Custódia (Selic), deduzido o índice de atualização monetária 
+  de que trata o parágrafo único do art. 389 deste Código. (Incluído pela Lei 
+  nº 14.905, de 2024) 
+    - § 2º A metodologia de cálculo da taxa legal e sua forma de aplicação serão 
+  definidas pelo Conselho Monetário Nacional e divulgadas pelo Banco Central do 
+  Brasil. (Incluído pela Lei nº 14.905, de 2024)
+    - § 3º Caso a taxa legal apresente resultado negativo, este será considerado 
+  igual a 0 (zero) para efeito de cálculo dos juros no período de referência.
+  (Incluído pela Lei nº 14.905, de 2024) 
+
+## Taxa legal {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- Antes: 
+  - Juros de 12% a.a. (CC/2002+CTN) de 12/02/03 a 29/08/24. 
+  - Juros de 6% a.a. antes de 12/01/2003 (Código Civil 1916);
+  
+- Ver [Link](https://www.migalhas.com.br/quentes/413764/stj-conclui-julgamento-que-fixou-selic-para-correcao-de-dividas-civis)
+  
+## Taxa *over* {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- É um taxa nominal, usualmente expressa ao ano, porém computada por dia útil 
+(d.u.):
+  - $$M = \text{VP} \left (1 + \frac{\text{tx. over}}{100} \right )^{1/252}$$ {#eq-TaxaOver}
+  
+- A taxa efetiva, portanto, em um dia útil, é:
+
+  - $$\text{taxa d.u.} = \left (1 + \frac{\text{tx. over}}{100} \right )^{1/252}$$
+  
+## Taxa *over* {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+### Exemplo
+
+- Uma aplicação de R$ 10.000,00 a uma taxa *over* de 15% a.a., durante 22 dias 
+úteis, qual a taxa efetiva e o saldo ao final do período?
+
+  - $\text{taxa d.u.} = \left ( 1 + \frac{15}{100}\right )^{\frac{1}{252}}-1$
+  - $\text{taxa d.u.} = 1.0005548 - 1$
+  - $\text{taxa d.u.} = 0,05548\% \text{ a.d.u.}$
+  - $M = 10.000,00 \cdot (1 + 0,05548\%)^{22}$
+  - $M = 10.000,00 \cdot 1,012277$
+  - $M = \text{R\$ } 10.122,77$  
+
+## Correção monetária {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- A correção monetária é realizada aplicando-se uma taxa de referência, como a
+TR, ou um índice como o IPCA ou IGPM. Sobre o valor atualizado, aplica-se uma 
+taxa real de juros, $i$:
+  - $$VF = VP \cdot (1 + \text{CM}) \cdot (1 + i)$$
+  
+- Exemplo: se um investimento é remunerado a uma taxa real de juros de 8,5% a.a.,
+após atualização pela TR, calcule o saldo do investimento após um ano, se o 
+valor inicial investido foi de R$ 1.000,00  e a TR do período foi de 1,50%: 
+  - $$i = 1.000,00 \cdot (1 + 1,50\%)\cdot (1 + 8,50\%) = 1.000,00\cdot 1,101275 = 1.101,275$$
+  
+<!-- # Títulos do Tesouro Nacional -->
+
+## Letras do Tesouro Nacional (LTN) {background-image="./img/FACULDADE_INBEC_16_9.png"}
+    
+```{r}
+#| label: fig-FCLTN
+#| fig-cap: "Fluxo de Caixa de uma LTN."
+#| out-width: "50%"
+p <- CashFlowDiagram(periods = 12, 
+                     incomes = c(rep(NA, 12), 1000), 
+                     expenses = c(-600, rep(NA,12)))
+
+p +
+  annotate("text", x = .5, y = -550, label = "VP", size = 5, color = "red") +
+  annotate("text", x = 11.5, y = 900, label = "VF", size = 5, color = "blue") +
+  annotate("label", x = 6, y = 200, label = "i(% a.d.u)", size = 7)
+```
+    
+## Letras do Tesouro Nacional (LTN) {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- As LTN, portanto, seguem a @eq-LTN, considerando-se sempre um valor de face
+$V_{face} = 1.000,00$:
+  - $$V_{face} = \text{VP} \cdot (1 + i)^{\text{d.u.}/252}$$ {#eq-LTN}
+  
+- As LTN, portanto, são sempre adquiridas com um desconto em relação ao valor
+de face. Esse desconto equivale a uma taxa de desconto do título.
+  - **Ex.**: Se uma LTN está sendo oferecida com um desconto de R$ 250,00 por
+  título (*i.e.*, se ela está sendo negociada a R\$ 750,00), a 720 dias úteis do 
+  vencimento, calcule a taxa de desconto deste título:
+  - $1.000 = (1.000-250)\cdot(1+i)^{720/252}$
+  - $1.000/750 = (1+i)^{720/252}$  
+  - $(1.000/750)^{252/720} = (1+i)$
+  - $i = 1,333^{0,35} - 1 \approx 10,60\% \text{ a.a.}$
+
+```{r}
+#| eval: false
+bdy(250, 1000, 720)
+bdy2mmy(.125, 720)
+```
+
+## Letras do Tesouro Nacional (LTN) {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- **Ex.**: um investidor é informado que uma LTN disponível no mercado secundário
+de títulos públicos, com vencimento em 02/01/2029, no dia 08/09/2025 (ou seja, a
+829 dias úteis do vencimento), oferecia uma rentabilidade de 20% a.a. Calcule o 
+preço de mercado do título naquela data.
+  - $1.000,00  = \text{VP}\cdot (1 + 20\%)^{829/252}$
+  - $\text{VP} = 1.000,00/1,827 = 548,93$
+
+```{r}
+#| eval: false
+library(bizdays)
+dois_janeiro_2029 <- as.Date("2029-01-02")
+oito_setembro_2025 <- as.Date("2025-09-08")
+bizdays(dois_janeiro_2029, oito_setembro_2025, "Brazil/ANBIMA")
+```
+
+- Ver [link](https://calculadorarendafixa.com.br/)
+
+## Certificados de Depósito Bancário {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- Certificado de Depósito Bancário (CDB): são títulos de renda fixa que 
+usualmente remuneram o depositante a uma taxa atrelada à taxa DI
+  - Por exemplo, um CDB remunera o depositante a uma taxa de 102% da taxa DI. Um
+  investidor aplica R$ 1.000,00 neste CDB. Considerando uma taxa DI de 10,15% 
+  a.a., qual é o valor atualizado deste CDB após um período de 30 dias úteis?
+    - $TDI = (1+DI)^{1/252} - 1 = (1+10,15\%)^{1/252} - 1 = 0,03837\% \text{ a.d.u.}$
+    - $\text{Fator DI} = (TDI\cdot 102\% + 1)^{\text{d.u.}} = (0,03837\% \cdot 102/100 + 1)^{30} = 1,011808$
+    - $VF = VP\cdot \text{Fator DI} = 1.000,00 \cdot 1,011808 = \text{R\$ } 1.011,81$
+    
+## Certificados de Depósito Bancário {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- Também são comuns os CDB's que remuneram DI + Spread:
+  - Por exemplo: DI + 2% a.a. Após 30 dias, com DI de 10,15% a.a., qual o valor
+  atualizado?
+    - $\text{Fator DI} = (1 + TDI)^{\text{d.u.}} = (1 + 0,03837\%)^{30} = 1,011575$
+    - $\text{Fator Spread} = (1+Spread)^{\text{d.u.}/252} = (1+2\%)^{30/252} = 1,00236$
+    - $VF = VP \cdot  \text{Fator DI} \cdot \text{Fator Spread} = 1.000,00 \cdot 1,011575 \cdot 1,00236 = 1.013,96$ 
+    
+
+## CDB vs. LTN {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- Deve-se notar que os CDB's, ao contrário das LTN, são títulos **pós-fixados**!
+  - Isto é, a taxa real de rendimento só é conhecida ao final do investimento,
+  pois a taxa DI é variável!
+  - Especialmente em projetos mais longos, pode não ser realista considerar como
+  taxa livre de risco a taxa DI, pois estã provavelmente não se manterá constante
+  durante todo o projeto.
+  - Por isso é preciso conhecer também os investimento pré-fixados, como as 
+  Letras do Tesouro Nacional (LTN)
+  - As LTN são títulos prefixados que possuem um valor de face de R$ 1.000,00
+  com vencimentos variados. 
+    - O investidor adquire uma LTN a um preço menor do que o valor de face. Ao
+    valor de compra está associada uma taxa de desconto.
+    
+## CDB vs. LTN {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- O que o analista deve perceber é que as LTN são uma forma de garantir uma
+rentabilidade pré-definida por um período maior.
+  - As taxas CDI oscilam no curto prazo. Uma rentabilidade de 15% a.a. no CDI
+  pode não ser um bom parâmetro para a taxa livre de risco para um projeto com
+  duração de 4 anos, haja vista que esta taxa tende a cair (ou subir) com o 
+  tempo
+  - Ao adquirir uma LTN o investidor fixa a taxa por um período, garantindo a
+  rentabilidade contratada.
+  - Porém, essa garantia de rentabilidade tem um risco: a inflação pode subir e
+  corroer a rentabilidade do título.
+  
+<!-- # Anuidades -->
+
+## Anuidades {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- *Anuidades* ou *rendas certas* são séries de pagamentos ou recebimentos 
+iguais, com intervalos de tempo iguais.
+
+- As anuidades podem ser de diversos tipos [@ufrrj, p. 53]:
+  - *Capitalização*: nas aplicações financeiras, quando o objetivo é constituir
+  um capital em data futura;
+  - *Amortização*: quando se quer pagar uma dívida em prestações iguais em
+  intervalos iguais;
+  - *Aluguéis*: quando o pagamento é pelo uso, sem que haja amortização.
+
+- As anuidades ainda podem ser:
+  - *temporárias* ou *perpétuas*;
+  - *imediatas* ou *diferidas*;
+  - *antecipadas* ou *postecipadas*.
+
+## Anuidades: Amortizações {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+```{r}
+#| label: fig-FCAmortizacao
+#| fig-cap: "Fluxo de Caixa de uma *Amortização*."
+#| out-width: "50%"
+p <- CashFlowDiagram(periods = 12, 
+                     incomes = c(10000, rep(NA,12)), 
+                     expenses = c(NA, rep(-1000, 12)))
+
+p +
+  annotate("text", x = .25, y = 9000, label = "C", size = 5, color = "blue") +
+  annotate("text", x = 1:12, y = 350, label = "PMT", size = 4, color = "red")
+```
+
+## Anuidades: Amortizações {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- **Ex.**: Compra de uma moto em 12 prestações mensais iguais de R$ 1.000,00,
+sem entrada!
+  - As prestações mensais (ou anuais) são denominadas de **PMT**;
+  - O valor presente das prestações pode ser calculado trazendo os pagamentos/
+  recebimentos de cada período ao valor presente descontados de uma taxa de
+  juros.
+  - $$VP = \frac{\text{PMT}}{(1+i)^1} + \frac{\text{PMT}}{(1+i)^2} + \frac{\text{PMT}}{(1+i)^3} + \cdots + \frac{\text{PMT}}{(1+i)^{12}}$$
+  
+## Anuidades: Amortizações {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- Se sabemos que a taxa de juros do financiamento é de 1,40% a.m.:
+
+  - $\text{VP} = \frac{1.000}{(1 + 1,40\%)^1} + \frac{1.000}{(1+1,40\%)^2} + \frac{1.000}{(1+1,40\%)^3} + \cdots + \frac{1.000}{(1+1,40\%)^{12}}$
+  - $\text{VP} = 986,19 + 972,58 + 959,15 + \ldots + 846,34$
+  - $\text{VP} \approx \text{R\$ } 10.975,00$
+  
+- Podemos calcular **VP** facilmente através da @eq-Amortizacao:
+  - $$\text{VP} = \text{PMT} \frac{(1+i)^T - 1}{i(1+i)^T}$$ {#eq-Amortizacao}
+  
+- Assim, para o exemplo acima, através da @eq-Amortizacao, temos:
+  - $\text{VP} = 1.000,00 \frac{(1+1,40\%)^{12}-1}{1,40\%(1+1,40\%)^{12}} = 1.000,00 \cdot 10,97576 \approx  \text{R\$ } 10.975,00$
+  
+
+```{r}
+#| eval: false
+pv.annuity(1.4/100, 12, -1000)
+```
+
+## Anuidades: Amortizações {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- Após calcular o Valor Presenta da motocicleta, de R$ 10.975,00, você faz uma
+proposta ao vendedor, para pagar a moto em 4x de R$ 2.743,75, sem juros.
+
+- O vendedor responde que não é possível, e refaz as contas para embutir a taxa
+de juros do financiamento, de 1,40%. 
+
+- Qual seria o valor dos pagamentos mensais para pagamento em 4 parcelas?
+
+  - $10.975,00 = \text{PMT} \frac{(1+1,40\%)^{4}-1}{1,40\%(1+1,40\%)^{4}}$ 
+  - $10.975,00 = \text{PMT} \cdot 3,86383$
+  - $$\text{PMT} = \frac{10.975,00}{3,86383} = \text{R\$ } 2.840,45$$
+  
+```{r}
+#| eval: false
+pmt(1.4/100, 4, 10975, fv = 0)
+```
+  
+## Anuidades: Amortizações {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- Você gosta das condições oferecidas pelo vendedor. Porém, ao passar a ficha
+cadastral, verifica-se que a parcela proposta, de R$ 2.840,45 excede o limite de
+comprometimento de renda, que é de R$ 2.800,00.
+
+- O vendedor, então, lhe propõe o seguinte:
+  - Que você faça o pagamento de uma entrada de R$ 2.805,00 e mais três parcelas
+  de R$ 2.800,00, o que resolve o problema do comprometimento de renda
+  - Verificar a taxa de juros da operação
+  - $10.970,00 = \text{PMT} \cdot (1+i) \cdot \frac{(1+1,40\%)^{4}-1}{1,40\%(1+1,40\%)^{4}}$
+  - $10.970,00 = 2.800,00 \cdot (1+i) \cdot  \frac{(1+i)^{4}-1}{1,40\%(1+i)^{4}}$
+  - $i = 1,40\%$
+  
+```{r}
+#| eval: false
+discount.rate(4, 10970, 0, -2800, type = 1)
+```
+
+  
+## Anuidades antecipadas {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- Vimos no exemplo que, nas anuidades antecipadas (por exemplo, num 
+financiamento com entrada),basta multiplicarmos a {#eq-Amortizacao} por $(1+i)$,
+de forma que:
+
+  - $$\text{VP} = \text{PMT} \cdot (1+i) \cdot \frac{(1+i)^T - 1}{i(1+i)^T}$$ {#eq-AmortizacaoAntecipada}
+  
+- Outra forma de pensar é: subtrai-se o valor da entrada do valor presente, e 
+calcula-se o financimento em $n-1$ parcelas.
+
+  - $10.975,00 - 2.805,00 = 2.800 \frac{(1+i)^{3}-1}{1,40\%(1+i)^{3}}$
+  - $8.170,00 = 2.800 \frac{(1+i)^{3}-1}{1,40\%(1+i)^{3}}$
+  - $i = 1,40\%$
+  
+```{r}
+#| eval: false
+discount.rate(3, 10975-2805, 0, -2800, type = 0)
+```
+ 
+## Anuidades: Capitalizações {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+```{r}
+#| label: fig-FCCapitalizacao
+#| fig-cap: "Fluxo de Caixa de uma *Capitalização*."
+#| out-width: "50%"
+p <- CashFlowDiagram(periods = 12, 
+                     incomes = c(rep(NA,12), 10000), 
+                     expenses = c(rep(-800, 12), NA)
+                     )
+
+p +
+  annotate("text", x = 11.75, y = 9000, label = "M", size = 5, color = "blue") +
+  annotate("text", x = 0:11, y = 350, label = "PMT", size = 4, color = "red")
+```
+
+## Anuidades: Capitalizações {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- **Ex.**: Efetuar 12 depósitos mensais no valor de R$ 1.000,00 numa caderneta 
+de poupança. Calcule o saldo ao final do ano.
+  - Os depósitos mensais (ou anuais) são denominadas de **PMT**
+  - O montante, **M**, pode ser calculado levando-os ao valor futuro,
+  aplicando-se uma taxa de juros, *i*.
+    - $$M = \text{PMT}\cdot(1+i)^{12} + \text{PMT}\cdot(1+i)^{11} + \text{PMT}\cdot(1+i)^{10} + \cdots + \text{PMT}\cdot(1+i)^{1}$$
+  - Sabe-se que:
+    - A taxa de juros da poupança é de $i = 0,50\% \text{ a.m.}$:
+    - $\text{PMT} = \text{R\$ } 1.000,00$
+  - Então:
+    - $M = 1.000 \cdot (1 + 0,50\%)^{12} + 1.000 \cdot (1 + 0,50\%)^{11} + \cdots +  1.000 \cdot (1 + 0,50\%)^1$
+  
+## Anuidades: Capitalizações {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- Então:
+  - $M = 1061,68 + 1056,40 + 1051,14 + \ldots + 1005,00$
+  - $M \approx \text{R\$ } 12.397,24$
+  
+- Podemos calcular **M** facilmente através da @eq-Capitalizacao:
+  - $$M = \text{PMT} \frac{(1+i)^T - 1}{i}(1+i)$$ {#eq-Capitalizacao}
+  
+- Assim, para o exemplo acima, através da @eq-Capitalizacao, temos:
+  - $$M = 1.000,00 \frac{(1+0,50\%)^{12}-1}{0,50\%}(1+0,50\%) = 1.000,00 \cdot 12,336 \cdot 1,005 =  \text{R\$ } 12.397,24$$
+  
+
+```{r}
+#| eval: false
+fv.annuity(.5/100, 12, -1000)
+```
+
+## Anuidades: Cálculo da renda {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- Para calcular a renda (ou prestação de um empréstimo) sobre um valor presente
+de um ativo, dada uma taxa de juros $i$, em $n$ períodos, basta utilizar uma das
+equações abaixo:
+  - $$R = \text{VP}\frac{i.(1+i)^n}{(1+i)^n-1}\, \text{ou;}$$ 
+  - $$R = \frac{\text{VP}.i}{1-(1+i)^{-n}}$$ {#eq-Renda}
+
+- Exemplo: Dado um valor presente de R$ 4.000,00, a uma taxa de 0,76% a.m., 
+calcule a prestação para pagamento em 12 prestações mensais iguais:
+  - $$R = \frac{4000\cdot 0,76\%}{1-(1+0,76\%)^{-12}} = \frac{30,4}{1 - 0,91315} \approx 350,00$$
+    
+```{r}
+#| eval: false
+pmt(r = .76/100, n = 12, pv = 4000, fv = 0)
+```
+
+## Anuidades: Cálculo dos juros {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- Para o cálculo dos juros é necessária a utilização de algum algoritmo, pois 
+não há fórmula fechada!
+
+. . . 
+
+```{r}
+#| echo: true
+discount.rate(n = 12, pv = 4000, fv = 0, pmt = -350)
+```
+
+
+## Anuidades: Fatores {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- Pela análise da @eq-Amortizacao, percebe-se que o valor presente das anuidades
+é função:
+  1. Do valor das anuidades;
+  2. De um fator que depende da taxa, *i*, e do numero de períodos, $T$.
+
+- Este fator, denominado *Fator de Valor Presente*, FVP, pode ser tabelado;
+
+- Analogamente, pela análise da @eq-Capitalizacao, percebe-se que o Montante das
+anuidades é função:
+  1. Do valor das anuidades;
+  2. De um fator que depende da taxa, *i*, e do numero de períodos, $T$.
+
+- Este fator, denominado *Fator de Acumulação do Capital*, FAcC, pode ser 
+tabelado;
+
+## Anuidades: Fatores {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- $$\text{FVP} = \frac{(1+i)^n-1}{i(1+i)^n}$$
+
+. . . 
+
+```{r}
+# library(kableExtra)
+FVP <- function(i, t) {
+  ((1+i)^t-1)/(i*(1+i)^t)
+}
+library(tibble)
+fvp <- tribble(
+  ~n,       ~`1%`,       ~`2%`,       ~`3%`,       ~`4%`,       ~`5%`,       ~`6%`,       ~`7%`,      ~`8%`,        ~`9%`,      ~`10%`, 
+   1, FVP(.01, 1), FVP(.02, 1), FVP(.03, 1), FVP(.04, 1), FVP(.05, 1), FVP(.06, 1), FVP(.07, 1), FVP(.08, 1), FVP(.09, 1), FVP(.10, 1),
+   2, FVP(.01, 2), FVP(.02, 2), FVP(.03, 2), FVP(.04, 2), FVP(.05, 2), FVP(.06, 2), FVP(.07, 2), FVP(.08, 2), FVP(.09, 2), FVP(.10, 2),
+   3, FVP(.01, 3), FVP(.02, 3), FVP(.03, 3), FVP(.04, 3), FVP(.05, 3), FVP(.06, 3), FVP(.07, 3), FVP(.08, 3), FVP(.09, 3), FVP(.10, 3),
+   4, FVP(.01, 4), FVP(.02, 4), FVP(.03, 4), FVP(.04, 4), FVP(.05, 4), FVP(.06, 4), FVP(.07, 4), FVP(.08, 4), FVP(.09, 4), FVP(.10, 4),
+   5, FVP(.01, 5), FVP(.02, 5), FVP(.03, 5), FVP(.04, 5), FVP(.05, 5), FVP(.06, 5), FVP(.07, 5), FVP(.08, 5), FVP(.09, 5), FVP(.10, 5),
+   6, FVP(.01, 6), FVP(.02, 6), FVP(.03, 6), FVP(.04, 6), FVP(.05, 6), FVP(.06, 6), FVP(.07, 6), FVP(.08, 6), FVP(.09, 6), FVP(.10, 6)
+)
+fvp |>
+  kable(format.args = list(big.mark = ".", decimal.mark = ","), digits = 4)
+```
+
+
+## Anuidades: Fatores {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- $$\text{FAcC} = \frac{(1+i)^n-1}{i}$$
+
+. . . 
+
+```{r}
+FAcC <- function(i, t) {
+  ((1+i)^t-1)/i
+}
+library(tibble)
+facc <- tribble(
+  ~n,       ~`1%`,       ~`2%`,       ~`3%`,       ~`4%`,       ~`5%`,       ~`6%`,       ~`7%`,      ~`8%`,        ~`9%`,      ~`10%`, 
+   1, FAcC(.01, 1), FAcC(.02, 1), FAcC(.03, 1), FAcC(.04, 1), FAcC(.05, 1), FAcC(.06, 1), FAcC(.07, 1), FAcC(.08, 1), FAcC(.09, 1), FAcC(.10, 1),
+   2, FAcC(.01, 2), FAcC(.02, 2), FAcC(.03, 2), FAcC(.04, 2), FAcC(.05, 2), FAcC(.06, 2), FAcC(.07, 2), FAcC(.08, 2), FAcC(.09, 2), FAcC(.10, 2),
+   3, FAcC(.01, 3), FAcC(.02, 3), FAcC(.03, 3), FAcC(.04, 3), FAcC(.05, 3), FAcC(.06, 3), FAcC(.07, 3), FAcC(.08, 3), FAcC(.09, 3), FAcC(.10, 3),
+   4, FAcC(.01, 4), FAcC(.02, 4), FAcC(.03, 4), FAcC(.04, 4), FAcC(.05, 4), FAcC(.06, 4), FAcC(.07, 4), FAcC(.08, 4), FAcC(.09, 4), FAcC(.10, 4),
+   5, FAcC(.01, 5), FAcC(.02, 5), FAcC(.03, 5), FAcC(.04, 5), FAcC(.05, 5), FAcC(.06, 5), FAcC(.07, 5), FAcC(.08, 5), FAcC(.09, 5), FAcC(.10, 5),
+   6, FAcC(.01, 6), FAcC(.02, 6), FAcC(.03, 6), FAcC(.04, 6), FAcC(.05, 6), FAcC(.06, 6), FAcC(.07, 6), FAcC(.08, 6), FAcC(.09, 6), FAcC(.10, 6)
+)
+facc |>
+  kable(format.args = list(big.mark = ".", decimal.mark = ","), digits = 4)
+```
+
+## Anuidades: resumo
+
+:::: {.columns}
+
+::: {.column width="50%"}  
+- $$\text{VP} = R \cdot \text{FVP}$$
+- Ex.:
+  - Parcelar R$ 1.000,00 em 6 parcelas, a um juro de 2% a.m.:
+    - $1.000,00 = R \cdot \text{FVP}(0,02, 6)$
+    - $1.000,00 = R \cdot 5,6014$
+    - $R = \text{R\$ }178,53$
+:::
+
+::: {.column width="50%"}
+
+- $$M = R \cdot \text{FAcC}$$
+  - Investir R$ 2.500,00 todo final de ano em uma caderneta de poupança, a um 
+  juro de 6,17% a.a., após 5 anos:
+    - $M = 2.500,00 \cdot \text{FAcC}(0,0617, 5)$
+    - $M = 2.500,00 \cdot 5,65626$
+    - $M = \text{R\$ }14.140,64$
+:::
+
+::::
+
+## Referências {background-image="./img/FACULDADE_INBEC_16_9.png"}

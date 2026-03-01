@@ -1,0 +1,1459 @@
+<!DOCTYPE html>
+<html lang="pt"><head>
+<script src="01b_files/libs/clipboard/clipboard.min.js"></script>
+<script src="01b_files/libs/quarto-html/tabby.min.js"></script>
+<script src="01b_files/libs/quarto-html/popper.min.js"></script>
+<script src="01b_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="01b_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="01b_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="01b_files/libs/quarto-html/quarto-syntax-highlighting-985aa47af68dae11cd4d235c71fb941e.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.7.27">
+
+  <meta name="author" content="Eng.º Luiz F. P. Droubi">
+  <title>Engenharia Econômica</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="01b_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="01b_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+      margin-bottom: 0em;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
+  <link rel="stylesheet" href="01b_files/libs/revealjs/dist/theme/quarto-77914c2d4cf3c3cbfd54b2fb7c6641ee.css">
+  <link href="01b_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="01b_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="01b_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="01b_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" data-background-image="img/Fundo_Slide_Titulo.png" data-background-size="cover" class="quarto-title-block center">
+  <h1 class="title">Engenharia Econômica</h1>
+  <p class="subtitle">Avaliação de Aluguéis</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Eng.º Luiz F. P. Droubi 
+</div>
+</div>
+</div>
+
+  <p class="date">22 de dezembro de 2025</p>
+</section>
+<section>
+<section id="engenharia-econômica" class="title-slide slide level1 center">
+<h1>Engenharia Econômica</h1>
+
+</section>
+<section id="essencial-de-engenharia-econômica" class="slide level2">
+<h2>Essencial de Engenharia Econômica</h2>
+<ul>
+<li class="fragment">A Engenharia Econômica é a técnica que estuda a viabilidade econômica de projetos
+<ul>
+<li class="fragment">A Engenharia Econômica, assim permite respondermos questões do tipo:
+<ul>
+<li class="fragment">Comprar um equipamento mais barato, com menor vida útil, ou comprar um equipamento mais caro, com maior vida útil?</li>
+<li class="fragment">Construir uma nova planta (fábrica)?</li>
+<li class="fragment">Comprar um apartamento à vista ou financiar?</li>
+<li class="fragment">Comprar ou <em>alugar</em> um apartamento?</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="essencial-de-engenharia-econômica-1" class="slide level2">
+<h2>Essencial de Engenharia Econômica</h2>
+<ul>
+<li class="fragment">Para ser possível comparar projetos com investimentos financeiros, é importante conhecermos um pouco do mercado financeiro:
+<ul>
+<li class="fragment">Quais são os principais tipos de investimentos disponíveis?</li>
+<li class="fragment">Quais são as principais formas de financiamento?</li>
+</ul></li>
+</ul>
+</section></section>
+<section>
+<section id="valor-presente-líquido" class="title-slide slide level1 center">
+<h1>Valor Presente Líquido</h1>
+
+</section>
+<section id="valor-presente-líquido-1" class="slide level2">
+<h2>Valor Presente Líquido</h2>
+<ul>
+<li class="fragment"><p>O Valor Presente Líquido, ou VPL, de um fluxo de caixa, é um parâmetro que pode ser utilizado para a admissão ou rejeição da viabilidade de um projeto de investimento:</p></li>
+<li class="fragment"><p>O VPL pode ser calculado pela <a href="#/eq-vpl" class="quarto-xref">Equação&nbsp;1</a>:</p>
+<ul>
+<li class="fragment"><span id="eq-vpl"><span class="math display">\[VPL = -I + \sum_{t=1}^T \frac{R_t - C_t}{(1+i)^t} \qquad(1)\]</span></span>
+<ul>
+<li class="fragment"><span class="math inline">\(I\)</span> é o investimento, em geral realizado no início do projeto;</li>
+<li class="fragment"><span class="math inline">\(R_t\)</span> são as receitas do projeto em cada período <span class="math inline">\(t\)</span>;</li>
+<li class="fragment"><span class="math inline">\(C_t\)</span> são custos necessários ocorridos no decorrer do projeto, como manutenções, impostos, etc.</li>
+<li class="fragment"><span class="math inline">\(i\)</span> é uma taxa de desconto a ser definida pelo investidor</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="valor-presente-líquido-2" class="slide level2">
+<h2>Valor Presente Líquido</h2>
+<ul>
+<li class="fragment">Quando o fluxo de caixa é constante, o VPL também pode ser escrito em função do <em>Fator de Recuperação do Capital</em> (FRC):
+<ul>
+<li class="fragment"><span id="eq-vpl2"><span class="math display">\[VPL = -I + \frac{R_l}{\text{FRC}(i,T)} \qquad(2)\]</span></span>
+<ul>
+<li class="fragment"><span class="math inline">\(R_l = R - C\)</span></li>
+</ul></li>
+</ul></li>
+<li class="fragment">Pode-se considerar, ainda, um valor residual, <span class="math inline">\(D\)</span>, ao final do período de análise:
+<ul>
+<li class="fragment"><span id="eq-vpl3"><span class="math display">\[VPL = -I + \frac{R_l}{\text{FRC}(i,T)} + D.\text{FAC}(i,T) \qquad(3)\]</span></span></li>
+</ul></li>
+</ul>
+</section>
+<section id="frc-e-fac" class="slide level2">
+<h2>FRC e FAC</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment"><span id="eq-frc"><span class="math display">\[\text{FRC}(i, T) = \frac{i.(1+i)^T}{(1+i)^T-1} \qquad(4)\]</span></span></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<ul>
+<li class="fragment"><span id="eq-fac"><span class="math display">\[\text{FAC}(i,T) = \frac{1}{(1+i)^T} \qquad(5)\]</span></span></li>
+</ul>
+</div></div>
+</section>
+<section id="frc-e-fac-1" class="slide level2">
+<h2>FRC e FAC</h2>
+<ul>
+<li class="fragment"><p>FRC e FAC podem ser tabelados!</p></li>
+<li class="fragment"><p>FRC:</p></li>
+</ul>
+<div class="fragment">
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top" style="width:100%;">
+<colgroup>
+<col style="width: 4%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">n</th>
+<th style="text-align: right;">1%</th>
+<th style="text-align: right;">2%</th>
+<th style="text-align: right;">3%</th>
+<th style="text-align: right;">4%</th>
+<th style="text-align: right;">5%</th>
+<th style="text-align: right;">6%</th>
+<th style="text-align: right;">7%</th>
+<th style="text-align: right;">8%</th>
+<th style="text-align: right;">9%</th>
+<th style="text-align: right;">10%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1,0100</td>
+<td style="text-align: right;">1,0200</td>
+<td style="text-align: right;">1,0300</td>
+<td style="text-align: right;">1,0400</td>
+<td style="text-align: right;">1,0500</td>
+<td style="text-align: right;">1,0600</td>
+<td style="text-align: right;">1,0700</td>
+<td style="text-align: right;">1,0800</td>
+<td style="text-align: right;">1,0900</td>
+<td style="text-align: right;">1,1000</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0,5075</td>
+<td style="text-align: right;">0,5150</td>
+<td style="text-align: right;">0,5226</td>
+<td style="text-align: right;">0,5302</td>
+<td style="text-align: right;">0,5378</td>
+<td style="text-align: right;">0,5454</td>
+<td style="text-align: right;">0,5531</td>
+<td style="text-align: right;">0,5608</td>
+<td style="text-align: right;">0,5685</td>
+<td style="text-align: right;">0,5762</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0,3400</td>
+<td style="text-align: right;">0,3468</td>
+<td style="text-align: right;">0,3535</td>
+<td style="text-align: right;">0,3603</td>
+<td style="text-align: right;">0,3672</td>
+<td style="text-align: right;">0,3741</td>
+<td style="text-align: right;">0,3811</td>
+<td style="text-align: right;">0,3880</td>
+<td style="text-align: right;">0,3951</td>
+<td style="text-align: right;">0,4021</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0,2563</td>
+<td style="text-align: right;">0,2626</td>
+<td style="text-align: right;">0,2690</td>
+<td style="text-align: right;">0,2755</td>
+<td style="text-align: right;">0,2820</td>
+<td style="text-align: right;">0,2886</td>
+<td style="text-align: right;">0,2952</td>
+<td style="text-align: right;">0,3019</td>
+<td style="text-align: right;">0,3087</td>
+<td style="text-align: right;">0,3155</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0,2060</td>
+<td style="text-align: right;">0,2122</td>
+<td style="text-align: right;">0,2184</td>
+<td style="text-align: right;">0,2246</td>
+<td style="text-align: right;">0,2310</td>
+<td style="text-align: right;">0,2374</td>
+<td style="text-align: right;">0,2439</td>
+<td style="text-align: right;">0,2505</td>
+<td style="text-align: right;">0,2571</td>
+<td style="text-align: right;">0,2638</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">0,1725</td>
+<td style="text-align: right;">0,1785</td>
+<td style="text-align: right;">0,1846</td>
+<td style="text-align: right;">0,1908</td>
+<td style="text-align: right;">0,1970</td>
+<td style="text-align: right;">0,2034</td>
+<td style="text-align: right;">0,2098</td>
+<td style="text-align: right;">0,2163</td>
+<td style="text-align: right;">0,2229</td>
+<td style="text-align: right;">0,2296</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="frc-e-fac-2" class="slide level2">
+<h2>FRC e FAC</h2>
+<ul>
+<li class="fragment">FAC:</li>
+</ul>
+<div class="fragment">
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top" style="width:100%;">
+<colgroup>
+<col style="width: 4%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">n</th>
+<th style="text-align: right;">1%</th>
+<th style="text-align: right;">2%</th>
+<th style="text-align: right;">3%</th>
+<th style="text-align: right;">4%</th>
+<th style="text-align: right;">5%</th>
+<th style="text-align: right;">6%</th>
+<th style="text-align: right;">7%</th>
+<th style="text-align: right;">8%</th>
+<th style="text-align: right;">9%</th>
+<th style="text-align: right;">10%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0,9901</td>
+<td style="text-align: right;">0,9804</td>
+<td style="text-align: right;">0,9709</td>
+<td style="text-align: right;">0,9615</td>
+<td style="text-align: right;">0,9524</td>
+<td style="text-align: right;">0,9434</td>
+<td style="text-align: right;">0,9346</td>
+<td style="text-align: right;">0,9259</td>
+<td style="text-align: right;">0,9174</td>
+<td style="text-align: right;">0,9091</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0,9803</td>
+<td style="text-align: right;">0,9612</td>
+<td style="text-align: right;">0,9426</td>
+<td style="text-align: right;">0,9246</td>
+<td style="text-align: right;">0,9070</td>
+<td style="text-align: right;">0,8900</td>
+<td style="text-align: right;">0,8734</td>
+<td style="text-align: right;">0,8573</td>
+<td style="text-align: right;">0,8417</td>
+<td style="text-align: right;">0,8264</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0,9706</td>
+<td style="text-align: right;">0,9423</td>
+<td style="text-align: right;">0,9151</td>
+<td style="text-align: right;">0,8890</td>
+<td style="text-align: right;">0,8638</td>
+<td style="text-align: right;">0,8396</td>
+<td style="text-align: right;">0,8163</td>
+<td style="text-align: right;">0,7938</td>
+<td style="text-align: right;">0,7722</td>
+<td style="text-align: right;">0,7513</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0,9610</td>
+<td style="text-align: right;">0,9238</td>
+<td style="text-align: right;">0,8885</td>
+<td style="text-align: right;">0,8548</td>
+<td style="text-align: right;">0,8227</td>
+<td style="text-align: right;">0,7921</td>
+<td style="text-align: right;">0,7629</td>
+<td style="text-align: right;">0,7350</td>
+<td style="text-align: right;">0,7084</td>
+<td style="text-align: right;">0,6830</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0,9515</td>
+<td style="text-align: right;">0,9057</td>
+<td style="text-align: right;">0,8626</td>
+<td style="text-align: right;">0,8219</td>
+<td style="text-align: right;">0,7835</td>
+<td style="text-align: right;">0,7473</td>
+<td style="text-align: right;">0,7130</td>
+<td style="text-align: right;">0,6806</td>
+<td style="text-align: right;">0,6499</td>
+<td style="text-align: right;">0,6209</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">0,9420</td>
+<td style="text-align: right;">0,8880</td>
+<td style="text-align: right;">0,8375</td>
+<td style="text-align: right;">0,7903</td>
+<td style="text-align: right;">0,7462</td>
+<td style="text-align: right;">0,7050</td>
+<td style="text-align: right;">0,6663</td>
+<td style="text-align: right;">0,6302</td>
+<td style="text-align: right;">0,5963</td>
+<td style="text-align: right;">0,5645</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="exemplo-1-enunciado" class="slide level2">
+<h2>Exemplo 1: enunciado</h2>
+<ul>
+<li class="fragment">Compra de um carro por R$ 95.000,00 à vista, deixando de pagar aluguel de R$ 24.000,00/ano.</li>
+<li class="fragment">Em 5 anos, a uma TMA de 8,0% a.a., este investimento se paga?</li>
+<li class="fragment">Desconsiderar seguros, IPVA, etc.</li>
+</ul>
+</section>
+<section id="exemplo-1-diagrama" class="slide level2">
+<h2>Exemplo 1: diagrama</h2>
+
+<img data-src="01b_files/figure-revealjs/fig-FCEx1-1.png" style="width:50.0%" class="r-stretch quarto-figure-center" id="fig-FCEx1"><p class="caption">
+Figura&nbsp;1: Exemplo 1: Diagrama de Fluxo de Caixa.
+</p></section>
+<section id="exemplo-1-solução" class="slide level2">
+<h2>Exemplo 1: solução</h2>
+<ul>
+<li class="fragment">Dados:
+<ul>
+<li class="fragment"><span class="math inline">\(I = 95.000,00\)</span>; <span class="math inline">\(R = 30.000,00\)</span>; <span class="math inline">\(i=8,00\% a.a.\)</span>; <span class="math inline">\(T=5\)</span></li>
+</ul></li>
+<li class="fragment">Solução:
+<ul>
+<li class="fragment"><span class="math inline">\(\text{FRC}(8\%, 5) = \frac{0,08.(1+0,08)^{5}}{(1+0,08)^{5}-1} \approx 0,25\)</span></li>
+<li class="fragment"><span class="math inline">\(\text{VPL} = -95.000 + 30.000/0,25\)</span></li>
+<li class="fragment"><span class="math inline">\(\text{VPL} = -95.000 + 60.000\)</span></li>
+<li class="fragment"><span class="math inline">\(\text{VPL} = + 25.000,00\)</span></li>
+</ul></li>
+<li class="fragment">O projeto é viável, pois <span class="math inline">\(\text{VPL} &gt; 0\)</span>!</li>
+</ul>
+</section>
+<section id="exemplo-2-enunciado" class="slide level2">
+<h2>Exemplo 2: enunciado</h2>
+<ul>
+<li class="fragment">Mesmo exemplo anterior, considerando que o carro pode ser vendido a 52,5% do valor de aquisição ao final do período.</li>
+<li class="fragment">Considerar também, por outro lado, um custo de R$ 15.000,00 por ano em manutenções, IPVA, etc.</li>
+</ul>
+</section>
+<section id="exemplo-2-diagrama" class="slide level2">
+<h2>Exemplo 2: diagrama</h2>
+
+<img data-src="01b_files/figure-revealjs/fig-FCEx2-1.png" style="width:50.0%" class="r-stretch quarto-figure-center" id="fig-FCEx2"><p class="caption">
+Figura&nbsp;2: Exemplo 2: Diagrama de Fluxo de Caixa.
+</p></section>
+<section id="exemplo-2-solução" class="slide level2">
+<h2>Exemplo 2: solução</h2>
+<ul>
+<li class="fragment">Dados:
+<ul>
+<li class="fragment"><span class="math inline">\(I = 95.000,00\)</span>, <span class="math inline">\(R = 30.000,00\)</span>, <span class="math inline">\(C = 15.000\)</span>, <span class="math inline">\(i=8,00\% a.a.\)</span>, <span class="math inline">\(T=5\)</span>, <span class="math inline">\(D = 49.875,00\)</span></li>
+</ul></li>
+<li class="fragment">Solução:
+<ul>
+<li class="fragment"><span class="math inline">\(\text{FAC}(8\%,5) = 1/(1 +.08)^5 =0,6806\)</span></li>
+<li class="fragment"><span class="math inline">\(\text{VPL} = -95.000 + (30.000-15.000)/0,25 +  49.875\times0,6806\)</span></li>
+<li class="fragment"><span class="math inline">\(\text{VPL} = -95.000 + 60.000 + 33.945,00\)</span></li>
+<li class="fragment"><span class="math inline">\(\text{VPL} = -1.055,00\)</span></li>
+</ul></li>
+<li class="fragment">O projeto é inviável, pois <span class="math inline">\(\text{VPL} &lt; 0\)</span>!</li>
+</ul>
+</section>
+<section id="exemplo-2-alternativa" class="slide level2">
+<h2>Exemplo 2: alternativa</h2>
+<ul>
+<li class="fragment">O período de capitalização importa!
+<ul>
+<li class="fragment">Dados:
+<ul>
+<li class="fragment"><span class="math inline">\(I = 95.000,00\)</span>, <span class="math inline">\(R = 2.500,00\)</span>, <span class="math inline">\(C = 1.250\)</span>, <span class="math inline">\(i=0,64\% a.m.\)</span>, <span class="math inline">\(T=60\)</span>, <span class="math inline">\(D = 49.875,00\)</span></li>
+</ul></li>
+<li class="fragment">Solução:
+<ul>
+<li class="fragment"><span class="math inline">\(\text{FRC}(0,64\%, 60) = \frac{0,0064.(1+0,0064)^{60}}{(1+0,0064)^{60}-1} \approx 0,02\)</span></li>
+<li class="fragment"><span class="math inline">\(\text{FAC}(0,64\%, 60) \approx \text{FAC}(8\%, 5) = 0,6806\)</span></li>
+<li class="fragment"><span class="math inline">\(\text{VPL} = -95.000 + \frac{2.500-1.250}{0,02} +  49.875\times 0,6806\)</span></li>
+<li class="fragment"><span class="math inline">\(\text{VPL} = -95.000 + 62.500 +  33.945,00\)</span></li>
+<li class="fragment"><span class="math inline">\(\text{VPL} = + 1.445,00\)</span></li>
+</ul></li>
+</ul></li>
+<li class="fragment">O projeto é viável, pois <span class="math inline">\(\text{VPL} &gt; 0\)</span>!</li>
+</ul>
+</section>
+<section id="exemplo-3" class="slide level2">
+<h2>Exemplo 3</h2>
+<ul>
+<li class="fragment">Compra de uma geladeira de R$ 4.000,00 em 12 prestações ~mensais de R$ 400,00, com uma <em>Taxa Mínima de Atratividade</em> (TMA) igual a 10,0 % a.a.:
+<ul>
+<li class="fragment">Dados:
+<ul>
+<li class="fragment"><span class="math inline">\(I = -4.000\)</span>; <span class="math inline">\(R = -400\)</span>; <span class="math inline">\(i = (1+0,01)^{1/12} - 1 = 0,80\% a.m.\)</span></li>
+</ul></li>
+<li class="fragment">Solução:
+<ul>
+<li class="fragment"><span class="math inline">\(\text{FRC}(0,8\%, 12) = \frac{0,008.(1+0,008)^{12}}{(1+0,008)^{12}-1} = 0,0877\)</span></li>
+<li class="fragment"><span class="math inline">\(VPL = -(-4.000) + (-400)/0,0877\)</span></li>
+<li class="fragment"><span class="math inline">\(VPL = 4.000 - 4.561,00\)</span></li>
+<li class="fragment"><span class="math inline">\(VPL \approx -560,00\)</span></li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="exemplo-4" class="slide level2">
+<h2>Exemplo 4</h2>
+<ul>
+<li class="fragment">Considerar que com a nova geladeira haverá uma economia de R$ 50,00 mensais com energia:
+<ul>
+<li class="fragment">Dados:
+<ul>
+<li class="fragment"><span class="math inline">\(I = -4.000\)</span>; <span class="math inline">\(R = -400\)</span>; <span class="math inline">\(C = -50,00\)</span>; <span class="math inline">\(i = (1+0,08)^{1/12} - 1 = 0,80\% a.m.\)</span></li>
+</ul></li>
+<li class="fragment">Solução:
+<ul>
+<li class="fragment"><span class="math inline">\(\text{FRC}(0,8\%, 12) = 0,0877\)</span></li>
+<li class="fragment"><span class="math inline">\(VPL = -(-4.000) + [-400 - (-50)]/0,0877\)</span></li>
+<li class="fragment"><span class="math inline">\(VPL = 4.000 - 350/0,0877\)</span></li>
+<li class="fragment"><span class="math inline">\(VPL  \approx 10,00\)</span></li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="reflexões" class="slide level2">
+<h2>Reflexões</h2>
+<ul>
+<li class="fragment">O importante é compreender o problema, ao invés de apenas aplicar as fórmulas
+<ul>
+<li class="fragment">No caso do carro, a ideia geral não é um cálculo exato, mas apenas criar uma percepção se vale a pena comprar ou alugar um carro</li>
+</ul></li>
+<li class="fragment">Dificilmente os valores do fluxo de caixa real serão idênticos aos previstos
+<ul>
+<li class="fragment">O problema pode ser posto de maneira simplificada, inicialmente.</li>
+<li class="fragment">Após uma primeira conta para aferir a ordem de grandeza das parcelas, o problema pode ser feito mais complexo</li>
+</ul></li>
+</ul>
+</section>
+<section id="reflexões-1" class="slide level2">
+<h2>Reflexões</h2>
+<ul>
+<li class="fragment">No caso da geladeira, o importante é perceber:
+<ul>
+<li class="fragment">A decisão pode ser entre comprar a geladeira agora de forma parcelada, ou guardar o dinheiro das prestações para comprar depois, à vista!</li>
+<li class="fragment">Se a pessoa opta por comprar a geladeira à vista após o período de 12 meses, ela deixou de economizar R$ 50,00 mensais com a conta de energia durante este período
+<ul>
+<li class="fragment">Seria um erro desconsiderar esta economia “operacional”</li>
+<li class="fragment">A decisão entre comprar agora ou comprar depois depende também de outras coisas. Quem garante que a geladeira estará por R$ 4.000,00 daqui a 12 meses?</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="reflexões-2" class="slide level2">
+<h2>Reflexões</h2>
+<ul>
+<li class="fragment">A TMA é exclusividade do empreendedor/indivíduo!
+<ul>
+<li class="fragment">Se o cidadão tem guardado apenas R$ 4.000,00, ele só irá comprar a geladeira à vista se ele tiver um ótimo desconto!</li>
+<li class="fragment">Se o cidadão possui uma boa poupança e R$ 4.000,00 não é para ele um montante significativo, então ele pode comprar a vista, por mínimo que seja o desconto.</li>
+</ul></li>
+</ul>
+</section>
+<section id="reflexões-3" class="slide level2">
+<h2>Reflexões</h2>
+<ul>
+<li class="fragment"><span class="citation" data-cites="Machline">Machline (<a href="#/referências" role="doc-biblioref" onclick="">1966, 60</a>)</span>:</li>
+</ul>
+<div class="fragment">
+<blockquote>
+<p>Como calcular a taxa de retorno? Ela será, em geral, igual, no mínimo, à taxa de retorno que a empresa desfruta em suas operações habituais. Se o empresário achar que as oportunidades de lucro elevado se estão esgotando, ele pode contentar-se, em determinado investimento, com uma taxa de retorno inferior à que costuma obter. De qualquer maneira, ele é o único juiz da taxa de retorno que deseja. Se o empresário achar o negócio seguro, poderá contentar-se com uma taxa de retorno pequena, igual ou pouco superior à taxa de juros cobrada, na praça, para empréstimo de dinheiro. Se o empresário considerar o empreendimento arriscado, desejará uma taxa de retorno bem mais elevada. A taxa de retorno, em suma, depende das diretrizes financeiras da empresa; terá um valor eminentemente individual, variando com a conjuntura econômica, no momento de tomar a decisão de investir, e refletindo a personalidade e a atitude do empresário.</p>
+</blockquote>
+</div>
+</section>
+<section id="perpetuidade" class="slide level2">
+<h2>Perpetuidade</h2>
+<ul>
+<li class="fragment"><p>Para períodos muito longos (<span class="math inline">\(n \rightarrow \infty\)</span>), <span class="math inline">\(\text{FRC} = i\)</span>!</p></li>
+<li class="fragment"><p>Exemplo: taxa de 10%a.a., durante 30/40/50 anos, calcule a FRC:</p>
+<ul>
+<li class="fragment"><span class="math inline">\(\text{FRC}(10\%,30) = \frac{10\%.(1+10\%)^{30}}{(1+10\%)^{30}-1} = \frac{10\%.17,45}{16,45} = 0,1061 = 10,61\%\)</span></li>
+<li class="fragment"><span class="math inline">\(\text{FRC}(10\%,40) = \frac{10\%.(1+10\%)^{40}}{(1+10\%)^{40}-1} = \frac{10\%.45,26}{44,26} = 0,1023 = 10,23\%\)</span></li>
+<li class="fragment"><span class="math inline">\(\text{FRC}(10\%,50) = \frac{10\%.(1+10\%)^{50}}{(1+10\%)^{50}-1} = \frac{10\%.117,39}{116,39} = 0,1009 = 10,09\%\)</span></li>
+</ul></li>
+<li class="fragment"><p>Assim, para investimentos com FC muito longos, a equação <a href="#/eq-vpl2" class="quarto-xref">2</a> torna-se:</p>
+<ul>
+<li class="fragment"><span id="eq-vpl3"><span class="math display">\[VPL = -I + \frac{R}{i} \qquad(6)\]</span></span></li>
+</ul></li>
+</ul>
+</section>
+<section id="perpetuidade-1" class="slide level2">
+<h2>Perpetuidade</h2>
+<ul>
+<li class="fragment">Da equação <a href="#/eq-vpl3" class="quarto-xref">6</a> derivam (VPL = 0):
+<ul>
+<li class="fragment">O <em>Método da Renda</em></li>
+<li class="fragment">O <em>Método da Remuneração do Capital</em></li>
+</ul></li>
+</ul>
+<div class="fragment">
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment">O <em>Método da Renda</em>:</li>
+<li class="fragment"><span id="eq-metodoRenda"><span class="math display">\[V_{imóvel} = \frac{Al}{i} \qquad(7)\]</span></span></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<ul>
+<li class="fragment">O <em>Método da Remuneração do Capital</em>:</li>
+<li class="fragment"><span id="eq-metodoRemuneracaoCapital"><span class="math display">\[Al = V_{imóvel}.i \qquad(8)\]</span></span></li>
+</ul>
+</div></div>
+</div>
+</section>
+<section id="métoda-da-renda" class="slide level2">
+<h2>Métoda da Renda</h2>
+<ul>
+<li class="fragment">Um imóvel tem aluguel igual a R$ 3.000,00 mensais, calcule seu valor de venda:
+<ul>
+<li class="fragment"><span class="math display">\[V_{imóvel} = \frac{Al}{i} = \frac{12.3000}{6\%}=\text{ R\$ }\, 600.000,00\]</span></li>
+</ul></li>
+<li class="fragment">Mais preciso:
+<ul>
+<li class="fragment"><span class="math display">\[V_{imóvel} = \frac{Al}{i} = \frac{3000}{(1+6\%)^{1/12}-1}=\text{ R\$ }\, 616.326,40\]</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="método-da-remuneração-do-capital" class="slide level2">
+<h2>Método da Remuneração do Capital</h2>
+<ul>
+<li class="fragment">Um imóvel possui VM de R$ 500.000,00, calcule o valor justo do aluguel, para uma taxa de 6% a.a.
+<ul>
+<li class="fragment"><span class="math display">\[Al = V_{imóvel}.i = \frac{500.000\times6\%}{12}=\text{ R\$ }\, 2.500,00\]</span></li>
+</ul></li>
+<li class="fragment">Mais preciso:
+<ul>
+<li class="fragment"><span class="math display">\[Al = V_{imóvel}.i = 500.000\times[(1+6\%)^{1/12}-1] \approx \text{ R\$ }\, 2.435,00\]</span></li>
+</ul></li>
+</ul>
+</section></section>
+<section>
+<section id="taxa-interna-de-retorno" class="title-slide slide level1 center">
+<h1>Taxa interna de retorno</h1>
+
+</section>
+<section id="taxa-interna-de-retorno-1" class="slide level2">
+<h2>Taxa interna de retorno</h2>
+<ul>
+<li class="fragment">Segundo <span class="citation" data-cites="barbieri">Barbieri, Álvares, e Machline (<a href="#/referências" role="doc-biblioref" onclick="">2007, 132</a>)</span>:
+<ul>
+<li class="fragment"><blockquote>
+<p>A literatura especializada define Taxa Interna de Retorno - TIR como sendo a taxa de juros que anula o VPL do fluxo de caixa de um investimento</p>
+</blockquote></li>
+</ul></li>
+<li class="fragment">A TIR é muito utilizada nas empresas para <strong>comparar</strong> diferentes projetos</li>
+</ul>
+</section>
+<section id="taxa-interna-de-retorno-2" class="slide level2">
+<h2>Taxa interna de retorno</h2>
+<ul>
+<li class="fragment"><p>Dados os valores do investimento (<span class="math inline">\(I\)</span>), a Renda (<span class="math inline">\(R\)</span>), o Custo (<span class="math inline">\(C\)</span>) e o número de períodos (<span class="math inline">\(T\)</span>), a TIR é o valor da taxa <span class="math inline">\(i\)</span> que zera o VPL na equação <a href="#/eq-vpl" class="quarto-xref">1</a>:</p></li>
+<li class="fragment"><p><span id="eq-tir"><span class="math display">\[0 = -I  + \sum_{t=1}^T \frac{R_t - C_t}{(1+TIR)^t} \qquad(9)\]</span></span></p>
+<ul>
+<li class="fragment">Se <span class="math inline">\(TIR &gt; TMA\)</span>: aceita-se o projeto!</li>
+<li class="fragment">Caso contrário, rejeita-se!</li>
+</ul></li>
+</ul>
+</section>
+<section id="comparação-de-projetos" class="slide level2">
+<h2>Comparação de Projetos</h2>
+<ul>
+<li class="fragment"><p>Exemplo:</p>
+<ul>
+<li class="fragment">Construtora pode investir R$ 1.000.000,00 num terreno cujo VGV estimado é de R$ 10.000.000,00, com prazo de entrega de 5 anos</li>
+<li class="fragment">Ou pode investir R$ 800.000,00 em outro terreno cujo VGV estimado é de R$ 8.000.000,00, com prazo de entrega de 4 anos</li>
+<li class="fragment">Considere que as receitas sejam constantes, anualmente.</li>
+<li class="fragment">Considere que o lucro sobre as receitas seja de 20%</li>
+<li class="fragment">Se a TMA da construtora é de 15% a.a., qual projeto escolher?</li>
+</ul></li>
+</ul>
+</section>
+<section id="comparação-de-projetos-1" class="slide level2">
+<h2>Comparação de Projetos</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment">Cálculo do FRC:
+<ul>
+<li class="fragment"><span class="math inline">\(\text{FRC}(15\%, 5) = \frac{0,15.(1+0,15)^5}{(1+0,15)^5-1} = 0,2983\)</span></li>
+</ul></li>
+<li class="fragment">Cálculo do VPL:
+<ul>
+<li class="fragment"><span class="math display">\[VPL_1 = -1.000.000 + \frac{20\% 2.000.000}{0,2983}\]</span></li>
+<li class="fragment"><span class="math display">\[VPL_1 = \frac{400.000}{0,2983} = R\$ 340.931,90\]</span><br>
+</li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<ul>
+<li class="fragment">Cálculo do FRC:
+<ul>
+<li class="fragment"><span class="math inline">\(\text{FRC}(15\%, 4) = \frac{0,15.(1+0,15)^4}{(1+0,15)^4-1} = 0,3503\)</span></li>
+</ul></li>
+<li class="fragment">Cálculo do VPL:
+<ul>
+<li class="fragment"><span class="math display">\[VPL_2 = -800.000 + \frac{20\% 2.000.000}{0,3503}\]</span></li>
+<li class="fragment"><span class="math display">\[VPL_2 = \frac{400.000}{0,3503} = R\$ 341.878,40\]</span></li>
+</ul></li>
+</ul>
+</div></div>
+<ul>
+<li class="fragment">Os dois projetos são aceitáveis! Os VPL’s são praticamente idênticos!</li>
+</ul>
+</section>
+<section id="comparação-por-vpl" class="slide level2">
+<h2>Comparação por VPL</h2>
+<ul>
+<li class="fragment">Analisando os FC e os VPL, algumas pessoas podem pensar:
+<ul>
+<li class="fragment">“Os dois projetos são similares, porém no primeiro a construtora lucra por 1 ano a mais”</li>
+<li class="fragment">“A construtora investe 200.000 a mais, porém fatura 25% mais e portanto lucra 400.000 a mais”!
+<ul>
+<li class="fragment">“Portanto, vale a pena investir 200.000 mais e fazer o projeto com maior VGV!”</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="comparação-por-tir" class="slide level2">
+<h2>Comparação por TIR</h2>
+<ul>
+<li class="fragment">Cálculos das TIR:
+<ul>
+<li class="fragment"><span class="math display">\[TIR_1 \Rightarrow 0 = -1.000.000  + \sum_{t=1}^5 \frac{400.000}{(1+TIR_1)^5}\]</span>
+<ul>
+<li class="fragment"><span class="math display">\[TIR_1 = 28,65\%\]</span></li>
+</ul></li>
+<li class="fragment"><span class="math display">\[TIR_2 \Rightarrow 0 = -800.000  + \sum_{t=1}^4 \frac{400.000}{(1+TIR_2)^4}\]</span>
+<ul>
+<li class="fragment"><span class="math display">\[TIR_2 = 34,90\%\]</span></li>
+</ul></li>
+</ul></li>
+<li class="fragment">Ao contrário do raciocínio falacioso do último slide, a TIR elenca o projeto 2 como o mais rentável para a construtora!</li>
+</ul>
+</section></section>
+<section>
+<section id="indicadores-rentabilidade-e-lucratividade" class="title-slide slide level1 center">
+<h1>Indicadores: rentabilidade e lucratividade</h1>
+
+</section>
+<h3 id="indicadores-rentabilidade-e-lucratividade-1">Indicadores: rentabilidade e lucratividade</h3>
+<ul>
+<li class="fragment">Lucratividade:
+<ul>
+<li class="fragment">é a razão entre o lucro líquido (<span class="math inline">\(L_{líquido}\)</span>) e a receita bruta (<span class="math inline">\(R_{bruta}\)</span>):</li>
+<li class="fragment"><span id="eq-lucratividade"><span class="math display">\[L = \frac{L_{líquido}}{R_{bruta}} \qquad(10)\]</span></span></li>
+</ul></li>
+<li class="fragment">Rentabilidade:
+<ul>
+<li class="fragment">é a razão entre o lucro líquido e o investimento (<span class="math inline">\(I\)</span>):</li>
+<li class="fragment"><span id="eq-rentabilidade"><span class="math display">\[\text{ROI} = \frac{L_{líquido}}{I} \qquad(11)\]</span></span></li>
+</ul></li>
+</ul>
+<section id="lucratividade" class="slide level2">
+<h2>Lucratividade</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment">Projeto 1: <span class="math display">\[L_1 = \frac{L_{líquido}}{R_{bruta}} = \frac{400.000}{2.000.000} = 20\%/\text{ano}\]</span></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<ul>
+<li class="fragment">Projeto 2: <span class="math display">\[L_2 = \frac{L_{líquido}}{R_{bruta}} = \frac{400.000}{2.000.000} = 20\%/\text{ano}\]</span></li>
+</ul>
+</div></div>
+</section>
+<section id="rentabilidade" class="slide level2">
+<h2>Rentabilidade</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment">Projeto 1: <span class="math display">\[\text{ROI}_1 = \frac{VPL_1}{I_1} = \frac{341.000}{1.000.000} = 34,10\%\]</span></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<ul>
+<li class="fragment">Projeto 2: <span class="math display">\[\text{ROI}_2 = \frac{VPL_2}{I_2}= \frac{341.000}{800.000} = 42,625\%\]</span></li>
+</ul>
+</div></div>
+</section>
+<section id="lucratividade-vs.-rentabilidade" class="slide level2">
+<h2>Lucratividade <em>vs.</em> Rentabilidade</h2>
+<ul>
+<li class="fragment">O raciocínio é o seguinte:
+<ul>
+<li class="fragment">o VPL é o mesmo para ambos os projetos</li>
+<li class="fragment">porém, no projeto 2 o investimento é menor (e retorna mais rápido)!</li>
+</ul></li>
+</ul>
+</section>
+<section id="comparação-por-tir-1" class="slide level2">
+<h2>Comparação por TIR</h2>
+<ul>
+<li class="fragment">Um bom exercício para este momento é:
+<ul>
+<li class="fragment">Imagine que o Projeto 2 atrasou.
+<ul>
+<li class="fragment">Irá apresentar o mesmo resultado (20% de R$ 8.000.000,00)</li>
+<li class="fragment">Porém, agora com prazo de 5 anos</li>
+<li class="fragment">Calcule a nova TIR do Projeto 2.</li>
+<li class="fragment">Compare-a à TIR inicial e à TIR do primeiro projeto</li>
+<li class="fragment">Faça também o cálculo do novo VPL e das rentabilidades!</li>
+</ul></li>
+</ul></li>
+</ul>
+</section></section>
+<section>
+<section id="aspectos-legais" class="title-slide slide level1 center">
+<h1>Aspectos Legais</h1>
+
+</section>
+<section id="lei-do-inquilinato" class="slide level2">
+<h2>Lei do Inquilinato</h2>
+<ul>
+<li class="fragment"><p>A partir da entrada em vigor do Código Civil, em jan/1917, a legislação do inquilinato evoluindo em fases alternadas, ora favorecendo os proprietários, ora os inquilinos <span class="citation" data-cites="damato">(<a href="#/referências" role="doc-biblioref" onclick="">D’Amato e Alonso 2019, 38</a>)</span>.</p></li>
+<li class="fragment"><p>Lei em vigor: a Lei nº 8.245, de 18/10/1991 é uma <strong>lei de ordem pública</strong>, ou seja, atinge os contratos celebrados em particulares, impedindo o estabelecimento de cláusulas contrárias aos seus dispositivos, protegendo assim a parte economicamente mais fraca.</p></li>
+</ul>
+</section>
+<section id="lei-do-inquilinato-1" class="slide level2">
+<h2>Lei do Inquilinato</h2>
+<ul>
+<li class="fragment">Continam regulados pelo Código Civil e pelas leis especiais, portanto fora da Lei do Inquilinato:</li>
+<li class="fragment">As locações:
+<ul>
+<li class="fragment">de imóveis de propriedade da União, dos Estados e Municípios, de suas autarquias e fundações públicas</li>
+<li class="fragment">de vagas autônomas de garagem ou de espaços para estacionamento de veículos;
+<ul>
+<li class="fragment">de espaços destinados à publicidade;</li>
+<li class="fragment">em apart-hotéis, hotéis-residência ou equiparados, assim considerados aqueles que prestam serviços regulares a seus usuários e como tais sejam autorizados a funcionar;</li>
+</ul></li>
+<li class="fragment">o arrendamento mercantil, em qualquer de suas modalidades</li>
+</ul></li>
+</ul>
+</section>
+<section id="direito-de-preferência" class="slide level2">
+<h2>Direito de Preferência</h2>
+<blockquote>
+<p>Art. 27. No caso de venda, promessa de venda, cessão ou promessa de cessão de direitos ou dação em pagamento, o locatário tem preferência para adquirir o imóvel locado, em igualdade de condições com terceiros, devendo o locador dar-lhe conhecimento do negócio mediante notificação judicial, extrajudicial ou outro meio de ciência inequívoca. Parágrafo único. A comunicação deverá conter todas as condições do negócio e, em especial, o preço, a forma de pagamento, a existência de ônus reais, bem como o local e horário em que pode ser examinada a documentação pertinente.</p>
+</blockquote>
+<blockquote>
+<p>Art. 28. O direito de preferência do locatário caducará se não manifestada, de maneira inequívoca, sua aceitação integral à proposta, no prazo de trinta dias.</p>
+</blockquote>
+<blockquote>
+<p>Art. 29. Ocorrendo aceitação da proposta, pelo locatário, a posterior desistência do negócio pelo locador acarreta, a este, responsabilidade pelos prejuízos ocasionados, inclusive lucros cessantes.</p>
+</blockquote>
+</section>
+<section id="direito-de-preferência-1" class="slide level2">
+<h2>Direito de Preferência</h2>
+<blockquote>
+<p>Art. 30. Estando o imóvel sublocado em sua totalidade, caberá a preferência ao sublocatário e, em seguida, ao locatário. Se forem vários os sublocatários, a preferência caberá a todos, em comum, ou a qualquer deles, se um só for o interessado. Parágrafo único. Havendo pluralidade de pretendentes, caberá a preferência ao locatário mais antigo, e, se da mesma data, ao mais idoso.</p>
+</blockquote>
+<blockquote>
+<p>Art. 31. Em se tratando de alienação de mais de uma unidade imobiliária, o direito de preferência incidirá sobre a totalidade dos bens objeto da alienação.</p>
+</blockquote>
+<blockquote>
+<p>Art. 32. O direito de preferência não alcança os casos de perda da propriedade ou venda por decisão judicial, permuta, doação, integralização de capital, cisão, fusão e incorporação.</p>
+</blockquote>
+</section>
+<section id="ação-revisional-de-aluguel" class="slide level2">
+<h2>Ação Revisional de Aluguel</h2>
+<blockquote>
+<p>Art. 68. Na ação revisional de aluguel, que terá o rito sumaríssimo, observar-se-á o seguinte:<br>
+I – além dos requisitos exigidos pelos arts. 276 e 282 do Código de Processo Civil, a petição inicial deverá indicar o valor do aluguel cuja fixação é pretendida. (Vide Nota mental na página seguinte).<br>
+II – ao designar a audiência de instrução e julgamento, o juiz, se houver pedido e com base nos elementos fornecidos pelo autor ou nos que indicar, fixará aluguel provisório, não excedente a oitenta por cento do pedido, que será devido desde a citação.<br>
+III – sem prejuízo da contestação e até a audiência, o réu poderá pedir seja revisto o aluguel provisório, fornecendo os elementos para tanto.<br>
+IV – na audiência de instrução e julgamento, apresentada a contestação, que deverá conter contraproposta se houver discordância quanto ao valor pretendido, o juiz tentará a conciliação e, não sendo esta possível, suspenderá o ato para a <strong>realização de perícia</strong>, se necessária, designando, desde logo, audiência em continuação.</p>
+</blockquote>
+</section>
+<section id="ação-renovatória-de-aluguel" class="slide level2">
+<h2>Ação Renovatória de aluguel</h2>
+<blockquote>
+<p>Art. 51. Nas locações de imóveis destinados ao comércio, o locatário terá direito à renovação do contrato, por igual prazo, desde que, cumulativamente: I. o contrato a renovar tenha sido celebrado por escrito e com prazo determinado; II. o prazo mínimo do contrato a renovar ou a soma dos prazos ininterruptos dos contratos escritos seja de <strong>cinco anos</strong>; (g. n.) III. o locatário esteja explorando seu comércio, no mesmo ramo, pelo prazo mínimo e ininterrupto de três anos. Art. 52. O locador não estará obrigado a renovar o contrato se: I – por determinação do Poder Público, tiver que realizar no imóvel obras que importarem na sua radical transformação; <strong>ou para fazer modificação de tal natureza que aumente o valor do negócio ou da propriedade</strong>;(g. n.) II – o imóvel vier a ser utilizado por ele próprio ou para transferência de fundo de comércio existente há mais de um ano, sendo detentor da maioria do capital o locador, seu cônjuge, ascendente ou descendente.</p>
+</blockquote>
+<ul>
+<li class="fragment">Este direito de renovação pelo locatário nos contratos com prazo maior ou igual a 5 anos é que enseja a cobrança de luvas!</li>
+</ul>
+</section>
+<section id="ação-renovatória-de-aluguel-1" class="slide level2">
+<h2>Ação Renovatória de aluguel</h2>
+<h3 id="contestação">Contestação</h3>
+<blockquote>
+<p>Art. 72. A contestação do locador, além da defesa de direito que possa caber, ficará adstrita, quanto à matéria de fato, ao seguinte: …<br>
+II – não atender, a proposta do locatário, o valor locativo real do imóvel na época da renovação, excluída a valorização trazida por aquele ao ponto ou lugar; III – ter proposta de terceiro para a locação, em condições melhores; IV – não estar obrigado a renovar a locação (incisos I e II do art. 52). § 1o . No caso do inciso II, o locador deverá apresentar, em contraproposta, as condições que repute compatíveis com o valor locativo real e atual do imóvel. § 2o .<br>
+§ 3o . No caso do inciso I do art. 52, a contestação deverá trazer prova da determinação do Poder Público ou relatório pormenorizado das obras a serem realizadas e da estimativa de valorização que sofrerá o imóvel, <strong>assinado por engenheiro devidamente habilitado</strong>. (Grifo nosso!!)</p>
+</blockquote>
+</section>
+<section id="referências" class="slide level2 smaller scrollable">
+<h2>Referências</h2>
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-barbieri" class="csl-entry" role="listitem">
+Barbieri, José Carlos, Antonio Carlos Teixeira Álvares, e Claude Machline. 2007. <span>«Taxa Interna de Retorno: controvérsias e interpretações»</span>. <em>GRPROS: Gestão da Produção, Operações e Sistemas</em> 5 (outubro): 131–42.
+</div>
+<div id="ref-damato" class="csl-entry" role="listitem">
+D’Amato, Mônica, e Nelson Roberto Pereira Alonso. 2019. <em>Avaliação de Aluguéis</em>. Editado por Leud. 4.ª ed. São Paulo.
+</div>
+<div id="ref-Machline" class="csl-entry" role="listitem">
+Machline, Claude. 1966. <span>«Análise de investimentos e inflação»</span>. <em>Revista de Administração de Empresas</em>, n.º 18: 51–126. <a href="https://doi.org/10.1590/S0034-75901966000100002">https://doi.org/10.1590/S0034-75901966000100002</a>.
+</div>
+</div>
+</section></section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="01b_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="01b_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="01b_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="01b_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="01b_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="01b_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="01b_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="01b_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="01b_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="01b_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'slide',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+       // Parallax background image
+       parallaxBackgroundImage: './img/Fundo_Slide_Comum.jpg', // e.g. "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'"
+
+        // Parallax background size
+        parallaxBackgroundSize: 'cover', // CSS syntax, e.g. "2100px 900px"
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1280,
+
+        height: 720,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+
+    <script>
+
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+
+      // slide changes (different for each slide format).
+
+      (function () {
+
+        // dispatch for htmlwidgets
+
+        function fireSlideEnter() {
+
+          const event = window.document.createEvent("Event");
+
+          event.initEvent("slideenter", true, true);
+
+          window.document.dispatchEvent(event);
+
+        }
+
+    
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+
+          fireSlideEnter();
+
+    
+
+          // dispatch for shiny
+
+          if (window.jQuery) {
+
+            if (previousSlide) {
+
+              window.jQuery(previousSlide).trigger("hidden");
+
+            }
+
+            if (currentSlide) {
+
+              window.jQuery(currentSlide).trigger("shown");
+
+            }
+
+          }
+
+        }
+
+    
+
+        // hookup for slidy
+
+        if (window.w3c_slidy) {
+
+          window.w3c_slidy.add_observer(function (slide_num) {
+
+            // slide_num starts at position 1
+
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+
+          });
+
+        }
+
+    
+
+      })();
+
+    </script>
+
+    
+
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copiada");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copiada");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+            const codeEl = trigger.previousElementSibling.cloneNode(true);
+            for (const childEl of codeEl.children) {
+              if (isCodeAnnotation(childEl)) {
+                childEl.remove();
+              }
+            }
+            return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>

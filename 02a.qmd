@@ -1,0 +1,600 @@
+---
+title: "Método da Renda"
+subtitle: "Avaliação de Alugueis"
+author: "Eng.º Luiz F. P. Droubi"
+date: last-modified
+date-format: long
+bibliography: referencias.bib
+title-slide-attributes:
+  data-background-image: img/Fundo_Capa.png
+  data-background-size: cover
+lang: pt
+format: 
+  # pptx:
+  #   reference-doc: TEMPLATE_EDUFOR.pptx
+  revealjs:
+#    background-image: "./img/FACULDADE_INBEC_16_9.jpg"
+    parallax-background-size: cover 
+    width: 1280
+    height: 720
+    # margin-top: 20%
+    theme: [default, style.scss]
+    # logo: img/logo.png
+    # theme: beige
+    # smaller: true
+    slide-number: true
+    scrollable: true
+    incremental: true
+    transition: slide
+    background-transition: fade
+fontsize: 1.8em
+---
+
+<!-- # Mètodo da Renda -->
+
+## Método da Renda {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- O *Método da Renda* é um dos métodos reconhecidos pela @NBR1465302 para 
+"identificar o valor de um bem".
+  - Em outras palavras, o *Método da Renda* é um método para a estimação do valor 
+  de mercado de um bem imóvel.
+
+- O *Método da Renda* consiste em utilizar a renda (aluguel) que um imóvel produz
+fins de determinar o seu valor de mercado.
+
+## Método da Renda {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- Antigamente alguns autores se referiam ao *Método da Renda* também quando
+utilizado para a determinação do valor justo do aluguel dos imóveis
+  - @ibapesp15 [p. 141]:
+    - >Obtida a taxa nominal de renda ($t_r$), após a obtenção do Capital-Imóvel
+    que produz renda ($C_I$), o aluguel mensal pelo Método da Renda 
+    ($A_{\text{renda}}$) é
+    dado por:
+      - $$A_{\text{renda}} = \frac{C_I \cdot t_r}{12 \text{ meses}}$$ {#eq-Renda}
+  
+- Na atualidade, para este segundo propósito, adotou-se o termo de 
+*Método de Remuneração do Capital*
+
+<!-- # Método da Remuneração do Capital -->
+
+## Método da Remuneração do Capital {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- Na @NBR1465302 [item 11.4.2], quando utilizado o *Método da Remuneração do
+Capital* para determinação dos aluguéis:
+  - Neste caso, o aluguel é determinado em função do valor do imóvel, podendo 
+  ser empregado em casos de imóveis isolados e atípicos, para os quais a
+  utilização da comparação direta seja impraticável.
+  - Sua utilização exige a determinação da taxa de remuneração e do valor do
+  imóvel.
+  - A taxa de remuneração deve ser objeto de pesquisa específica para cada caso,
+  pois varia para cada tipo de imóvel, localização e, também, ao longo do tempo,
+  dependendo da conjuntura econômica.
+
+## Método da Remuneração do Capital {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+> Apesar de ser método de grande aplicação, alguns estudiosos já estão
+percebendo a inversão "causa-efeito" da premissa de que todo imóvel vale
+(efeito) pela sua capacidade de produzir renda (causa). Talvez o fato de se
+partir do "efeito" (valor do imóvel) para se obter a "causa" (renda) conduza a
+resultados distorcidos da realidade, a menos que nos cálculos se apliquem
+múltiplos fatores corretivos; para o terreno: localização, área, testada,
+profundidade, formato, sub ou superaproveitamento; para a construção: áreas
+privativa e total, grupamento, padrão, idade, estado de conservação,
+distribuição entre andares e dos ambientes (layout). \[…\] Na realidade se
+verifica que são dois mercados diferentes, o de venda e o de locação, com
+tendência, comportamentos e público alvo também diversos [@damato, p. 123].
+
+-   Obs. Droubi:
+    -   São dois mercados diferentes!
+    -   Mas eles se equilibram!
+
+## Método da Remuneração do Capital {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+-   É o inverso do método da renda [@damato, p. 95]!
+  - >"quando usado inversamente, para fixação de aluguéis, o método denominar-se-á
+da remuneração dos capitais"
+
+- A taxa de remuneração deve ser determinada mediante pesquisa, conforme item
+11.4.2 da NBR 14.653-2 [-@NBR1465302]:
+  - >A taxa de remuneração deve ser objeto de pesquisa específica para cada caso, 
+pois varia para cada tipo de imóvel, localização e, também ao longo do tempo, 
+dependendo da conjuntura econômica.
+
+## Método da Remuneração do Capital {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+-   Deve-se levar em conta:
+
+    -   Taxa de Vacância
+    -   Taxas de administração
+    -   Impostos
+    -   Compensação pela falta de liquidez
+    -   Manutenção e Depreciação
+    -   Valorização
+
+:::
+
+::: {.column width="50%"}
+
+-   Uma maneira é utilizar estas variáveis na composição de uma taxa de desconto:
+
+    | Tipo             | Terreno          | Benfeitorias         |
+    |------------------|------------------|----------------------|
+    | Taxa básica      | 8,00%            | 8,00%                |
+    | Não-liquidez     | 1,50%            | 1,50%                |
+    | Depreciação      | \-               | 1,50%                |
+    | Vacância         | \-               | 1,00%                |
+    | Valorização      | -1,50%           | \-                   |
+    | **TOTAL**        | **8,00%**        | **12,50%**           |
+
+    : Taxas de desconto (% a.a.). Fonte: @damato, p. 86.
+    
+:::
+
+::::
+
+## Taxa composta {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- Uma vez obtidas as taxas de desconto para o terreno e para as benfeitorias, 
+pode-se calcular a **taxa composta** [@ibapesp15, p. 141]:
+  - $$i=\frac{V_T.i_T+V_B.i_B}{V_T + V_B}$$ {#eq-TaxaComposta}
+
+- Com a taxa composta, os valores do terreno e do capital (benfeitorias), pode
+ser feito o cálculo do valor do aluguel.
+
+## Taxa composta {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- Exemplo (adaptado de @damato, p. 87):
+  - $V_T = 250.000,00$
+  - $V_B = 450.000,00$
+  - $V_I = 795.000,00$ (Fator de Comercialização $\approx$ 14%)
+  - Taxa Composta:
+    - $$i = \frac{250.000.0,08+450.000.0,125}{250.000 + 450.000} = \frac{20.000 + 56.250}{700.000} = 10,89\%\text{ (a.a.)}$$
+  - Taxa ao mês: 
+    - $i_{mensal} = (1+i_{anual})^{1/12} - 1 = 0,865\%\text{ (a.m.)}$
+  - Cálculo do Aluguel:
+    - $Al = 795.000,00.0,865\% = \text{R\$ } 6.876,75/\text{mês}$
+
+## Método da Renda com aluguel líquido {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- Segundo @Malpezzi2002TheRO:
+  - $$V_{imovel} = \sum_{t=0}^{T}\frac{E(R_t-C_t)}{(1+i)^t} = \sum_{t=0}^{T}\frac{E(R_l)}{(1+i)^t} \approx \frac{R_l}{i}$$ {#eq-Malpezzi}
+- A eventual taxa de valorização ($g$) pode ser levada em conta assim [@Malpezzi2002TheRO]:
+  - $$V_{imovel} = \frac{R_l}{i-g}$$
+  - $i-g$ é chamada de **taxa de capitalização**, ou $c$ (*cap rate*)
+  - $$V_{imovel} = \frac{R_l}{c}$$ {#eq-Malpezzi2}
+
+## Método da Renda com aluguel líquido {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- Segundo @damato, p. 100, deve-se deduzir, em média, 30% do aluguel bruto!
+    - $$V_{imóvel} = \frac{Al}{i} = \frac{12\cdot(0,7\cdot3000)}{6\%}=\,\text{ R\$ } 420.000,00$$
+
+- Estimando-se uma *taxa de valorização* igual a $g = 2\%\text{ a.a.}$:
+  - $$V_{imóvel} = \frac{Al}{i} = \frac{12\cdot(0,7\cdot3000)}{6\%-2\%}=\,\text{ R\$ } 630.000,00$$
+
+-   Pequenos ajustes fazem grande diferença no VP!
+
+## O investimento em imóveis {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+-   Exemplo:
+    - Dado que um apartamento está anunciado em R$ 400.000,00
+    - Que a sua (investidor) TMA é igual 10% a.a.
+    - Que o aluguel do imóvel é R$ 3.000,00/mês
+    - Que a expectativa é que o aluguel se reajuste a uma taxa de 1,5% a.a.
+    - Que os custos (inclusive taxa de vacância) são da ordem de 30% do valor 
+    do aluguel
+    - Que você (investidor) considera um prazo de 30 anos para amortizar o
+    investimento
+    - Quanto você pode pagar pelo apartamento?
+    
+## O investimento em imóveis {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- Solução:
+    - $$FRC(8,5\%, 30) = \frac{8,5\%.(1+8,5\%)^{30}}{(1+8,5\%)^{30}-1} = 0,09305$$
+    - $$VPL = -400.000 + \frac{12.(3000-900)}{9,305\%}$$
+    - $$VPL = -400.000 + 270.822,10$$
+    - $$VPL = -129.177,90$$
+    - **R.**: Não se pode pagar mais do que R$ 270.000,00 pelo imóvel
+
+## O investimento em imóveis {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+### A casa própria
+
+-   Suponha que:
+    -   Uma casa está anunciada por R$ 500.000,00
+    -   Você pode financiá-la, mediante entrada de 20% (R$ 100.000)
+    -   Após adquirí-la, você pagará ao banco uma parcela de R$ 2.000,00 mensais por 30 anos
+    -   O aluguel da casa é R$ 3.000,00 mensais
+    -   A sua TMA é de 10% a.a.
+    -   Você compra a casa?
+    -   Considere que não há valor residual e despreze os custos de manutenção da casa, inflação, etc.!
+    
+## O investimento em imóveis {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+### A casa própria
+
+-   Solução:
+    - $$FRC(10\%, 30) = \frac{10\%.(1+10\%)^{30}}{(1+10\%)^{30}-1} = 10,61\%$$
+    - $$VPL = -100.000 + \frac{12.(3000-2000)}{10,61\%}$$
+    - $$VPL = -100.000 + \frac{12.000}{10,61\%}$$
+    - $$VPL = -100.000 + 113.100,80$$
+    - $$VPL = 13.100,80$$
+
+## O investimento em imóveis {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+### A casa própria (2)
+
+- Suponha que:
+  - Um terreno está anunciado por R$ 100.000,00
+  - Você quer construir uma casa com orçamento de R$ 400.000,00
+  - Você pode fazer ATC, mediante entrada de 20% (R$ 100.000)
+  - Você pagará ao banco inicialmente uma parcela de R$ 5.000,00 mensais
+  - Porém, ao longo de 30 anos esta parcela será reduzida a uma taxa de 2,5% a.a.
+  - O aluguel de uma casa similar é R$ 4.000,00 mensais
+  - Porém estima-se que este aumentará a uma taxa de 2,5% a.a.
+  - A sua TMA é de 10% a.a.
+  - Você estima uma valor residual, ao final de 30 anos, de 20% para o imóvel.
+  
+## O investimento em imóveis {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+### A casa própria (2)
+
+- Informações:
+    - Os terrenos não costumam ser depreciados, nem legalmente, nem do ponto de 
+    vista econômico, pois $C - L = 0$, em geral, isto é, o seu valor se mantém 
+    constante ou até aumenta [@Machline, p. 58].
+- Você compra a casa?
+- Despreze os custos de manutenção e outras taxas!
+
+## O investimento em imóveis {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+### A casa própria (2)
+
+-   Solução:
+    - $FRC_R = FRC(10\% - 2,5\%, 30) = \frac{7,5\%.(1+7,5\%)^{30}}{(1+7,5\%)^{30}-1} = 0,08467 = 8,47\%$
+    - $FRC_C = FRC(10\% + 2,5\%, 30) = \frac{12,5\%.(1+12,5\%)^{30}}{(1+12,5\%)^{30}-1} = 0,1288 = 12,88\%$
+    - $FCA(10\%, 30) = \frac{1}{(1+10\%)^{30}} = 0,0573 = 5,73\%$
+    - $VPL = - 100.000 +  \frac{12.(4.000)}{8,47\%} + \frac{12.(-5.000)}{12,88\%}  + 20\%.500.000.5,73\%$
+    - $VPL = 100.000,00 + \frac{48.000}{8,47\%} + \frac{-60.000}{12,88\%} + 100.000 \cdot 5,73\%$
+    - $VPL = -100.000 + 566.706 - 465.838,50 + 5.730$
+    - $VPL \approx 6.600,00$
+
+## O investimento em imóveis {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+### Levando em conta a inflação
+
+- Segundo @Machline [p. 73]:
+  - $$i_r = \frac{e-d}{1+d}$$
+    - $i_r$ é a taxa real de juros
+    - $e$ é a taxa aparente de juros
+    - $d$ é a taxa de inflação
+    
+## O investimento em imóveis {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+### Levando em conta a inflação  
+  
+- Exemplo [@Machline, p. 78]:
+  - Aquisição de um terreno: R$ 5.000.000,00 (1960)
+  - Venda do terreno: R$ 45.000.000,00 (1964)
+  - Dado que a taxa de inflação foi $d = 50\% \text{ a.a.}$, qual o retorno real?
+  - Solução:
+    - Taxa aparente: $e = (45.000/5.000)^{1/4}-1 = 73,2\% \text{ a.a.}$
+    - Taxa real: 
+      - $$i_r = \frac{0,732 - 0,50}{1 + 0,50} = \frac{0,232}{1,50} = 15,5\% \text{ a.a.}$$
+
+## O investimento em imóveis {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+-   Deve-se levar em conta que cada pequeno ajuste, seja na taxa, seja na renda 
+esperada, leva a grandes diferenças no valor do imóvel!
+    -   Isto é esperado, porque o fluxo de caixa é muito extenso!
+-   Se a sensibilidade é alta, o que isso significa?
+    -   Que o risco do investimento é alto!
+
+## Aparte: Administração de carteiras {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+-   No mercado de capitais existe um almoço grátis: a diversificação!
+
+-   Sejam dois ativos, A e B:
+
+    -   Ambos tem preço de aquisição, na data 0, igual a 100;
+    -   O investidor adquire R$ 500.000,00 em ativos, sendo 50% do ativo A e 50% do ativo B
+    -   No ano 1, o ativo A valoriza 50%, enquanto o ativo B desvaloriza 50%
+    -   Ao final do primeiro ano, o investidor faz o rebalanceamento da carteira
+    -   No ano 2, o ativo A desvaloriza 33,333% e o ativo B valoriza 100%
+    -   Calcule o valor da carteira ao fim do segundo período
+
+## Aparte: Administração de carteiras (2) {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+-   Solução:
+
+    | Período | Quant. A | Preço A | Quanto. B | Preço B | TOTAL   |
+    |---------|----------|---------|-----------|---------|---------|
+    | 0       | 2.500    | 100     | 2.500     | 100     | 500.000 |
+    | 1       | 2.500    | 150     | 2.500     | 50      | 500.000 |
+    | 2       | 1.666    | 100     | 5.000     | 100     | 666.600 |
+
+    : Rebalanceamento de carteiras de investimento.
+
+-   É possível fazer isto no mercado imobiliário?
+
+    -   Não, devido aos altos custos de transação!
+    -   Mercado imobiliário não é um mercado perfeito!
+
+<!-- # Aplicações -->
+
+## Método da Renda {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+```{r}
+library(tibble)
+library(kableExtra)
+df <- tribble(
+  ~Id, ~Area, ~Aluguel, ~PrecoVenda, ~Vacancia, ~Despesas,
+  1, 115, 580, 70000, 7, 110,
+  2, 154, 640, 80000, 8, 120,
+  3, 132, 610, 75000, 8, 125,
+  4, 105, 550, 71500, 5, 135,
+  5, 140, 625, 77000, 7, 120,
+  6, 135, 630, 71000, 8, 130,
+  7, 117, 600, 75000, 6, 130
+)
+df |>
+  kable(format = "html",  
+      linesep = "", escape = F, booktabs = T,
+      col.names = c("Id", "Área (m2)", "Aluguel (R$/mês)", 
+                              "Preco de Venda (R$)","Vacância (%)", 
+                              "Despesas Operacionais (R$)"),
+      caption = "Amostra para aplicação do Método da Renda. Fonte: Apostila Prof. Norberto.",
+      format.args = list(big.mark = ".", decimal.mark = ","),
+      digits= 2)
+```
+
+## Método da Renda {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+-   À partir da amostra, calcular o valor de mercado de um imóvel com aluguel de
+R$ 600,00.
+- Considerar, para o imóvel avaliando:
+    - Taxa de Vacância: 7%; 
+    - Despesas Operacionais: R$ 125,00/mês
+
+## Método da Renda {.smaller background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+```{r}
+df <- within(df,{
+  Vacancia <- Vacancia*Aluguel/100
+  ReceitaLiquida <- Aluguel - Vacancia - Despesas
+  TaxaLiquida <- 100*ReceitaLiquida/PrecoVenda
+})
+df <- df[, c(1:6, 8, 7)]
+df |>
+  kable(format = "html",  
+      linesep = "", escape = F, booktabs = T,
+      col.names = c("Id", "Área (m2)", "Aluguel (R$/mês)", 
+                    "Preco de Venda (R$)","Vacância (R$)", 
+                    "Despesas Operacionais (R$)", "Renda Líquida (R$)",
+                    "Rentabilidade (%)"),
+      caption = "Exemplo Método da Renda",
+      format.args = list(big.mark = ".", decimal.mark = ","),
+      digits= 2)
+```
+
+- Rentabilidade média: 0,59% a.m.
+- Valor da Vacância: 7%\*600 = R$ 42,00 /mês
+- Despesas: R$ 125,00/mês
+
+- Valor do imóvel: $$V_{imovel} = \frac{R - C}{i} = \frac{600-42-125}{0,59\%}= \frac{433}{0,59\%} \approx \text{R\$ }\, 73.390,00$$
+
+## Método da Remuneração do Capital {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+-   Exemplo [@damato, 94]:
+
+. . . 
+
+```{r}
+df <- tribble(
+  ~PrecoVenda, ~Aluguel,
+       420000,  2000.00,
+       450000,  2800.00,
+       320000,  1400.00,
+       260000,  1250.00,
+       460000,  2700.00,
+       690000,  4000.00,
+       650000,  3800.00,
+       380000,  1240.00,
+       550000,  3300.00,
+       560000,  3500.00,
+       420000,  2500.00,
+       320000,  1800.00,
+       430000,  2500.00,
+       290000,  1300.00,
+)
+df$Id <- 1:nrow(df)
+df <- df[, c(3,1,2)]
+df |>
+  kable(format = "html", col.names = c("Id", "Preco de Venda (R$)", 
+                                       "Aluguel (R$/mês)"),
+      format.args = list(big.mark = ".", decimal.mark = ","),
+      digits= 2)
+```
+
+## Método da Remuneração do Capital {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+-   Exemplo [@damato, 94]:
+
+. . . 
+
+```{r}
+df <- within(df, {
+  TaxaMensal <- Aluguel/PrecoVenda
+  TaxaAnual <- (1 + TaxaMensal)^12 - 1
+  TaxaMensal <- 100*TaxaMensal
+  TaxaAnual <- 100*TaxaAnual
+})
+df <- df[, c(1:3, 5, 4)]
+df |>
+  kable(format = "html", col.names = c("Id", "Preco de Venda (R$)", 
+                                       "Aluguel (R$/mês)", "Taxa Mensal (%)",
+                                       "Taxa Anual (%)"),
+      format.args = list(big.mark = ".", decimal.mark = ","),
+      digits= 2)
+```
+
+## Método da Remuneração do Capital {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+```{r}
+#| echo: true
+t.test(df$TaxaAnual, conf.level = .80)
+```
+
+## Método da Remuneração do Capital {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- Para avaliar um imóvel com VM de R$ 500.000,00:
+  - $Al_{inf} = 500.000 \cdot 6,23\%/12 \approx$ R$ 2.600,00/mês
+  - $Al = 500.000 \cdot 6,63\%/12 \approx$ R$ 2.750,00/mês
+  - $Al_{sup} = 500.000 \cdot 7,03\%/12 \approx$ R$ 2.900,00/mês
+
+-   Valor locativo estimado: R$ 2.750,00 \[2.600,00; 2.900,00\]
+
+## Método da Remuneração do Capital {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+###  Em uma perícia, faça isto:
+
+```{r}
+#| echo: true
+t.test(df$TaxaMensal, conf.level = .80)
+```
+
+## Método da Remuneração do Capital {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- Para avaliar um imóvel com VM de R$ 500.000,00:
+    -   $Al_{inf} = 500.000 \cdot 0,50\% \approx$ R$ 2.500,00/mês
+    -   $Al = 500.000 \cdot 0,54\% \approx$ R$ 2.700,00/mês
+    -   $Al_{sup} = 500.000 \cdot 0,57\% \approx$ R$ 2.850,00/mês
+-   Valor locativo: R$ 2.700,00 \[2.500,00; 2.800,00\]
+
+## Método da Remuneração do Capital {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+-   Mesmos dados de @damato, p. 94:
+
+. . . 
+
+```{r}
+#| out-width: "70%"
+library(ggpmisc)
+ggplot(df, aes(x = PrecoVenda, y = Aluguel)) +
+  geom_point() +
+  stat_poly_line() +
+  stat_poly_eq(use_label(c("eq", "R2")), size = 6) +
+  geom_segment(x = 500000, xend = 500000, y=0, yend = 2840, color = "red", size=1.5) +
+  geom_segment(x = 0, xend = 500000, y = 2840, yend = 2840, 
+               color = "red", size=1.5) +
+  theme_grey(base_size = 20)
+```
+
+
+
+```{r}
+#| echo: true
+fit <- lm(Aluguel ~ PrecoVenda, data = df)
+predict(fit, newdata = list(PrecoVenda = 500000), interval = "confidence", level = .80)
+```
+
+## Método da Remuneração do Capital {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+-   Mesmos dados, passando pela origem:
+
+. . . 
+
+```{r}
+#| out-width: "70%"
+library(ggpmisc)
+ggplot(df, aes(x = PrecoVenda, y = Aluguel)) +
+  geom_point() +
+  stat_poly_line(formula = y ~ x - 1) +
+  stat_poly_eq(use_label(c("eq", "R2")), size = 6, formula = y ~ x - 1) +
+  geom_segment(x = 500000, xend = 500000, y=0, yend = 2808, 
+               color = "red", size=1.5) +
+  geom_segment(x = 0, xend = 500000, y = 2808, yend = 2808, 
+               color = "red", size=1.5) +
+  theme_grey(base_size = 20)
+```
+
+
+
+```{r}
+#| echo: true
+fit <- lm(Aluguel ~ PrecoVenda - 1, data = df)
+predict(fit, newdata = list(PrecoVenda = 500000), interval = "confidence", level = .80)
+```
+
+## Para entender {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+```{r}
+ggplot(df, aes(x = PrecoVenda, y = Aluguel)) +
+  geom_point() +
+  stat_poly_line(formula = y ~ x - 1) +
+  stat_poly_eq(use_label(c("eq", "R2")), size = 6, formula = y ~ x - 1) +
+  geom_segment(x = 500000, xend = 500000, y=0, yend = 2808, 
+               color = "red", size=1.5) +
+  geom_segment(x = 0, xend = 500000, y = 2808, yend = 2808, 
+               color = "red", size=1.5) +
+  geom_segment(x = 0, y = 0, xend = 260000, yend = .00562*260000, 
+               color = "blue", size=1.5, lty = 2) +
+  geom_abline(intercept = -706, slope = .00709, 
+              color = "orange", size = 1.5, lty = 3) +
+  scale_y_continuous(limits = c(0,4500)) +
+  scale_x_continuous(limits = c(0,700000)) +
+  theme_grey(base_size = 20)
+```
+
+## Para entender {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+### Retirando um outlier
+
+```{r}
+ggplot(df[-8, ], aes(x = PrecoVenda, y = Aluguel)) +
+  geom_point() +
+  stat_poly_line(formula = y ~ x - 1) +
+  stat_poly_eq(use_label(c("eq", "R2")), size = 6, formula = y ~ x - 1) +
+  geom_segment(x = 500000, xend = 500000, y=0, yend = 2808, 
+               color = "red", size=1.5) +
+  geom_segment(x = 0, xend = 500000, y = 2808, yend = 2808, 
+               color = "red", size=1.5) +
+  geom_segment(x = 0, y = 0, xend = 260000, yend = .00562*260000, 
+               color = "blue", size=1.5, lty = 2) +
+  geom_abline(intercept = -543.7, slope = .006859, 
+              color = "orange", size = 1.5, lty = 3) +
+  scale_y_continuous(limits = c(0,4500)) +
+  scale_x_continuous(limits = c(0,700000)) +
+  theme_grey(base_size = 20)
+```
+
+## Para entender {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+```{r}
+library(geomtextpath)
+ggplot() +
+  scale_y_continuous(limits = c(0, 4500), labels = scales::label_number_auto()) +
+  scale_x_continuous(limits = c(0, 700000), labels = scales::label_number_auto()) +
+  geom_textabline(label = "Taxa i = 0,5%a.m.", size = 5,
+                   intercept = 0, slope = 0.005, color = "orange", lty = 1) +
+  geom_textabline(label = "Taxa i = 0,75%a.m.", size = 5,
+                   intercept = 0, slope = 0.0075, color = "red", lty = 2) +
+  labs(title = "Impacto da mudança de taxa de desconto no mercado de aluguéis",
+       y = "Aluguel (R$/mês)", x = "Preço de venda (R$)") +
+  theme(axis.title.y = element_text(margin = margin(r = 15)))
+```
+
+-   Importante observar: este mercado é influenciado totalmente pelas taxas de juros. É um mercado de bens de investimento, e não um mercado de consumo!
+    -   Mas os imóveis não são apenas bens de investimento!
+
+<!-- # Economia Urbana -->
+
+## Economia Urbana {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+{{< video https://youtu.be/BSMJk8gSyrs?si=MUBWrkpX2oyZbbbA title="A demanda por cidades" start="0" width="600" height="450" >}}
+
+## Referências {background-image="./img/FACULDADE_INBEC_16_9.png"}

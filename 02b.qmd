@@ -1,0 +1,495 @@
+---
+title: "Método da Renda (2)"
+subtitle: "Avaliação de Aluguéis"
+author: "Eng.º Luiz F. P. Droubi"
+date: last-modified
+date-format: long
+bibliography: referencias.bib
+title-slide-attributes:
+  data-background-image: img/Fundo_Capa.png
+  data-background-size: cover
+lang: pt
+format: 
+  # pptx:
+  #   reference-doc: TEMPLATE_EDUFOR.pptx
+  revealjs:
+#    background-image: "./img/FACULDADE_INBEC_16_9.jpg"
+    parallax-background-size: cover 
+    width: 1280
+    height: 720
+    # margin-top: 20%
+    theme: [default, style.scss]
+    # logo: img/logo.png
+    # theme: beige
+    # smaller: true
+    slide-number: true
+    scrollable: true
+    incremental: true
+    transition: slide
+    background-transition: fade
+fontsize: 1.8em
+---
+
+<!-- # Aproveitamento do Terreno -->
+
+## Aproveitamento do Terreno {background-image="./img/FACULDADE_INBEC_16_9.png"} 
+
+-   Uma questão que aparece em decorrência da aplicação do método evolutivo.
+
+- Na NBR 14.653-02 [@NBR1465302, p. 19]:
+  - A composição do valor total do imóvel avaliando ($V_i$) pode ser obtida 
+  através da conjugação de métodos, a partir do valor do terreno ($V_t$), 
+  considerados o custo de reprodução das benfeitorias devidamente depreciado
+  ($C_b$) e o fator de comercialização ($\text{FC}$), ou seja:
+    - $$V_i = (V_t + C_b)\cdot \text{FC}$$ {#eq-Evolutivo}
+    
+- Na NBR 14.653-01 [@NBR1465301, p. 14]:
+  - Identifica o valor do bem pelo somatório dos valores de seus componentes. 
+  **Caso** a finalidade seja a identificação do **valor de mercado**, deve ser 
+  considerado o fator de comercialização. 
+
+## Aproveitamento do Terreno {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- Problema: 
+  - Não é incomum que um imóvel seja alugado enquanto ocupando um terreno de 
+forma "improdutiva".
+  - Para efeito de aluguel, uma pequena benfeitoria não pode ser locada a um
+  valor justo em função do valor do terreno + custo da benfeitoria.
+
+- Exemplos:
+  - Um terreno de grandes dimensões (em planta), porém ocupado apenas em parte
+  por um pequeno comércio;
+  - Um terreno com potencial para incorporação, locado para um estacionamento;
+  - Um terreno edificado com um prédio comercial de 3 andares, situado em zona 
+  urbana com possibilidade de construção de até 5 andares
+
+## Aproveitamento do Terreno {background-image="./img/FACULDADE_INBEC_16_9.png"} 
+
+- Como o terreno encontra-se subaproveitado, não se pode aplicar uma taxa de 
+  remuneração sobre todo o terreno para calcular o aluguel justo ao locatário
+  - Se o terreno é subaproveitado, quem deve arcar com a perda de renda 
+  decorrente deste subaproveitamento é o proprietário do terreno.
+    
+- Cuidado:
+  - O aproveitamento máximo do terreno está **eventualmente** ligado ao 
+  **aproveitamento máximo legal**, *i.e.* ao que se permite construir no terreno
+  segundo o zoneamento municipal.
+  - O aproveitamento máximo do terreno, porém, **também** está ligado ao 
+  **aproveitamento máximo econômico** do terreno.
+
+- Por exemplo: regiões pouco desenvolvidas, onde, até pelo baixo preço dos 
+terrenos, não se justifica economicamente a construção de prédios de vários 
+pavimentos, apesar de ser permitida pela legislação.
+
+## Aproveitamento do Terreno {background-image="./img/FACULDADE_INBEC_16_9.png"} 
+
+- O coeficiente de aproveitamento do terreno é o coeficiente que relaciona as
+benfeitorias realmente existentes no terreno às benfeitorias que, caso erigidas 
+no terreno, dariam-lhe o **máximo e melhor aproveitamento**.
+
+- O coeficiente de aproveitamento trata, portanto, não apenas da quantidade de 
+**área construída** no terreno, mas à **qualidade** desta área construída e a 
+sua **idade** (conservação).
+
+## Aproveitamento do Terreno {background-image="./img/FACULDADE_INBEC_16_9.png"} 
+
+- Candeloro, n.d., p. 45:
+
+. . . 
+
+> Em regiões onde os terrenos são extremamente valiosos, para que a construção
+lhes dê um bom aproveitamento, não basta que seja grande. É necessário que seja
+de padrão condizente com o mercado local, pois, ao se propor a pagar uma quantia
+extremamente alta por um terreno, o investidor o faz pensando em nele implantar
+uma construção de alto padrão, ou seja, economicamente adequada ao valor do
+terreno. Exemplo flagrante dessa situação é o caso da Avenida Paulista, em São
+Paulo, onde os preços de terrenos chegam à casa dos 10 mil dólares o metro
+quadrado e onde a ocupação é de prédios novos e de altíssimo padrão.
+
+## Cálculo do Coeficiente de Aproveitamento {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+-   O coeficiente de aproveitamento pode ser descrito pela fórmula a seguir 
+(Candeloro, n.d., 19; D'Amato e Alonso 2019, p, 129):
+    -   $$\text{CA} = \frac{A_{h-existente}}{A_{h-máxima}}$$ {#eq-CA}
+-   Deve-se notar que o Coeficiente de Aproveitamento é calculado com áreas 
+homogeneizadas, *i.e.* com áreas ponderadas conforme a escolha de pesos 
+convenientes.
+  - Ponderar a área edificada segundo o aproveitamento do terreno (zoneamento)
+  - Ponderar a área edificada segundo a qualidade da área construída (CUB)
+  - Ponderar a área edificada segundo o grau de obsolescência da edificação
+
+## Cálculo do Coeficiente de Aproveitamento {background-image="./img/FACULDADE_INBEC_16_9.png"} 
+
+- Exemplo:
+  - Um terreno com 10,0m de testada e área $S = 400m^2$, situado em zona 
+  urbana com Taxa de Ocupação $\text{TO} = 0,5$ e Coeficiente de Aproveitamento
+  $\text{CA} = 1,0$.
+  - Este terreno encontra-se em zona com valor unitário $q_T = 2.000,00\, \text{R\$}/m^2$
+  - Neste terreno encontra-se edificada uma edificação comercial com 450m2 de 
+  área construída, sendo 150m2 no térreo e 300m2 nos andares superiores
+  - A edificação possui padrão construtivo médio e tem idade de aprox. 10 anos,
+  o que resulta num fator de obsolescência igual a 0,75.
+
+
+## Resolução {background-image="./img/FACULDADE_INBEC_16_9.png"} 
+
+- Considerar que o custo de construção equivale a 1,2 vezes o CUB do padrão 
+R-8N ($\text{R\$ }1.000,00/m^2$), *i.e.* $q_B = 1,2.\text{R-8N}$.
+- Considerar que as áreas do térreo (lojas) tem peso 3 em relação às superiores
+  - Calcular o Coeficiente de Aproveitamento do Terreno
+  - Após, calcular o valor do aluguel justo do terreno, considerando 
+  $i = 8\%$, tanto para as benfeitorias, tanto para o terreno.
+
+## Resolução {background-image="./img/FACULDADE_INBEC_16_9.png"} 
+
+### Cálculo do Coeficiente de Aproveitamento
+
+::::: columns
+::: {.column width="50%"}
+-   Área homogeneizada existente
+    -   Térreo (peso 3):
+        -   $A_{T-exist} = W_T \cdot A_T = 3 \cdot 150$
+        -   $A_{T-exist} = 450m^2$
+    -   Superiores (peso 1):
+        -   $A_{S-exist} = W_S \cdot A_S = 1 \cdot 300$
+        -   $A_{S-exist} = 300m^2$
+:::
+
+::: {.column width="50%"}
+-   Área homogeneizada máxima
+    -   Térreo (peso 3):
+        - $A_{T-max} = \text{TO}\cdot S\cdot W_T$
+        - $A_{T-max} = 0,5 \cdot 400 \cdot 3 = 600m^2$
+    -   Superiores (peso 1):
+        - $A_{S-max} = (\text{CA}-\text{TO})\cdot S\cdot W_S$
+        - $A_{S-max} = (1-0,5)\cdot 400\cdot 1 = 200m^2$
+:::
+:::::
+
+-   Coeficiente de Aproveitamento:
+    -   $\text{CA} = \frac{A_{h-existente}}{A_{h-máxima}}=\frac{750}{800}=0,9375$
+
+## Resolução {background-image="./img/FACULDADE_INBEC_16_9.png"} 
+
+### Cálculo do valor do capital
+
+::::: columns
+::: {.column width="50%"}
+-   Capital Terreno:
+    -   $q_T = \text{R\$ }2.000,00/m^2$
+    -   $V_T = q_T\cdot S = 2.000\cdot 400 = 800.000,00$
+:::
+
+::: {.column width="50%"}
+-   Capital Benfeitoria:
+    - $q_B = \text{R\$ }1.200,00/m^2$
+    - $f_o = 0,75$
+    - $V_B = f_o\cdot q_B\cdot A_B$
+    - $V_B = 0,75\cdot 1.200\cdot 450 = 405.000,00$
+:::
+:::::
+
+::::: columns
+::: {.column width="50%"}
+-   Capital Terreno:
+    -   $C_T = V_T\cdot \text{CA} = 800.000\cdot 0,9375$
+    -   $C_T =\text{R\$ }750.000,00$
+:::
+
+::: {.column width="50%"}
+-   Capital Benfeitoria:
+    -   $C_B = V_B = \text{R\$ }405.000,00$
+:::
+:::::
+
+## Resolução {background-image="./img/FACULDADE_INBEC_16_9.png"} 
+
+### Método da Remuneração do Capital
+
+::::: columns
+::: {.column width="50%"}
+- Com remuneração anual de 8% a.a.:
+  - $$Al = \frac{(CT + CB)\cdot i}{12}$$
+  - $$Al = \frac{(750.000+405.000)\cdot 8\%}{12}$$
+  - $$Al = \text{R\$ }7.700,00/mês$$
+:::
+
+::: {.column width="50%"}
+- Melhor: 
+  - $$Al = 1.155.000\cdot [(1+8\%)^{1/12}−1]$$
+  - $$Al =\text{R\$ }7.431,30/mês$$
+
+:::
+:::::
+
+## Coeficiente de Aproveitamento {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+### Redução do Coeficiente pela idade
+
+- Com o aumento da idade da edificação, as benfeitorias podem passar a não 
+refletir mais o aproveitamento máximo do terreno;
+
+- É controverso se a idade deveria influenciar no cálculo do aproveitamento 
+para fins de locação (para fins de venda, é unânime que sim)
+
+- Cuidado: os textos encontrados não mencionam, porém o avaliador deve observar 
+o entorno do avaliando
+  - Se no entorno, os elementos amostrais coletados possuem idade aparente 
+  similar ao do avaliando, não há qualquer razão que indique o subaproveitamento
+  do terreno
+  - Se, no entanto, o avaliando encontra-se em meio a diversos edifícios mais 
+  novos, é indicativo que deve ser aplicada a redução do Coeficiente pela idade
+
+## Coeficiente de Aproveitamento {background-image="./img/FACULDADE_INBEC_16_9.png"} 
+
+### Redução do Coeficiente pela idade
+
+-   Fórmula de Dante Guerrero [@candeloro, p. 20]:
+  - $$\text{CA}_R = \text{CA}\left [R + (1-R).\frac{v}{V}\right ]$$ {#eq-DanteGuerrero}
+    - $R$: residual da construção
+    - $v$: idade aparente da benfeitoria
+    - $V$: vida útil da benfeitoria
+
+## Coeficiente de Aproveitamento {background-image="./img/FACULDADE_INBEC_16_9.png"} 
+
+### Redução do Coeficiente pela idade
+
+- Fórmula de Dante Guerrero [@candeloro, p. 20]:
+- Exemplo:
+  - Mesmo caso anterior, em que $\text{CA} = 750/800 = 0,9375$, considerar vida 
+  útil igual a 50 anos e Residual igual a 20%:
+    - $\text{CA}_R = \text{CA}\left [R + (1-R)\frac{v}{V}\right ]$
+    - $\text{CA} = \frac{750}{800}\left [20\% + (1-20\%)\frac{10}{50}\right ]$
+    - $\text{CA} = 0,9375\cdot(0,2+(1-0,2)\cdot 10/50)$
+    - $\text{CA} = 0,3375$
+    - Está incorreto!
+    
+## Coeficiente de Aproveitamento {background-image="./img/FACULDADE_INBEC_16_9.png"} 
+
+### Redução do Coeficiente pela idade
+
+- Correto seria: 
+  - $$\text{CA}_R = \text{CA}\left [R + (1-R)\left (1-\frac{v}{V}\right )\right ]$$ {#eq-DanteGuerrero2}
+  - $$\text{CA}_R = \frac{750}{800}\left [20\% + (1-20\%)\left(1-\frac{10}{50}\right)\right ]$$
+  - $\text{CA}_R = 0,9375 \cdot (0,2+0,64) = 0,7875$
+
+## Coeficiente de Aproveitamento {background-image="./img/FACULDADE_INBEC_16_9.png"} 
+
+### Redução do Coeficiente pela idade
+
+-   Cuidado com a aplicação de fórmulas prontas!
+
+- Exemplo [@alonso2017, p. 4-5]:
+  - Aplica uma nova fórmula
+  - Resultado parece inconsistente!
+  
+## Coeficiente de Aproveitamento {background-image="./img/FACULDADE_INBEC_16_9.png"} 
+
+### Redução do Coeficiente pela idade  
+
+- Exemplo [@alonso2017, p. 4-5]:
+  - Suponhamos então que determinado terreno avaliando, com 2.304,00 $m^2$, 
+  situado em região onde a lei de uso e ocupação do solo fixa o coeficiente de 
+  aproveitamento 2,0 e taxa de ocupação 0,50, e que esteja ocupado por uma 
+  construção térrea com 22 anos de idade, vida útil de 60 anos e 700,00m2 de 
+  área construída total; as áreas ponderadas "existente" e "possível" são assim 
+  calculadas:
+    - $A_{h-existente} = 700\cdot 3,0 = 2.100,00m^2$
+    - $A_{h-possível} = 2.304\cdot 0,5\cdot 3,0 + 2.304\cdot 0,5\cdot 2,0 + 2\cdot 2.304\cdot 0,5\cdot 1,0$
+    - $A_{h-possível} = 8.064,00m^2$
+    - $\text{CA}_{básico} = \frac{2.100}{8.064}=0,26$
+    
+## Coeficiente de Aproveitamento {background-image="./img/FACULDADE_INBEC_16_9.png"} 
+
+### Redução do Coeficiente pela idade  
+
+- Exemplo [@alonso2017, p. 4-5]:    
+  - $\text{CA}_{\text{básico}} = \frac{2.100}{8.064} = 0,26$  
+  - Aplicou-se:
+    - $$\text{CA}_{Ap} = 1 – [((E – e)/E)\cdot (0,20 + (0,80\cdot (V – v)/V))]$$ {#eq-NelsonAlonso}
+  - E chegou-se a: 
+    - $\text{CA}_{Ap} = 1 – [((8.064 – 2.100)/8.064) (0,20 + (0,80\cdot (60-22)/60))]$
+    - $\text{CA}_{Ap} = 1 – (0,7396 . 0,7067) = 0,477$
+  - O coeficiente de aproveitamento aumentou após a consideração da idade!!!
+   
+## Coeficiente de Aproveitamento {background-image="./img/FACULDADE_INBEC_16_9.png"} 
+
+### Redução do Coeficiente pela idade  
+
+- Exemplo [@alonso2017, p. 4-5]:
+  - Onde está o erro?
+    - Pode-se perceber que o erro está no componente básico da fórmula!
+    - Correto seria: 
+      - $$C_{Ap} = 1 – [ (e/E) \cdot ( 0,20 + ( 0,80 \cdot (V – v)/V))]$$ {#eq-NelsonAlonsocorrigida}
+      - $C_{Ap} = 1 – (0,26\cdot 0,7067) = 0,184$
+
+## Coeficiente de Aproveitamento {background-image="./img/FACULDADE_INBEC_16_9.png"} 
+
+### Redução do Coeficiente pela idade e padrão
+
+> De fato, como explicar a ocorrência de demolição de imóveis antes de atingirem
+sua vida útil? Geralmente isto acontece quando ocorre alteração ponderável do 
+padrão em determinada região tornando as construções ali existentes obsoletas 
+funcionalmente [@alonso2017, p. 5].
+
+> Então, aos dois fatores endógenos (área e idade) deve ser acrescentado o 
+padrão regional, de natureza exógena, portanto de caráter somatório 
+[@alonso2017, p. 6].
+
+-   $$C_{Ap} = 1 – (1 - \frac{e}{E})\cdot (0,20 + (0,80.(1 - v/V))) + (1 - p/P)$$ {#eq-NelsonAlonso2}
+
+## Coeficiente de Aproveitamento {background-image="./img/FACULDADE_INBEC_16_9.png"} 
+
+### Redução do Coeficiente pela idade e padrão
+
+-   Exemplo [@alonso2017, p. 6-8]:
+  - Mesmos dados do anterior
+  - Porém, agora considerando que o padrão da construção existente é de
+  1,470xR-8N, enquanto no entorno prevalece um padrão mais alto, de 1,926xR-8N
+
+## Coeficiente de Aproveitamento {background-image="./img/FACULDADE_INBEC_16_9.png"} 
+
+### Redução do Coeficiente pela idade e padrão
+
+- Solução [@alonso2017, p. 8]:
+  - $C_{Ap} = 0,714$
+  - Não faz o menor sentido!
+- Solução lógica:
+  - $$C_{Ap} = 1 – [ (e/E) \cdot  (0,20 + (0,80\cdot (V – v)/V))\cdot (p/P)]$$ {#eq-NelsonAlonso2corrigida}
+  - $C_{Ap} = 1 – (0,26\cdot 0,7067\cdot 0,763)$
+  - $C_{Ap} = 0,14$
+- Não faz sentido, ao nosso ver, que a variável padrão seja considerada na 
+forma aditiva, enquanto as outras são consideradas na forma multiplicativa.
+
+<!-- # Cota parte -->
+
+## Cota parte {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- Em muitos casos a avaliação desejada é de uma unidade do edifício e não do seu
+todo
+- Assim surge o problema, nos casos de aplicação do método evolutivo, de saber
+qual cota-parte do terreno cabe àquela unidade que se deseja avaliar.
+- Matematicamente:
+  - $$CP = \frac{A_{hu}}{A_{ht}}$$ {#eq-CP} 
+  - $$CT_{un} = CT \cdot CP$$ {#eq-CTun}
+    - CP: Cota-Parte
+    - CT: Capital Terreno (Total)
+    - CTun: Capital Terreno correspondente à unidade em análise
+    - $A_{hu}; A_{ht}$: área homogeneizada da unidade/total
+
+## Exemplo {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- Cálcular a Cota Parte do Térreo num edifício composto de um terreno de 400 
+$m^2$, com área construída de 200 $m^2$ no térreo e superiores de 400 $m^2$.
+- Considerar pesos 3:1
+  - Solução:
+    - $$CP = \frac{A_{hu}}{A_{ht}} = \frac{A_{Terreo}\cdot p_{Terreo}}{A_{Terreo}\cdot p_{Terreo} + A_{Superiores}\cdot p_{Superiores}}$$ {#eq-CP}
+    - $$CP = \frac{200\cdot 3}{200\cdot 3+400\cdot 1} = \frac{600}{1.000} = 60\%$$
+  
+## Cálculo do aluguel de uma cota parte {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- Para o cômputo do aluguel de uma única unidade, pode-se calcular a Cota Parte
+(CP) da unidade e aplicar ao valor total do Capital Terreno.
+- No entanto, se o objetivo for calcular apenas o valor do aluguel da unidade,
+pode-se calcular o Capital terreno referente à unidade (CTun) diretamente 
+através da fórmula (Candeloro, p.63):
+
+. . . 
+
+$$CT_{un} = q_t.\frac{A_{hu}}{\text{TO}\cdot p_{Térreo} + (\text{CA}_{\text{básico}}-\text{TO})\cdot p_{\text{Superiores}}}$$ {#eq-CTun}
+
+- $q_t$: Unitário do Terreno
+- $\text{TO}$: Taxa de Ocupação do Terreno
+- $\text{CA}_{\text{básico}}$: Coeficiente de Aproveitamento Básico do Terreno
+
+## Exemplo {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- Loja, com 200 $m^2$ no térreo e 100 $m^2$ no superior. O VU do terreno é de 
+$q_t = 1.000,00 \text{ R\$}/m^2$, porém sua área total é desconhecida, assim 
+como as áreas construídas das outras unidades. 
+- Considerar:
+  - TO = 0,8
+  - CA = 3,5
+  - Pesos 5:1
+    - Solução:
+      - $$CT_{un} = q_t.\frac{A_{hu}}{\text{TO}.p_{Térreo} + (CA_{básico}-\text{TO}).p_{Superiores}}$$
+      - $$CT_{un} = 1.000,00.\frac{200\cdot 5+100\cdot 1}{0,8\cdot 5 + (3,5-0,8)\cdot 1} = 164.179,10$$
+
+## Exercício {background-image="./img/FACULDADE_INBEC_16_9.png"} 
+
+- Imaginem que o escritório de Avaliações e Perícias em que você trabalha foi 
+contratado por um potencial comprador de um edifício localizado na  região 
+central da cidade para efetuar a avaliação do aluguel de diversas lojas e 
+escritórios neste edifício;
+- O edifício é constituído de Térreo + 2 andares, cada um com 150m2;
+- O proprietário pretende ocupar com seu escritório pouco mais da metade da área 
+do 2º pavimento (90 m2) e locar o restante;
+
+## Exercício {background-image="./img/FACULDADE_INBEC_16_9.png"} 
+
+- O proprietário informou que algumas pessoas já manifestaram interesse em locar 
+espaços no seu prédio
+  - 1 interessado em instalar uma loja (térreo) com 90 m2;
+  - 1 interessado em uma loja (térreo) com 60 m2;
+  - 1 interessado em uma laje corporativa de 150 m2 para sua empresa (1º pavimento);
+  - 1 interessado na metade restante do 2º pavimento (60 m2);
+- O potencial proprietário ainda deseja saber qual o valor do aluguel da área 
+que ele próprio irá ocupar no 2º pavimento (90 m2), para fins de calcular o VPL
+da compra do edifício (aluguel implícito).
+
+## Exercício {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- O diretor de Avaliações resolveu pulverizar o trabalho entre diversos 
+avaliadores;
+- No entanto, para que o resultado final seja um trabalho uniforme, o Diretor 
+estabeleu os critérios que cada avaliador deverá considerar nas suas avaliações. 
+- Os critérios estabelecidos pelo Diretor, assim como os dados por ele 
+disponibilizados para os avaliadores encontram-se nos próximos slides.
+- Para uma melhor apresentação do trabalho, o Diretor solicitou que fosse 
+utilizado o método da Cota Parte, evitando assim que o laudo final fique repleto
+de cálculos repetitivos.
+
+## Exercício {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+:::: {.columns}
+
+::: {.column width="55%"}
+- Dados do Terreno:
+  - Área: 400m2
+  - qt = 2.000,00 R$/m2
+  - CA básico: 1
+  - TO: 0,5
+  - Pesos: 3:1 (térreo:superiores)
+  - Taxa de renda: 8% a.a.
+- Desconsiderar a idade no cálculo do coeficiente de aproveitamento!
+:::
+
+::: {.column width="45%"}
+- Dados da Benfeitoria:
+  - Idade aparente: 15 anos
+  - Vida útil: 60 anos
+  - Taxa de renda: 12% a.a.
+  - qb = 2.000,00 R$/m2 (x 1,2)
+- Considerar a depreciação pelo método da linha reta, com valor residual igual a
+20%.
+- Considerar o Fator de Comercialização igual a 1,10, tanto para o Capital 
+Terreno, quanto para o Capital Benfeitoria!
+:::
+
+::::
+
+## Exercício {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- Grupo 1: Un. 1 - Loja (Térreo) com 90m2, usando Cota Parte;
+- Grupo 2: Un. 2 - Loja (Térreo) com 60m2, usando Cota Parte;
+- Grupo 3: Un. 3 - Laje corporativa (1º andar), com 150 m2, usando Cota Parte;
+- Grupo 4: Un. 4 - Sala Comercial (2º andar), com 60 m2, usando Cota Parte;
+- Grupo 5: Un. 5 - Sala Comercial (2º andar), com 90 m2, usando Cota Parte;
+- Grupo 6: Calcular o valor dos aluguéis para o térreo e superiores, sem 
+utilizar o cálculo direto pela Cota Parte.
+
+- DICAS: 
+  - Organize os cálculos antes em uma planilha eletrônica;
+  - Depois descreva-os no editor de textos;
+
+## Referências {background-image="./img/FACULDADE_INBEC_16_9.png"}
