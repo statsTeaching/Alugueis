@@ -1,0 +1,6 @@
+Grupo 1: 9,0
+Grupo 2: 10,0
+Grupo 3: 10,0
+Grupo 4: 10,0
+Grupo 5: 10,0
+Grupo 6: 10,0
