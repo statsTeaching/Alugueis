@@ -714,6 +714,20 @@ PMT(rate = 1.4/100, nper = 3, pv = -10975+2805, type = 0)
 ```
 
 
+
+  
+## Anuidades antecipadas {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- Vimos no exemplo que, nas anuidades antecipadas (por exemplo, num 
+financiamento com entrada),basta multiplicarmos a @eq-AmortizacaoPostecipada,
+obtendo assim a @eq-AmortizacaoAntecipada:
+
+- Outra forma de pensar é: subtrai-se o valor da entrada do valor presente, e 
+calcula-se o financimento em $n-1$ parcelas.
+
+  - $10.975,00 - 2.805,00 = \text{PMT} \frac{(1+1,40\%)^{3}-1}{1,40\%(1+1,40\%)^{3}}$
+  - $8.170,00 = \text{PMT} \cdot 2,918 \rightarrow \text{PMT} \approx 2.800,00$
+  
 . . . 
   
 ```{r}
@@ -734,24 +748,9 @@ df |>
   kable(digits = 2, format.args = list(decimal.mark = ",", big.mark = "."),
         caption = "Na prática: com entrada de R$ 2.805,00 + 3 prestações")
 ```
-  
-## Anuidades antecipadas {background-image="./img/FACULDADE_INBEC_16_9.png"}
-
-- Vimos no exemplo que, nas anuidades antecipadas (por exemplo, num 
-financiamento com entrada),basta multiplicarmos a @eq-AmortizacaoPostecipada,
-obtendo assim a @eq-AmortizacaoAntecipada:
-
-- Outra forma de pensar é: subtrai-se o valor da entrada do valor presente, e 
-calcula-se o financimento em $n-1$ parcelas.
-
-  - $10.975,00 - 2.805,00 = \text{PMT} \frac{(1+1,40\%)^{3}-1}{1,40\%(1+1,40\%)^{3}}$
-  - $8.170,00 = \text{PMT} \cdot 2,918$
-  - $\text{PMT} \approx 2.800,00$
-  
-. . . 
 
 ```{r}
-#| echo: true
+#| eval: false
 PMT(rate = 1.40/100, nper = 3, pv = 10975-2805)
 ```
 

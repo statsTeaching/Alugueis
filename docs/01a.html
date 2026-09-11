@@ -227,7 +227,7 @@ Eng.º Luiz F. P. Droubi
 </div>
 </div>
 
-  <p class="date">10 de setembro de 2026</p>
+  <p class="date">11 de setembro de 2026</p>
 </section>
 <section class="slide level2">
 
@@ -900,6 +900,17 @@ Figura&nbsp;3: Fluxo de Caixa de uma <em>Amortização</em>.
 </table>
 </div>
 </div>
+</section>
+<section id="anuidades-antecipadas" class="slide level2" data-background-image="./img/FACULDADE_INBEC_16_9.png">
+<h2>Anuidades antecipadas</h2>
+<ul>
+<li class="fragment"><p>Vimos no exemplo que, nas anuidades antecipadas (por exemplo, num financiamento com entrada),basta multiplicarmos a <a href="#/eq-AmortizacaoPostecipada" class="quarto-xref">Equação&nbsp;11</a>, obtendo assim a <a href="#/eq-AmortizacaoAntecipada" class="quarto-xref">Equação&nbsp;12</a>:</p></li>
+<li class="fragment"><p>Outra forma de pensar é: subtrai-se o valor da entrada do valor presente, e calcula-se o financimento em <span class="math inline">\(n-1\)</span> parcelas.</p>
+<ul>
+<li class="fragment"><span class="math inline">\(10.975,00 - 2.805,00 = \text{PMT} \frac{(1+1,40\%)^{3}-1}{1,40\%(1+1,40\%)^{3}}\)</span></li>
+<li class="fragment"><span class="math inline">\(8.170,00 = \text{PMT} \cdot 2,918 \rightarrow \text{PMT} \approx 2.800,00\)</span></li>
+</ul></li>
+</ul>
 <div class="fragment">
 <div class="cell">
 <div class="cell-output-display">
@@ -939,24 +950,6 @@ Figura&nbsp;3: Fluxo de Caixa de uma <em>Amortização</em>.
 </tbody>
 </table>
 </div>
-</div>
-</div>
-</section>
-<section id="anuidades-antecipadas" class="slide level2" data-background-image="./img/FACULDADE_INBEC_16_9.png">
-<h2>Anuidades antecipadas</h2>
-<ul>
-<li class="fragment"><p>Vimos no exemplo que, nas anuidades antecipadas (por exemplo, num financiamento com entrada),basta multiplicarmos a <a href="#/eq-AmortizacaoPostecipada" class="quarto-xref">Equação&nbsp;11</a>, obtendo assim a <a href="#/eq-AmortizacaoAntecipada" class="quarto-xref">Equação&nbsp;12</a>:</p></li>
-<li class="fragment"><p>Outra forma de pensar é: subtrai-se o valor da entrada do valor presente, e calcula-se o financimento em <span class="math inline">\(n-1\)</span> parcelas.</p>
-<ul>
-<li class="fragment"><span class="math inline">\(10.975,00 - 2.805,00 = \text{PMT} \frac{(1+1,40\%)^{3}-1}{1,40\%(1+1,40\%)^{3}}\)</span></li>
-<li class="fragment"><span class="math inline">\(8.170,00 = \text{PMT} \cdot 2,918\)</span></li>
-<li class="fragment"><span class="math inline">\(\text{PMT} \approx 2.800,00\)</span></li>
-</ul></li>
-</ul>
-<div class="fragment">
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a><span class="fu">PMT</span>(<span class="at">rate =</span> <span class="fl">1.40</span><span class="sc">/</span><span class="dv">100</span>, <span class="at">nper =</span> <span class="dv">3</span>, <span class="at">pv =</span> <span class="dv">10975-2805</span>)</span>
-<span id="cb4-2"><a href=""></a><span class="co">#&gt; [1] -2799.94</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </section>
@@ -1007,8 +1000,8 @@ Figura&nbsp;4: Fluxo de Caixa de uma <em>Capitalização</em>.
 </ul>
 <div class="fragment">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a><span class="fu">fv.annuity</span>(<span class="at">r =</span> .<span class="dv">5</span><span class="sc">/</span><span class="dv">100</span>, <span class="at">n =</span> <span class="dv">12</span>, <span class="at">pmt =</span> <span class="sc">-</span><span class="dv">1000</span>, <span class="at">type =</span> <span class="dv">1</span>)</span>
-<span id="cb5-2"><a href=""></a><span class="co">#&gt; [1] 12397.24</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a><span class="fu">fv.annuity</span>(<span class="at">r =</span> .<span class="dv">5</span><span class="sc">/</span><span class="dv">100</span>, <span class="at">n =</span> <span class="dv">12</span>, <span class="at">pmt =</span> <span class="sc">-</span><span class="dv">1000</span>, <span class="at">type =</span> <span class="dv">1</span>)</span>
+<span id="cb4-2"><a href=""></a><span class="co">#&gt; [1] 12397.24</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </section>
@@ -1026,8 +1019,8 @@ Figura&nbsp;4: Fluxo de Caixa de uma <em>Capitalização</em>.
 </ul>
 <div class="fragment">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a><span class="fu">fv.annuity</span>(<span class="at">r =</span> .<span class="dv">5</span><span class="sc">/</span><span class="dv">100</span>, <span class="at">n =</span> <span class="dv">12</span>, <span class="at">pmt =</span> <span class="sc">-</span><span class="dv">1000</span>, <span class="at">type =</span> <span class="dv">0</span>)</span>
-<span id="cb6-2"><a href=""></a><span class="co">#&gt; [1] 12335.56</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a><span class="fu">fv.annuity</span>(<span class="at">r =</span> .<span class="dv">5</span><span class="sc">/</span><span class="dv">100</span>, <span class="at">n =</span> <span class="dv">12</span>, <span class="at">pmt =</span> <span class="sc">-</span><span class="dv">1000</span>, <span class="at">type =</span> <span class="dv">0</span>)</span>
+<span id="cb5-2"><a href=""></a><span class="co">#&gt; [1] 12335.56</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </section>
@@ -1045,8 +1038,8 @@ Figura&nbsp;4: Fluxo de Caixa de uma <em>Capitalização</em>.
 </ul>
 <div class="fragment">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a><span class="fu">pmt</span>(<span class="at">r =</span> .<span class="dv">76</span><span class="sc">/</span><span class="dv">100</span>, <span class="at">n =</span> <span class="dv">12</span>, <span class="at">pv =</span> <span class="dv">4000</span>, <span class="at">fv =</span> <span class="dv">0</span>)</span>
-<span id="cb7-2"><a href=""></a><span class="co">#&gt; [1] -350.0285</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a><span class="fu">pmt</span>(<span class="at">r =</span> .<span class="dv">76</span><span class="sc">/</span><span class="dv">100</span>, <span class="at">n =</span> <span class="dv">12</span>, <span class="at">pv =</span> <span class="dv">4000</span>, <span class="at">fv =</span> <span class="dv">0</span>)</span>
+<span id="cb6-2"><a href=""></a><span class="co">#&gt; [1] -350.0285</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </section>
@@ -1057,8 +1050,8 @@ Figura&nbsp;4: Fluxo de Caixa de uma <em>Capitalização</em>.
 </ul>
 <div class="fragment">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a><span class="fu">discount.rate</span>(<span class="at">n =</span> <span class="dv">12</span>, <span class="at">pv =</span> <span class="dv">4000</span>, <span class="at">fv =</span> <span class="dv">0</span>, <span class="at">pmt =</span> <span class="sc">-</span><span class="dv">350</span>)</span>
-<span id="cb8-2"><a href=""></a><span class="co">#&gt; [1] 0.007587923</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a><span class="fu">discount.rate</span>(<span class="at">n =</span> <span class="dv">12</span>, <span class="at">pv =</span> <span class="dv">4000</span>, <span class="at">fv =</span> <span class="dv">0</span>, <span class="at">pmt =</span> <span class="sc">-</span><span class="dv">350</span>)</span>
+<span id="cb7-2"><a href=""></a><span class="co">#&gt; [1] 0.007587923</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </section>
