@@ -30,7 +30,24 @@ format:
     transition: slide
     background-transition: fade
 fontsize: 1.8em
+knitr:
+  opts_chunk:
+    collapse: true
+    comment: "#>"
+    # fig.width: 7
+    # fig.height: 5
 ---
+
+```{r}
+#| include: false
+library(kableExtra)
+library(FinCal)
+library(DescTools)
+library(ggplot2)
+set_theme(theme_bw())
+library(tibble)
+```
+
 
 <!-- # Introdução -->
 
@@ -48,7 +65,7 @@ fontsize: 1.8em
 :::: {.columns}
 
 ::: {.column width="50%"}  
-- Olhando para os imóveis como *bem de consumo*:
+- Olhando para os imóveis como **bem de consumo**:
   - Consumimos imóveis todos os dias, seja para morar, seja para trabalhar!
   - O custo deste consumo pode estar implícito (imóvel próprio)
 
@@ -56,7 +73,7 @@ fontsize: 1.8em
 
 ::: {.column width="50%"}
 
-- Olhando para o imóvel como um *bem de investimento*:
+- Olhando para o imóvel como um **bem de investimento**:
   - Quando um investidor compra um título de renda fixa, ele espero ganhar
   juros
   - Quando o investidor compra um imóvel, ele espero ganhar renda!
@@ -77,11 +94,11 @@ mercado imobiliário
 ```{r}
 #| label: tab-StockFlow
 #| fig-cap: "Relação entre Estoque e Fluxo. Fonte: Adaptada de @Malpezzi2002TheRO"
-library(knitr)
 df <- data.frame(
   Estoque = c("Riqueza", "Dívida Pública", "Ação", "Valor de uma propriedade"),
   Fluxo = c("Renda", "Déficit Público", "Dividendo", "Aluguel"))
-kable(df)
+df |>
+  kable()
 ```
 
 
@@ -90,7 +107,15 @@ kable(df)
 ## Fluxo de Caixa {background-image="./img/FACULDADE_INBEC_16_9.png"}
 
 ```{r}
-library(FinCal)
+#| eval: false
+PlotCashFlow(
+  x = c(6:9, 13:15), y = -c(rep(40, 4), rep(50,3)),
+  xlim = c(6,17), labels = c(rep(40, 4), rep(50,3))
+)
+```
+
+
+```{r}
 CashFlowDiagram <- function(periods, incomes, expenses) {
   df <- data.frame(Periodo = seq(0, periods, by = 1),
                    Positive = incomes, Negative = expenses)
@@ -124,9 +149,6 @@ CashFlowDiagram <- function(periods, incomes, expenses) {
 #| label: fig-FC
 #| fig-cap: "Um Fluxo de Caixa Simples"
 #| out-width: "50%"
-library(ggplot2)
-set_theme(theme_bw())
-
 p <- CashFlowDiagram(periods = 12, 
                      incomes = c(10000, rep(NA, 11), 2000), 
                      expenses = c(NA, rep(-1000,12)))
@@ -536,7 +558,7 @@ iguais, com intervalos de tempo iguais.
   - *imediatas* ou *diferidas*;
   - *antecipadas* ou *postecipadas*.
 
-## Anuidades: Amortizações {background-image="./img/FACULDADE_INBEC_16_9.png"}
+## Anuidades: Amortizações postecipadas {background-image="./img/FACULDADE_INBEC_16_9.png"}
 
 ```{r}
 #| label: fig-FCAmortizacao
@@ -551,7 +573,7 @@ p +
   annotate("text", x = 1:12, y = 350, label = "PMT", size = 4, color = "red")
 ```
 
-## Anuidades: Amortizações {background-image="./img/FACULDADE_INBEC_16_9.png"}
+## Anuidades: Amortizações postecipadas {background-image="./img/FACULDADE_INBEC_16_9.png"}
 
 - **Ex.**: Compra de uma moto em 12 prestações mensais iguais de R$ 1.000,00,
 sem entrada!
@@ -561,7 +583,7 @@ sem entrada!
   juros.
   - $$VP = \frac{\text{PMT}}{(1+i)^1} + \frac{\text{PMT}}{(1+i)^2} + \frac{\text{PMT}}{(1+i)^3} + \cdots + \frac{\text{PMT}}{(1+i)^{12}}$$
   
-## Anuidades: Amortizações {background-image="./img/FACULDADE_INBEC_16_9.png"}
+## Anuidades: Amortizações postecipadas {background-image="./img/FACULDADE_INBEC_16_9.png"}
 
 - Se sabemos que a taxa de juros do financiamento é de 1,40% a.m.:
 
@@ -569,22 +591,30 @@ sem entrada!
   - $\text{VP} = 986,19 + 972,58 + 959,15 + \ldots + 846,34$
   - $\text{VP} \approx \text{R\$ } 10.975,00$
   
-- Podemos calcular **VP** facilmente através da @eq-Amortizacao:
-  - $$\text{VP} = \text{PMT} \frac{(1+i)^T - 1}{i(1+i)^T}$$ {#eq-Amortizacao}
+- Podemos calcular **VP** facilmente através da @eq-AmortizacaoPostecipada:
+  - $$\text{VP} = \text{PMT} \frac{(1+i)^T - 1}{i(1+i)^T}$$ {#eq-AmortizacaoPostecipada}
   
-- Assim, para o exemplo acima, através da @eq-Amortizacao, temos:
+- Assim, para o exemplo acima, através da @eq-AmortizacaoPostecipada, temos:
   - $\text{VP} = 1.000,00 \frac{(1+1,40\%)^{12}-1}{1,40\%(1+1,40\%)^{12}} = 1.000,00 \cdot 10,97576 \approx  \text{R\$ } 10.975,00$
   
+. . . 
+
+```{r}
+#| echo: true
+NPVFixBond(1.4/100, 1000, 0, 12)
+```
+
 
 ```{r}
 #| eval: false
+# Package FinCal:
 pv.annuity(1.4/100, 12, -1000)
 ```
 
-## Anuidades: Amortizações {background-image="./img/FACULDADE_INBEC_16_9.png"}
+## Anuidades: Amortizações postecipadas {background-image="./img/FACULDADE_INBEC_16_9.png"}
 
-- Após calcular o Valor Presenta da motocicleta, de R$ 10.975,00, você faz uma
-proposta ao vendedor, para pagar a moto em 4x de R$ 2.743,75, sem juros.
+- Após calcular o Valor Presente da motocicleta, de R$ 10.975,00, você faz uma
+proposta ao vendedor, para pagar a moto em 4x de R$ 2.743,75 (sem juros).
 
 - O vendedor responde que não é possível, e refaz as contas para embutir a taxa
 de juros do financiamento, de 1,40%. 
@@ -595,12 +625,43 @@ de juros do financiamento, de 1,40%.
   - $10.975,00 = \text{PMT} \cdot 3,86383$
   - $$\text{PMT} = \frac{10.975,00}{3,86383} = \text{R\$ } 2.840,45$$
   
+. . . 
+
+```{r}
+#| echo: true
+PMT(1.4/100, 4, 10975)
+```
+
+  
 ```{r}
 #| eval: false
+# Package FinCal:
 pmt(1.4/100, 4, 10975, fv = 0)
 ```
+
+## Anuidades: Amortizações postecipadas {background-image="./img/FACULDADE_INBEC_16_9.png"}
   
-## Anuidades: Amortizações {background-image="./img/FACULDADE_INBEC_16_9.png"}
+```{r}
+# original principal:    -10.975
+# loan term (months):     4
+# interest rate:         1.4%
+# payment:               2.840,45
+
+# simple amortization schedule
+df <- data.frame(
+  período      = 1:4,
+  prestação   = PMT(rate=1.4/100, nper=4, pv=-10975, fv=0, type=0),
+  juros  = IPMT(rate=1.4/100, per=1:4, nper=4, pv=-10975, fv=0, type=0),
+  principal = PPMT(rate=1.4/100, per=1:4, nper=4, pv=-10975, fv=0, type=0),
+  saldo   = RBAL(rate=1.4/100, per=1:4, nper=4, pv=-10975, fv=0, type=0)
+)
+df |>
+  kable(digits = 2, format.args = list(decimal.mark = ",", big.mark = "."),
+        caption = "Amortização com prestações postecipadas.")
+```
+  
+  
+## Anuidades: Amortizações antecipadas {background-image="./img/FACULDADE_INBEC_16_9.png"}
 
 - Você gosta das condições oferecidas pelo vendedor. Porém, ao passar a ficha
 cadastral, verifica-se que a parcela proposta, de R$ 2.840,45 excede o limite de
@@ -610,37 +671,97 @@ comprometimento de renda, que é de R$ 2.800,00.
   - Que você faça o pagamento de uma entrada de R$ 2.805,00 e mais três parcelas
   de R$ 2.800,00, o que resolve o problema do comprometimento de renda
   - Verificar a taxa de juros da operação
-  - $10.970,00 = \text{PMT} \cdot (1+i) \cdot \frac{(1+1,40\%)^{4}-1}{1,40\%(1+1,40\%)^{4}}$
-  - $10.970,00 = 2.800,00 \cdot (1+i) \cdot  \frac{(1+i)^{4}-1}{1,40\%(1+i)^{4}}$
-  - $i = 1,40\%$
-  
+    - $$\text{VP} = \text{PMT} \cdot (1+i) \cdot \frac{(1+i)^{T}-1}{i(1+i)^{T}}$$ {#eq-AmortizacaoAntecipada}
+    - $10.970,00 = 2.800,00 \cdot (1+i) \cdot  \frac{(1+i)^{4}-1}{i(1+i)^{4}} \rightarrow i = 1,40\%$
+    
+. . . 
+
 ```{r}
-#| eval: false
-discount.rate(4, 10970, 0, -2800, type = 1)
+#| echo: true
+discount.rate(4, -10970, 0, 2800, type = 1)
 ```
 
+## Anuidades: Amortizações {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+```{r}
+#| eval: false
+PMT(rate = 1.4/100, nper = 4, pv = -10975, type = 1)
+```
+
+  
+```{r}
+# original principal:    10.975
+# entrada:                2.800
+# loan term (months):     3
+# interest rate:          1.4%
+
+# simple amortization schedule
+df <- data.frame(
+  período      = 0:3,
+  prestação   = PMT(rate=1.4/100, nper=4, pv=-10975, fv=0, type=1),
+  juros  = IPMT(rate=1.4/100, per=1:4, nper=4, pv=-10975, fv=0, type=1),
+  principal = PPMT(rate=1.4/100, per=1:4, nper=4, pv=-10975, fv=0, type=1),
+  saldo   = RBAL(rate=1.4/100, per=1:4, nper=4, pv=-10975, fv=0, type=1)
+)
+df |>
+  kable(digits = 2, format.args = list(decimal.mark = ",", big.mark = "."),
+        caption = "Com prestações antecipadas.")
+```
+
+```{r}
+#| eval: false
+PMT(rate = 1.4/100, nper = 3, pv = -10975+2805, type = 0)
+```
+
+
+. . . 
+  
+```{r}
+# original principal:    10.975
+# entrada:                2.800
+# loan term (months):     3
+# interest rate:          1.4%
+
+# simple amortization schedule
+df <- data.frame(
+  período      = 1:3,
+  prestação   = PMT(rate=1.4/100, nper=3, pv=-10975+2805, fv=0, type=0),
+  juros  = IPMT(rate=1.4/100, per=1:3, nper=3, pv=-10975+2805, fv=0, type=0),
+  principal = PPMT(rate=1.4/100, per=1:3, nper=3, pv=-10975+2805, fv=0, type=0),
+  saldo   = RBAL(rate=1.4/100, per=1:3, nper=3, pv=-10975+2805, fv=0, type=0)
+)
+df |>
+  kable(digits = 2, format.args = list(decimal.mark = ",", big.mark = "."),
+        caption = "Na prática: com entrada de R$ 2.805,00 + 3 prestações")
+```
   
 ## Anuidades antecipadas {background-image="./img/FACULDADE_INBEC_16_9.png"}
 
 - Vimos no exemplo que, nas anuidades antecipadas (por exemplo, num 
-financiamento com entrada),basta multiplicarmos a {#eq-Amortizacao} por $(1+i)$,
-de forma que:
+financiamento com entrada),basta multiplicarmos a @eq-AmortizacaoPostecipada,
+obtendo assim a @eq-AmortizacaoAntecipada:
 
-  - $$\text{VP} = \text{PMT} \cdot (1+i) \cdot \frac{(1+i)^T - 1}{i(1+i)^T}$$ {#eq-AmortizacaoAntecipada}
-  
 - Outra forma de pensar é: subtrai-se o valor da entrada do valor presente, e 
 calcula-se o financimento em $n-1$ parcelas.
 
-  - $10.975,00 - 2.805,00 = 2.800 \frac{(1+i)^{3}-1}{1,40\%(1+i)^{3}}$
-  - $8.170,00 = 2.800 \frac{(1+i)^{3}-1}{1,40\%(1+i)^{3}}$
-  - $i = 1,40\%$
+  - $10.975,00 - 2.805,00 = \text{PMT} \frac{(1+1,40\%)^{3}-1}{1,40\%(1+1,40\%)^{3}}$
+  - $8.170,00 = \text{PMT} \cdot 2,918$
+  - $\text{PMT} \approx 2.800,00$
+  
+. . . 
+
+```{r}
+#| echo: true
+PMT(rate = 1.40/100, nper = 3, pv = 10975-2805)
+```
+
   
 ```{r}
 #| eval: false
 discount.rate(3, 10975-2805, 0, -2800, type = 0)
 ```
  
-## Anuidades: Capitalizações {background-image="./img/FACULDADE_INBEC_16_9.png"}
+## Anuidades: Capitalizações antecipadas {background-image="./img/FACULDADE_INBEC_16_9.png"}
 
 ```{r}
 #| label: fig-FCCapitalizacao
@@ -656,7 +777,7 @@ p +
   annotate("text", x = 0:11, y = 350, label = "PMT", size = 4, color = "red")
 ```
 
-## Anuidades: Capitalizações {background-image="./img/FACULDADE_INBEC_16_9.png"}
+## Anuidades: Capitalizações antecipadas {background-image="./img/FACULDADE_INBEC_16_9.png"}
 
 - **Ex.**: Efetuar 12 depósitos mensais no valor de R$ 1.000,00 numa caderneta 
 de poupança. Calcule o saldo ao final do ano.
@@ -670,38 +791,56 @@ de poupança. Calcule o saldo ao final do ano.
   - Então:
     - $M = 1.000 \cdot (1 + 0,50\%)^{12} + 1.000 \cdot (1 + 0,50\%)^{11} + \cdots +  1.000 \cdot (1 + 0,50\%)^1$
   
-## Anuidades: Capitalizações {background-image="./img/FACULDADE_INBEC_16_9.png"}
+## Anuidades: Capitalizações antecipadas {background-image="./img/FACULDADE_INBEC_16_9.png"}
 
 - Então:
   - $M = 1061,68 + 1056,40 + 1051,14 + \ldots + 1005,00$
   - $M \approx \text{R\$ } 12.397,24$
   
-- Podemos calcular **M** facilmente através da @eq-Capitalizacao:
-  - $$M = \text{PMT} \frac{(1+i)^T - 1}{i}(1+i)$$ {#eq-Capitalizacao}
+- Podemos calcular **M** facilmente através da @eq-CapitalizacaoAntecipada:
+  - $$M = \text{PMT} \frac{(1+i)^T - 1}{i}(1+i)$$ {#eq-CapitalizacaoAntecipada}
   
-- Assim, para o exemplo acima, através da @eq-Capitalizacao, temos:
-  - $$M = 1.000,00 \frac{(1+0,50\%)^{12}-1}{0,50\%}(1+0,50\%) = 1.000,00 \cdot 12,336 \cdot 1,005 =  \text{R\$ } 12.397,24$$
-  
+- Assim, para o exemplo acima, através da @eq-CapitalizacaoAntecipada, temos:
+  - $$M = 1.000,00 \frac{(1+0,50\%)^{12}-1}{0,50\%}(1+0,50\%) = \text{R\$ } 12.397,24$$
+
+. . .   
 
 ```{r}
-#| eval: false
-fv.annuity(.5/100, 12, -1000)
+#| echo: true
+fv.annuity(r = .5/100, n = 12, pmt = -1000, type = 1)
+```
+
+## Anuidades: Capitalizações postecipadas {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- Analogamente às amortizações, a diferença entre postecipadas e antecipadas
+varia apenas o primeiro período:
+  - $$M = \text{PMT} \frac{(1+i)^T - 1}{i}$$ {#eq-CapitalizacaoPostecipada}
+  
+- Assim, para o exemplo acima, através da @eq-CapitalizacaoPostecipada, temos:
+  - $$M = 1.000,00 \frac{(1+0,50\%)^{12}-1}{0,50\%} = \text{R\$ } 12.335,56$$
+
+. . .   
+
+```{r}
+#| echo: true
+fv.annuity(r = .5/100, n = 12, pmt = -1000, type = 0)
 ```
 
 ## Anuidades: Cálculo da renda {background-image="./img/FACULDADE_INBEC_16_9.png"}
 
-- Para calcular a renda (ou prestação de um empréstimo) sobre um valor presente
+- Para calcular a renda (ou prestação) de um empréstimo sobre um valor presente
 de um ativo, dada uma taxa de juros $i$, em $n$ períodos, basta utilizar uma das
 equações abaixo:
-  - $$R = \text{VP}\frac{i.(1+i)^n}{(1+i)^n-1}\, \text{ou;}$$ 
-  - $$R = \frac{\text{VP}.i}{1-(1+i)^{-n}}$$ {#eq-Renda}
+  - $$R = \text{VP}\frac{i.(1+i)^n}{(1+i)^n-1}\, \text{ou;} \, R = \frac{\text{VP}.i}{1-(1+i)^{-n}}$$ {#eq-Renda}
 
 - Exemplo: Dado um valor presente de R$ 4.000,00, a uma taxa de 0,76% a.m., 
 calcule a prestação para pagamento em 12 prestações mensais iguais:
   - $$R = \frac{4000\cdot 0,76\%}{1-(1+0,76\%)^{-12}} = \frac{30,4}{1 - 0,91315} \approx 350,00$$
     
+. . . 
+
 ```{r}
-#| eval: false
+#| echo: true
 pmt(r = .76/100, n = 12, pv = 4000, fv = 0)
 ```
 
@@ -720,15 +859,15 @@ discount.rate(n = 12, pv = 4000, fv = 0, pmt = -350)
 
 ## Anuidades: Fatores {background-image="./img/FACULDADE_INBEC_16_9.png"}
 
-- Pela análise da @eq-Amortizacao, percebe-se que o valor presente das anuidades
-é função:
+- Pela análise da @eq-AmortizacaoAntecipada, percebe-se que o valor presente das
+anuidades é função:
   1. Do valor das anuidades;
   2. De um fator que depende da taxa, *i*, e do numero de períodos, $T$.
 
 - Este fator, denominado *Fator de Valor Presente*, FVP, pode ser tabelado;
 
-- Analogamente, pela análise da @eq-Capitalizacao, percebe-se que o Montante das
-anuidades é função:
+- Analogamente, pela análise da @eq-CapitalizacaoAntecipada, percebe-se que o 
+Montante das anuidades é função:
   1. Do valor das anuidades;
   2. De um fator que depende da taxa, *i*, e do numero de períodos, $T$.
 
@@ -742,11 +881,9 @@ tabelado;
 . . . 
 
 ```{r}
-# library(kableExtra)
 FVP <- function(i, t) {
   ((1+i)^t-1)/(i*(1+i)^t)
 }
-library(tibble)
 fvp <- tribble(
   ~n,       ~`1%`,       ~`2%`,       ~`3%`,       ~`4%`,       ~`5%`,       ~`6%`,       ~`7%`,      ~`8%`,        ~`9%`,      ~`10%`, 
    1, FVP(.01, 1), FVP(.02, 1), FVP(.03, 1), FVP(.04, 1), FVP(.05, 1), FVP(.06, 1), FVP(.07, 1), FVP(.08, 1), FVP(.09, 1), FVP(.10, 1),

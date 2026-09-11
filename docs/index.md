@@ -6,4 +6,5 @@
 - [Método da Renda (2)](./02b.html)
 - [Método Comparativo](./03a.html)
 - [Método Comparativo (2)](./03b.html)
-- [Estudo de Caso - Aluguéis Comerciais](./04.html)
+- [Método da Participação](./04a.html)
+- [Estudo de Caso - Aluguéis Comerciais](./4_EC_Aluguel_Comercial.pdf)

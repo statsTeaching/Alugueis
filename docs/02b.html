@@ -6,8 +6,8 @@
 <script src="02b_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="02b_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="02b_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="02b_files/libs/quarto-html/quarto-syntax-highlighting-985aa47af68dae11cd4d235c71fb941e.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.27">
+<link href="02b_files/libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.38">
 
   <meta name="author" content="Eng.º Luiz F. P. Droubi">
   <title>Método da Renda (2)</title>
@@ -17,6 +17,9 @@
   <link rel="stylesheet" href="02b_files/libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="02b_files/libs/revealjs/dist/reveal.css">
   <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -32,7 +35,6 @@
     div.csl-bib-body { }
     div.csl-entry {
       clear: both;
-      margin-bottom: 0em;
     }
     .hanging-indent div.csl-entry {
       margin-left:2em;
@@ -49,7 +51,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="02b_files/libs/revealjs/dist/theme/quarto-77914c2d4cf3c3cbfd54b2fb7c6641ee.css">
+  <link rel="stylesheet" href="02b_files/libs/revealjs/dist/theme/quarto-95d99237c61c0e6735c2d9ec45f2ce4b.css">
   <link href="02b_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="02b_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="02b_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -147,7 +149,7 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" data-background-image="img/Fundo_Slide_Titulo.png" data-background-size="cover" class="quarto-title-block center">
+<section id="title-slide" data-background-image="img/Fundo_Capa.png" data-background-size="cover" class="quarto-title-block center">
   <h1 class="title">Método da Renda (2)</h1>
   <p class="subtitle">Avaliação de Aluguéis</p>
 
@@ -159,14 +161,13 @@ Eng.º Luiz F. P. Droubi
 </div>
 </div>
 
-  <p class="date">22 de dezembro de 2025</p>
+  <p class="date">9 de setembro de 2026</p>
 </section>
-<section>
-<section id="aproveitamento-do-terreno" class="title-slide slide level1 center">
-<h1>Aproveitamento do Terreno</h1>
+<section class="slide level2">
 
+<!-- # Aproveitamento do Terreno -->
 </section>
-<section id="aproveitamento-do-terreno-1" class="slide level2">
+<section id="aproveitamento-do-terreno" class="slide level2" data-background-image="./img/FACULDADE_INBEC_16_9.png">
 <h2>Aproveitamento do Terreno</h2>
 <ul>
 <li class="fragment"><p>Uma questão que aparece em decorrência da aplicação do método evolutivo.</p></li>
@@ -174,7 +175,7 @@ Eng.º Luiz F. P. Droubi
 <ul>
 <li class="fragment">A composição do valor total do imóvel avaliando (<span class="math inline">\(V_i\)</span>) pode ser obtida através da conjugação de métodos, a partir do valor do terreno (<span class="math inline">\(V_t\)</span>), considerados o custo de reprodução das benfeitorias devidamente depreciado (<span class="math inline">\(C_b\)</span>) e o fator de comercialização (<span class="math inline">\(\text{FC}\)</span>), ou seja:
 <ul>
-<li class="fragment"><span id="eq-Evolutivo"><span class="math display">\[V_i = (V_t + C_b)\cdot \text{FC} \qquad(1)\]</span></span></li>
+<li class="fragment"><span id="eq-Evolutivo"><span class="math display">\[V_i = (V_t + C_b)\cdot \text{FC} \tag{1}\]</span></span></li>
 </ul></li>
 </ul></li>
 <li class="fragment"><p>Na NBR 14.653-01 <span class="citation" data-cites="NBR1465301">(<a href="#/referências" role="doc-biblioref" onclick="">ABNT 2019, 14</a>)</span>:</p>
@@ -183,7 +184,7 @@ Eng.º Luiz F. P. Droubi
 </ul></li>
 </ul>
 </section>
-<section id="aproveitamento-do-terreno-2" class="slide level2">
+<section id="aproveitamento-do-terreno-1" class="slide level2" data-background-image="./img/FACULDADE_INBEC_16_9.png">
 <h2>Aproveitamento do Terreno</h2>
 <ul>
 <li class="fragment">Problema:
@@ -199,7 +200,7 @@ Eng.º Luiz F. P. Droubi
 </ul></li>
 </ul>
 </section>
-<section id="aproveitamento-do-terreno-3" class="slide level2">
+<section id="aproveitamento-do-terreno-2" class="slide level2" data-background-image="./img/FACULDADE_INBEC_16_9.png">
 <h2>Aproveitamento do Terreno</h2>
 <ul>
 <li class="fragment">Como o terreno encontra-se subaproveitado, não se pode aplicar uma taxa de remuneração sobre todo o terreno para calcular o aluguel justo ao locatário
@@ -214,14 +215,14 @@ Eng.º Luiz F. P. Droubi
 <li class="fragment">Por exemplo: regiões pouco desenvolvidas, onde, até pelo baixo preço dos terrenos, não se justifica economicamente a construção de prédios de vários pavimentos, apesar de ser permitida pela legislação.</li>
 </ul>
 </section>
-<section id="aproveitamento-do-terreno-4" class="slide level2">
+<section id="aproveitamento-do-terreno-3" class="slide level2" data-background-image="./img/FACULDADE_INBEC_16_9.png">
 <h2>Aproveitamento do Terreno</h2>
 <ul>
 <li class="fragment"><p>O coeficiente de aproveitamento do terreno é o coeficiente que relaciona as benfeitorias realmente existentes no terreno às benfeitorias que, caso erigidas no terreno, dariam-lhe o <strong>máximo e melhor aproveitamento</strong>.</p></li>
 <li class="fragment"><p>O coeficiente de aproveitamento trata, portanto, não apenas da quantidade de <strong>área construída</strong> no terreno, mas à <strong>qualidade</strong> desta área construída e a sua <strong>idade</strong> (conservação).</p></li>
 </ul>
 </section>
-<section id="aproveitamento-do-terreno-5" class="slide level2">
+<section id="aproveitamento-do-terreno-4" class="slide level2" data-background-image="./img/FACULDADE_INBEC_16_9.png">
 <h2>Aproveitamento do Terreno</h2>
 <ul>
 <li class="fragment">Candeloro, n.d., p.&nbsp;45:</li>
@@ -232,12 +233,12 @@ Eng.º Luiz F. P. Droubi
 </blockquote>
 </div>
 </section>
-<section id="cálculo-do-coeficiente-de-aproveitamento" class="slide level2">
+<section id="cálculo-do-coeficiente-de-aproveitamento" class="slide level2" data-background-image="./img/FACULDADE_INBEC_16_9.png">
 <h2>Cálculo do Coeficiente de Aproveitamento</h2>
 <ul>
 <li class="fragment">O coeficiente de aproveitamento pode ser descrito pela fórmula a seguir (Candeloro, n.d., 19; D’Amato e Alonso 2019, p, 129):
 <ul>
-<li class="fragment"><span class="math display">\[C_A = \frac{A_{h-existente}}{A_{h-máxima}}\]</span></li>
+<li class="fragment"><span id="eq-CA"><span class="math display">\[\text{CA} = \frac{A_{h-existente}}{A_{h-máxima}} \tag{2}\]</span></span></li>
 </ul></li>
 <li class="fragment">Deve-se notar que o Coeficiente de Aproveitamento é calculado com áreas homogeneizadas, <em>i.e.</em> com áreas ponderadas conforme a escolha de pesos convenientes.</li>
 <li class="fragment">Ponderar a área edificada segundo o aproveitamento do terreno (zoneamento)</li>
@@ -245,19 +246,19 @@ Eng.º Luiz F. P. Droubi
 <li class="fragment">Ponderar a área edificada segundo o grau de obsolescência da edificação</li>
 </ul>
 </section>
-<section id="cálculo-do-coeficiente-de-aproveitamento-1" class="slide level2">
+<section id="cálculo-do-coeficiente-de-aproveitamento-1" class="slide level2" data-background-image="./img/FACULDADE_INBEC_16_9.png">
 <h2>Cálculo do Coeficiente de Aproveitamento</h2>
 <ul>
 <li class="fragment">Exemplo:
 <ul>
 <li class="fragment">Um terreno com 10,0m de testada e área <span class="math inline">\(S = 400m^2\)</span>, situado em zona urbana com Taxa de Ocupação <span class="math inline">\(\text{TO} = 0,5\)</span> e Coeficiente de Aproveitamento <span class="math inline">\(\text{CA} = 1,0\)</span>.</li>
-<li class="fragment">Este terreno encontra-se em zona com valor do <span class="math inline">\(m2\)</span> <span class="math inline">\(q_T = 2.000,00\, \text{R\$}/m^2\)</span></li>
+<li class="fragment">Este terreno encontra-se em zona com valor unitário <span class="math inline">\(q_T = 2.000,00\, \text{R\$}/m^2\)</span></li>
 <li class="fragment">Neste terreno encontra-se edificada uma edificação comercial com 450m2 de área construída, sendo 150m2 no térreo e 300m2 nos andares superiores</li>
 <li class="fragment">A edificação possui padrão construtivo médio e tem idade de aprox. 10 anos, o que resulta num fator de obsolescência igual a 0,75.</li>
 </ul></li>
 </ul>
 </section>
-<section id="resolução" class="slide level2">
+<section id="resolução" class="slide level2" data-background-image="./img/FACULDADE_INBEC_16_9.png">
 <h2>Resolução</h2>
 <ul>
 <li class="fragment">Considerar que o custo de construção equivale a 1,2 vezes o CUB do padrão R-8N (<span class="math inline">\(\text{R\$ }1.000,00/m^2\)</span>), <em>i.e.</em> <span class="math inline">\(q_B = 1,2.\text{R-8N}\)</span>.</li>
@@ -268,7 +269,7 @@ Eng.º Luiz F. P. Droubi
 </ul></li>
 </ul>
 </section>
-<section id="resolução-1" class="slide level2">
+<section id="resolução-1" class="slide level2" data-background-image="./img/FACULDADE_INBEC_16_9.png">
 <h2>Resolução</h2>
 <h3 id="cálculo-do-coeficiente-de-aproveitamento-2">Cálculo do Coeficiente de Aproveitamento</h3>
 <div class="columns">
@@ -278,12 +279,12 @@ Eng.º Luiz F. P. Droubi
 <ul>
 <li class="fragment">Térreo (peso 3):
 <ul>
-<li class="fragment"><span class="math inline">\(A_{T-exist} = W_T \cdot A_T = 3.150\)</span></li>
+<li class="fragment"><span class="math inline">\(A_{T-exist} = W_T \cdot A_T = 3 \cdot 150\)</span></li>
 <li class="fragment"><span class="math inline">\(A_{T-exist} = 450m^2\)</span></li>
 </ul></li>
 <li class="fragment">Superiores (peso 1):
 <ul>
-<li class="fragment"><span class="math inline">\(A_{S-exist} = W_S \cdot A_S = 1.300\)</span></li>
+<li class="fragment"><span class="math inline">\(A_{S-exist} = W_S \cdot A_S = 1 \cdot 300\)</span></li>
 <li class="fragment"><span class="math inline">\(A_{S-exist} = 300m^2\)</span></li>
 </ul></li>
 </ul></li>
@@ -295,7 +296,7 @@ Eng.º Luiz F. P. Droubi
 <li class="fragment">Térreo (peso 3):
 <ul>
 <li class="fragment"><span class="math inline">\(A_{T-max} = \text{TO}\cdot S\cdot W_T\)</span></li>
-<li class="fragment"><span class="math inline">\(A_{T-max} = 0,5.400.3 = 600m^2\)</span></li>
+<li class="fragment"><span class="math inline">\(A_{T-max} = 0,5 \cdot 400 \cdot 3 = 600m^2\)</span></li>
 </ul></li>
 <li class="fragment">Superiores (peso 1):
 <ul>
@@ -312,7 +313,7 @@ Eng.º Luiz F. P. Droubi
 </ul></li>
 </ul>
 </section>
-<section id="resolução-2" class="slide level2">
+<section id="resolução-2" class="slide level2" data-background-image="./img/FACULDADE_INBEC_16_9.png">
 <h2>Resolução</h2>
 <h3 id="cálculo-do-valor-do-capital">Cálculo do valor do capital</h3>
 <div class="columns">
@@ -353,7 +354,7 @@ Eng.º Luiz F. P. Droubi
 </ul>
 </div></div>
 </section>
-<section id="resolução-3" class="slide level2">
+<section id="resolução-3" class="slide level2" data-background-image="./img/FACULDADE_INBEC_16_9.png">
 <h2>Resolução</h2>
 <h3 id="método-da-remuneração-do-capital">Método da Remuneração do Capital</h3>
 <div class="columns">
@@ -376,7 +377,7 @@ Eng.º Luiz F. P. Droubi
 </ul>
 </div></div>
 </section>
-<section id="coeficiente-de-aproveitamento" class="slide level2">
+<section id="coeficiente-de-aproveitamento" class="slide level2" data-background-image="./img/FACULDADE_INBEC_16_9.png">
 <h2>Coeficiente de Aproveitamento</h2>
 <h3 id="redução-do-coeficiente-pela-idade">Redução do Coeficiente pela idade</h3>
 <ul>
@@ -389,12 +390,12 @@ Eng.º Luiz F. P. Droubi
 </ul></li>
 </ul>
 </section>
-<section id="coeficiente-de-aproveitamento-1" class="slide level2">
+<section id="coeficiente-de-aproveitamento-1" class="slide level2" data-background-image="./img/FACULDADE_INBEC_16_9.png">
 <h2>Coeficiente de Aproveitamento</h2>
 <h3 id="redução-do-coeficiente-pela-idade-1">Redução do Coeficiente pela idade</h3>
 <ul>
-<li class="fragment">Fórmula de Dante Guerrero <span class="citation" data-cites="candeloro">(<a href="#/referências" role="doc-biblioref" onclick="">Candeloro, s.d., 20</a>)</span>:</li>
-<li class="fragment"><span class="math display">\[\text{CA}_R = \text{CA}\left [R + (1-R).\frac{v}{V}\right ]\]</span>
+<li class="fragment">Fórmula de Dante Guerrero <span class="citation" data-cites="candeloro">(<a href="#/referências" role="doc-biblioref" onclick="">Candeloro, sem data, 20</a>)</span>:</li>
+<li class="fragment"><span id="eq-DanteGuerrero"><span class="math display">\[\text{CA}_R = \text{CA}\left [R + (1-R).\frac{v}{V}\right ] \tag{3}\]</span></span>
 <ul>
 <li class="fragment"><span class="math inline">\(R\)</span>: residual da construção</li>
 <li class="fragment"><span class="math inline">\(v\)</span>: idade aparente da benfeitoria</li>
@@ -402,36 +403,37 @@ Eng.º Luiz F. P. Droubi
 </ul></li>
 </ul>
 </section>
-<section id="coeficiente-de-aproveitamento-2" class="slide level2">
+<section id="coeficiente-de-aproveitamento-2" class="slide level2" data-background-image="./img/FACULDADE_INBEC_16_9.png">
 <h2>Coeficiente de Aproveitamento</h2>
 <h3 id="redução-do-coeficiente-pela-idade-2">Redução do Coeficiente pela idade</h3>
 <ul>
-<li class="fragment">Fórmula de Dante Guerrero <span class="citation" data-cites="candeloro">(<a href="#/referências" role="doc-biblioref" onclick="">Candeloro, s.d., 20</a>)</span>:</li>
+<li class="fragment">Fórmula de Dante Guerrero <span class="citation" data-cites="candeloro">(<a href="#/referências" role="doc-biblioref" onclick="">Candeloro, sem data, 20</a>)</span>:</li>
 <li class="fragment">Exemplo:
 <ul>
 <li class="fragment">Mesmo caso anterior, em que <span class="math inline">\(\text{CA} = 750/800 = 0,9375\)</span>, considerar vida útil igual a 50 anos e Residual igual a 20%:
 <ul>
 <li class="fragment"><span class="math inline">\(\text{CA}_R = \text{CA}\left [R + (1-R)\frac{v}{V}\right ]\)</span></li>
-<li class="fragment"><span class="math inline">\(\text{CA} = \frac{750}{800}\left [20\% + (1-20\%)\frac{10}{50}\right ] = 0,9375.(0,2+(1-0,2).10/50)\)</span></li>
+<li class="fragment"><span class="math inline">\(\text{CA} = \frac{750}{800}\left [20\% + (1-20\%)\frac{10}{50}\right ]\)</span></li>
+<li class="fragment"><span class="math inline">\(\text{CA} = 0,9375\cdot(0,2+(1-0,2)\cdot 10/50)\)</span></li>
 <li class="fragment"><span class="math inline">\(\text{CA} = 0,3375\)</span></li>
 <li class="fragment">Está incorreto!</li>
 </ul></li>
 </ul></li>
 </ul>
 </section>
-<section id="coeficiente-de-aproveitamento-3" class="slide level2">
+<section id="coeficiente-de-aproveitamento-3" class="slide level2" data-background-image="./img/FACULDADE_INBEC_16_9.png">
 <h2>Coeficiente de Aproveitamento</h2>
 <h3 id="redução-do-coeficiente-pela-idade-3">Redução do Coeficiente pela idade</h3>
 <ul>
 <li class="fragment">Correto seria:
 <ul>
-<li class="fragment"><span class="math display">\[\text{CA}_R = \text{CA}\left [R + (1-R)\left (1-\frac{v}{V}\right )\right ]\]</span></li>
+<li class="fragment"><span id="eq-DanteGuerrero2"><span class="math display">\[\text{CA}_R = \text{CA}\left [R + (1-R)\left (1-\frac{v}{V}\right )\right ] \tag{4}\]</span></span></li>
 <li class="fragment"><span class="math display">\[\text{CA}_R = \frac{750}{800}\left [20\% + (1-20\%)\left(1-\frac{10}{50}\right)\right ]\]</span></li>
-<li class="fragment"><span class="math display">\[\text{CA} = 0,9375.(0,2+0,64) = 0,7875\]</span></li>
+<li class="fragment"><span class="math inline">\(\text{CA}_R = 0,9375 \cdot (0,2+0,64) = 0,7875\)</span></li>
 </ul></li>
 </ul>
 </section>
-<section id="coeficiente-de-aproveitamento-4" class="slide level2">
+<section id="coeficiente-de-aproveitamento-4" class="slide level2" data-background-image="./img/FACULDADE_INBEC_16_9.png">
 <h2>Coeficiente de Aproveitamento</h2>
 <h3 id="redução-do-coeficiente-pela-idade-4">Redução do Coeficiente pela idade</h3>
 <ul>
@@ -443,7 +445,7 @@ Eng.º Luiz F. P. Droubi
 </ul></li>
 </ul>
 </section>
-<section id="coeficiente-de-aproveitamento-5" class="slide level2">
+<section id="coeficiente-de-aproveitamento-5" class="slide level2" data-background-image="./img/FACULDADE_INBEC_16_9.png">
 <h2>Coeficiente de Aproveitamento</h2>
 <h3 id="redução-do-coeficiente-pela-idade-5">Redução do Coeficiente pela idade</h3>
 <ul>
@@ -459,7 +461,7 @@ Eng.º Luiz F. P. Droubi
 </ul></li>
 </ul>
 </section>
-<section id="coeficiente-de-aproveitamento-6" class="slide level2">
+<section id="coeficiente-de-aproveitamento-6" class="slide level2" data-background-image="./img/FACULDADE_INBEC_16_9.png">
 <h2>Coeficiente de Aproveitamento</h2>
 <h3 id="redução-do-coeficiente-pela-idade-6">Redução do Coeficiente pela idade</h3>
 <ul>
@@ -469,7 +471,7 @@ Eng.º Luiz F. P. Droubi
 </li>
 <li class="fragment">Aplicou-se:
 <ul>
-<li class="fragment"><span class="math inline">\(\text{CA}_{Ap} = 1 – [((E – e)/E)\cdot (0,20 + (0,80\cdot (V – v)/V))]\)</span></li>
+<li class="fragment"><span id="eq-NelsonAlonso"><span class="math display">\[\text{CA}_{Ap} = 1 – [((E – e)/E)\cdot (0,20 + (0,80\cdot (V – v)/V))] \tag{5}\]</span></span></li>
 </ul></li>
 <li class="fragment">E chegou-se a:
 <ul>
@@ -480,7 +482,7 @@ Eng.º Luiz F. P. Droubi
 </ul></li>
 </ul>
 </section>
-<section id="coeficiente-de-aproveitamento-7" class="slide level2">
+<section id="coeficiente-de-aproveitamento-7" class="slide level2" data-background-image="./img/FACULDADE_INBEC_16_9.png">
 <h2>Coeficiente de Aproveitamento</h2>
 <h3 id="redução-do-coeficiente-pela-idade-7">Redução do Coeficiente pela idade</h3>
 <ul>
@@ -491,14 +493,14 @@ Eng.º Luiz F. P. Droubi
 <li class="fragment">Pode-se perceber que o erro está no componente básico da fórmula!</li>
 <li class="fragment">Correto seria:
 <ul>
-<li class="fragment"><span class="math inline">\(C_{Ap} = 1 – [ (e/E) \cdot ( 0,20 + ( 0,80 \cdot (V – v)/V))]\)</span></li>
+<li class="fragment"><span id="eq-NelsonAlonsocorrigida"><span class="math display">\[C_{Ap} = 1 – [ (e/E) \cdot ( 0,20 + ( 0,80 \cdot (V – v)/V))] \tag{6}\]</span></span></li>
 <li class="fragment"><span class="math inline">\(C_{Ap} = 1 – (0,26\cdot 0,7067) = 0,184\)</span></li>
 </ul></li>
 </ul></li>
 </ul></li>
 </ul>
 </section>
-<section id="coeficiente-de-aproveitamento-8" class="slide level2">
+<section id="coeficiente-de-aproveitamento-8" class="slide level2" data-background-image="./img/FACULDADE_INBEC_16_9.png">
 <h2>Coeficiente de Aproveitamento</h2>
 <h3 id="redução-do-coeficiente-pela-idade-e-padrão">Redução do Coeficiente pela idade e padrão</h3>
 <blockquote>
@@ -508,10 +510,10 @@ Eng.º Luiz F. P. Droubi
 <p>Então, aos dois fatores endógenos (área e idade) deve ser acrescentado o padrão regional, de natureza exógena, portanto de caráter somatório <span class="citation" data-cites="alonso2017">(<a href="#/referências" role="doc-biblioref" onclick="">Alonso e D’Amato 2017, 6</a>)</span>.</p>
 </blockquote>
 <ul>
-<li class="fragment"><span class="math display">\[C_{Ap} = 1 – (1 - \frac{e}{E})\cdot (0,20 + (0,80.(1 - v/V))) + (1 - p/P)\]</span></li>
+<li class="fragment"><span id="eq-NelsonAlonso2"><span class="math display">\[C_{Ap} = 1 – (1 - \frac{e}{E})\cdot (0,20 + (0,80.(1 - v/V))) + (1 - p/P) \tag{7}\]</span></span></li>
 </ul>
 </section>
-<section id="coeficiente-de-aproveitamento-9" class="slide level2">
+<section id="coeficiente-de-aproveitamento-9" class="slide level2" data-background-image="./img/FACULDADE_INBEC_16_9.png">
 <h2>Coeficiente de Aproveitamento</h2>
 <h3 id="redução-do-coeficiente-pela-idade-e-padrão-1">Redução do Coeficiente pela idade e padrão</h3>
 <ul>
@@ -520,7 +522,7 @@ Eng.º Luiz F. P. Droubi
 <li class="fragment">Porém, agora considerando que o padrão da construção existente é de 1,470xR-8N, enquanto no entorno prevalece um padrão mais alto, de 1,926xR-8N</li>
 </ul>
 </section>
-<section id="coeficiente-de-aproveitamento-10" class="slide level2">
+<section id="coeficiente-de-aproveitamento-10" class="slide level2" data-background-image="./img/FACULDADE_INBEC_16_9.png">
 <h2>Coeficiente de Aproveitamento</h2>
 <h3 id="redução-do-coeficiente-pela-idade-e-padrão-2">Redução do Coeficiente pela idade e padrão</h3>
 <ul>
@@ -531,37 +533,33 @@ Eng.º Luiz F. P. Droubi
 </ul></li>
 <li class="fragment">Solução lógica:
 <ul>
-<li class="fragment"><span class="math inline">\(C_{Ap} = 1 – [ (e/E) \cdot  (0,20 + (0,80\cdot (V – v)/V))\cdot (p/P)]\)</span></li>
+<li class="fragment"><span id="eq-NelsonAlonso2corrigida"><span class="math display">\[C_{Ap} = 1 – [ (e/E) \cdot  (0,20 + (0,80\cdot (V – v)/V))\cdot (p/P)] \tag{8}\]</span></span></li>
 <li class="fragment"><span class="math inline">\(C_{Ap} = 1 – (0,26\cdot 0,7067\cdot 0,763)\)</span></li>
 <li class="fragment"><span class="math inline">\(C_{Ap} = 0,14\)</span></li>
 </ul></li>
 <li class="fragment">Não faz sentido, ao nosso ver, que a variável padrão seja considerada na forma aditiva, enquanto as outras são consideradas na forma multiplicativa.</li>
 </ul>
-</section></section>
-<section>
-<section id="cota-parte" class="title-slide slide level1 center">
-<h1>Cota parte</h1>
-
+<!-- # Cota parte -->
 </section>
-<section id="cota-parte-1" class="slide level2">
+<section id="cota-parte" class="slide level2" data-background-image="./img/FACULDADE_INBEC_16_9.png">
 <h2>Cota parte</h2>
 <ul>
 <li class="fragment">Em muitos casos a avaliação desejada é de uma unidade do edifício e não do seu todo</li>
 <li class="fragment">Assim surge o problema, nos casos de aplicação do método evolutivo, de saber qual cota-parte do terreno cabe àquela unidade que se deseja avaliar.</li>
 <li class="fragment">Matematicamente:
 <ul>
-<li class="fragment"><span class="math inline">\(CP = \frac{A_{hu}}{A_{ht}}; \qquad CT_{un} = CT\cdot CP\)</span>
+<li class="fragment"><span id="eq-CP"><span class="math display">\[CP = \frac{A_{hu}}{A_{ht}} \tag{9}\]</span></span></li>
+<li class="fragment"><span id="eq-CTun"><span class="math display">\[CT_{un} = CT \cdot CP \tag{10}\]</span></span>
 <ul>
 <li class="fragment">CP: Cota-Parte</li>
 <li class="fragment">CT: Capital Terreno (Total)</li>
 <li class="fragment">CTun: Capital Terreno correspondente à unidade em análise</li>
-<li class="fragment"><span class="math inline">\(A_{hu}\)</span>: área homogeneizada da unidade</li>
-<li class="fragment"><span class="math inline">\(A_{ht}\)</span>: área homogeneizada total</li>
+<li class="fragment"><span class="math inline">\(A_{hu}; A_{ht}\)</span>: área homogeneizada da unidade/total</li>
 </ul></li>
 </ul></li>
 </ul>
 </section>
-<section id="exemplo" class="slide level2">
+<section id="exemplo" class="slide level2" data-background-image="./img/FACULDADE_INBEC_16_9.png">
 <h2>Exemplo</h2>
 <ul>
 <li class="fragment">Cálcular a Cota Parte do Térreo num edifício composto de um terreno de 400 <span class="math inline">\(m^2\)</span>, com área construída de 200 <span class="math inline">\(m^2\)</span> no térreo e superiores de 400 <span class="math inline">\(m^2\)</span>.</li>
@@ -569,20 +567,20 @@ Eng.º Luiz F. P. Droubi
 <ul>
 <li class="fragment">Solução:
 <ul>
-<li class="fragment"><span class="math display">\[CP = \frac{A_{hu}}{A_{ht}} = \frac{A_{Terreo}\cdot p_{Terreo}}{A_{Terreo}\cdot p_{Terreo} + A_{Superiores}\cdot p_{Superiores}}\]</span></li>
+<li class="fragment"><span id="eq-CP"><span class="math display">\[CP = \frac{A_{hu}}{A_{ht}} = \frac{A_{Terreo}\cdot p_{Terreo}}{A_{Terreo}\cdot p_{Terreo} + A_{Superiores}\cdot p_{Superiores}} \tag{11}\]</span></span></li>
 <li class="fragment"><span class="math display">\[CP = \frac{200\cdot 3}{200\cdot 3+400\cdot 1} = \frac{600}{1.000} = 60\%\]</span></li>
 </ul></li>
 </ul></li>
 </ul>
 </section>
-<section id="cálculo-do-aluguel-de-uma-cota-parte" class="slide level2">
+<section id="cálculo-do-aluguel-de-uma-cota-parte" class="slide level2" data-background-image="./img/FACULDADE_INBEC_16_9.png">
 <h2>Cálculo do aluguel de uma cota parte</h2>
 <ul>
 <li class="fragment">Para o cômputo do aluguel de uma única unidade, pode-se calcular a Cota Parte (CP) da unidade e aplicar ao valor total do Capital Terreno.</li>
 <li class="fragment">No entanto, se o objetivo for calcular apenas o valor do aluguel da unidade, pode-se calcular o Capital terreno referente à unidade (CTun) diretamente através da fórmula (Candeloro, p.63):</li>
 </ul>
 <div class="fragment">
-<p><span class="math display">\[CT_{un} = q_t.\frac{A_{hu}}{\text{TO}\cdot p_{Térreo} + (\text{CA}_{\text{básico}}-\text{TO})\cdot p_{\text{Superiores}}}\]</span></p>
+<p><span id="eq-CTun"><span class="math display">\[CT_{un} = q_t.\frac{A_{hu}}{\text{TO}\cdot p_{Térreo} + (\text{CA}_{\text{básico}}-\text{TO})\cdot p_{\text{Superiores}}} \tag{12}\]</span></span></p>
 <ul>
 <li class="fragment"><span class="math inline">\(q_t\)</span>: Unitário do Terreno</li>
 <li class="fragment"><span class="math inline">\(\text{TO}\)</span>: Taxa de Ocupação do Terreno</li>
@@ -590,7 +588,7 @@ Eng.º Luiz F. P. Droubi
 </ul>
 </div>
 </section>
-<section id="exemplo-1" class="slide level2">
+<section id="exemplo-1" class="slide level2" data-background-image="./img/FACULDADE_INBEC_16_9.png">
 <h2>Exemplo</h2>
 <ul>
 <li class="fragment">Loja, com 200 <span class="math inline">\(m^2\)</span> no térreo e 100 <span class="math inline">\(m^2\)</span> no superior. O VU do terreno é de <span class="math inline">\(q_t = 1.000,00 \text{ R\$}/m^2\)</span>, porém sua área total é desconhecida, assim como as áreas construídas das outras unidades.</li>
@@ -602,15 +600,14 @@ Eng.º Luiz F. P. Droubi
 <ul>
 <li class="fragment">Solução:
 <ul>
-<li class="fragment"><span class="math inline">\(CT_{un} = q_t.\frac{A_{hu}}{\text{TO}.p_{Térreo} + (CA_{básico}-\text{TO}).p_{Superiores}}\)</span></li>
-<li class="fragment"><span class="math inline">\(CT_{un} = 1.000,00.\frac{200\cdot 5+100\cdot 1}{0,8\cdot 5 + (3,5-0,8)\cdot 1}\)</span></li>
-<li class="fragment"><span class="math inline">\(CT_{un} = 164.179,10\)</span></li>
+<li class="fragment"><span class="math display">\[CT_{un} = q_t.\frac{A_{hu}}{\text{TO}.p_{Térreo} + (CA_{básico}-\text{TO}).p_{Superiores}}\]</span></li>
+<li class="fragment"><span class="math display">\[CT_{un} = 1.000,00.\frac{200\cdot 5+100\cdot 1}{0,8\cdot 5 + (3,5-0,8)\cdot 1} = 164.179,10\]</span></li>
 </ul></li>
 </ul></li>
 </ul></li>
 </ul>
 </section>
-<section id="exercício" class="slide level2">
+<section id="exercício" class="slide level2" data-background-image="./img/FACULDADE_INBEC_16_9.png">
 <h2>Exercício</h2>
 <ul>
 <li class="fragment">Imaginem que o escritório de Avaliações e Perícias em que você trabalha foi contratado por um potencial comprador de um edifício localizado na região central da cidade para efetuar a avaliação do aluguel de diversas lojas e escritórios neste edifício;</li>
@@ -618,7 +615,7 @@ Eng.º Luiz F. P. Droubi
 <li class="fragment">O proprietário pretende ocupar com seu escritório pouco mais da metade da área do 2º pavimento (90 m2) e locar o restante;</li>
 </ul>
 </section>
-<section id="exercício-1" class="slide level2">
+<section id="exercício-1" class="slide level2" data-background-image="./img/FACULDADE_INBEC_16_9.png">
 <h2>Exercício</h2>
 <ul>
 <li class="fragment">O proprietário informou que algumas pessoas já manifestaram interesse em locar espaços no seu prédio
@@ -631,7 +628,7 @@ Eng.º Luiz F. P. Droubi
 <li class="fragment">O potencial proprietário ainda deseja saber qual o valor do aluguel da área que ele próprio irá ocupar no 2º pavimento (90 m2), para fins de calcular o VPL da compra do edifício (aluguel implícito).</li>
 </ul>
 </section>
-<section id="exercício-2" class="slide level2">
+<section id="exercício-2" class="slide level2" data-background-image="./img/FACULDADE_INBEC_16_9.png">
 <h2>Exercício</h2>
 <ul>
 <li class="fragment">O diretor de Avaliações resolveu pulverizar o trabalho entre diversos avaliadores;</li>
@@ -640,7 +637,7 @@ Eng.º Luiz F. P. Droubi
 <li class="fragment">Para uma melhor apresentação do trabalho, o Diretor solicitou que fosse utilizado o método da Cota Parte, evitando assim que o laudo final fique repleto de cálculos repetitivos.</li>
 </ul>
 </section>
-<section id="exercício-3" class="slide level2">
+<section id="exercício-3" class="slide level2" data-background-image="./img/FACULDADE_INBEC_16_9.png">
 <h2>Exercício</h2>
 <div class="columns">
 <div class="column" style="width:55%;">
@@ -654,10 +651,7 @@ Eng.º Luiz F. P. Droubi
 <li class="fragment">Pesos: 3:1 (térreo:superiores)</li>
 <li class="fragment">Taxa de renda: 8% a.a.</li>
 </ul></li>
-<li class="fragment">Considerar a idade no cálculo do coeficiente de aproveitamento, através da seguinte expressão:
-<ul>
-<li class="fragment"><span class="math inline">\(CA = \frac{A_{hu}}{A_{hexist}}.\left (0,2+0,8\frac{V-v}{V}\right )\)</span></li>
-</ul></li>
+<li class="fragment">Desconsiderar a idade no cálculo do coeficiente de aproveitamento!</li>
 </ul>
 </div><div class="column" style="width:45%;">
 <ul>
@@ -673,40 +667,40 @@ Eng.º Luiz F. P. Droubi
 </ul>
 </div></div>
 </section>
-<section id="exercício-4" class="slide level2">
+<section id="exercício-4" class="slide level2" data-background-image="./img/FACULDADE_INBEC_16_9.png">
 <h2>Exercício</h2>
 <ul>
-<li class="fragment"><p>Unidade 1: Loja (Térreo) com 90m2;</p></li>
-<li class="fragment"><p>Unidade 2: Loja (Térreo) com 60m2;</p></li>
-<li class="fragment"><p>Unidade 3: Laje corporativa (1º andar), com 150 m2;</p></li>
-<li class="fragment"><p>Unidade 4: Sala Comercial (2º andar), com 60 m2;</p></li>
-<li class="fragment"><p>Unidade 5: Sala Comercial (2º andar), com 90 m2;</p></li>
+<li class="fragment"><p>Grupo 1: Un. 1 - Loja (Térreo) com 90m2, usando Cota Parte;</p></li>
+<li class="fragment"><p>Grupo 2: Un. 2 - Loja (Térreo) com 60m2, usando Cota Parte;</p></li>
+<li class="fragment"><p>Grupo 3: Un. 3 - Laje corporativa (1º andar), com 150 m2, usando Cota Parte;</p></li>
+<li class="fragment"><p>Grupo 4: Un. 4 - Sala Comercial (2º andar), com 60 m2, usando Cota Parte;</p></li>
+<li class="fragment"><p>Grupo 5: Un. 5 - Sala Comercial (2º andar), com 90 m2, usando Cota Parte;</p></li>
+<li class="fragment"><p>Grupo 6: Calcular o valor dos aluguéis para o térreo e superiores, sem utilizar o cálculo direto pela Cota Parte.</p></li>
 <li class="fragment"><p>DICAS:</p>
 <ul>
-<li class="fragment">Para uma melhor apresentação, resolva pela fórmula da Cota-Parte;</li>
-<li class="fragment">Elabore os cálculos em uma planilha eletrônica antes de escrevê-los no editor de textos;</li>
-<li class="fragment">Para verificação pode ser feito o cálculo do aluguel de cada andar em separado e depois aplicar a proporcionalidade entre a área do andar e a da unidade.</li>
+<li class="fragment">Organize os cálculos antes em uma planilha eletrônica;</li>
+<li class="fragment">Depois descreva-os no editor de textos;</li>
 </ul></li>
 </ul>
 </section>
-<section id="referências" class="slide level2 smaller scrollable">
+<section id="referências" class="slide level2 smaller scrollable" data-background-image="./img/FACULDADE_INBEC_16_9.png">
 <h2>Referências</h2>
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-NBR1465302" class="csl-entry" role="listitem">
-ABNT. 2011. <em><span>NBR</span> 14653-2: Avaliacao de Bens – Parte 2: Imoveis Urbanos</em>. Rio de Janeiro: Associacao Brasileira de Normas Tecnicas.
+ABNT. 2011. <em><span>NBR</span> 14653-2: Avaliacao de Bens – Parte 2: Imoveis Urbanos</em>. Associacao Brasileira de Normas Tecnicas.
 </div>
 <div id="ref-NBR1465301" class="csl-entry" role="listitem">
-———. 2019. <em><span>NBR</span> 14653-1: Avaliacao de Bens – Parte 1: Procedimentos Gerais</em>. Rio de Janeiro: Associacao Brasileira de Normas Tecnicas.
+ABNT. 2019. <em><span>NBR</span> 14653-1: Avaliacao de Bens – Parte 1: Procedimentos Gerais</em>. Associacao Brasileira de Normas Tecnicas.
 </div>
 <div id="ref-alonso2017" class="csl-entry" role="listitem">
-Alonso, Nelson Roberto Pereira, e Mônica D’Amato. 2017. <span>«O aproveitamento do terreno à luz das normas técnicas»</span>, 10.
+Alonso, Nelson Roberto Pereira, e Mônica D’Amato. 2017. <em>O aproveitamento do terreno à luz das normas técnicas</em>. 10.
 </div>
 <div id="ref-candeloro" class="csl-entry" role="listitem">
-Candeloro, Milton. s.d. <span>«Avaliação de Aluguéis»</span>. Instituto Brasileiro de Educação Continuada.
+Candeloro, Milton. sem data. <em>Avaliação de Aluguéis</em>. Instituto Brasileiro de Educação Continuada.
 </div>
 </div>
-</section></section>
+</section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
@@ -885,9 +879,6 @@ Candeloro, Milton. s.d. <span>«Avaliação de Aluguéis»</span>. Instituto Bra
         // viewDistance in order to save resources.
         mobileViewDistance: 2,
 
-       // Parallax background image
-       parallaxBackgroundImage: './img/Fundo_Slide_Comum.jpg', // e.g. "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'"
-
         // Parallax background size
         parallaxBackgroundSize: 'cover', // CSS syntax, e.g. "2100px 900px"
 
@@ -902,7 +893,7 @@ Candeloro, Milton. s.d. <span>«Avaliação de Aluguéis»</span>. Instituto Bra
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -976,13 +967,14 @@ Candeloro, Milton. s.d. <span>«Avaliação de Aluguéis»</span>. Instituto Bra
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

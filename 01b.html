@@ -6,8 +6,8 @@
 <script src="01b_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="01b_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="01b_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="01b_files/libs/quarto-html/quarto-syntax-highlighting-985aa47af68dae11cd4d235c71fb941e.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.27">
+<link href="01b_files/libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.38">
 
   <meta name="author" content="Eng.º Luiz F. P. Droubi">
   <title>Engenharia Econômica</title>
@@ -17,6 +17,9 @@
   <link rel="stylesheet" href="01b_files/libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="01b_files/libs/revealjs/dist/reveal.css">
   <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -32,7 +35,6 @@
     div.csl-bib-body { }
     div.csl-entry {
       clear: both;
-      margin-bottom: 0em;
     }
     .hanging-indent div.csl-entry {
       margin-left:2em;
@@ -49,7 +51,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="01b_files/libs/revealjs/dist/theme/quarto-77914c2d4cf3c3cbfd54b2fb7c6641ee.css">
+  <link rel="stylesheet" href="01b_files/libs/revealjs/dist/theme/quarto-95d99237c61c0e6735c2d9ec45f2ce4b.css">
   <link href="01b_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="01b_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="01b_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -159,7 +161,7 @@ Eng.º Luiz F. P. Droubi
 </div>
 </div>
 
-  <p class="date">23 de dezembro de 2025</p>
+  <p class="date">11 de setembro de 2026</p>
 </section>
 <section class="slide level2">
 
@@ -197,7 +199,7 @@ Eng.º Luiz F. P. Droubi
 <li class="fragment"><p>O Valor Presente Líquido, ou VPL, de um fluxo de caixa, é um parâmetro que pode ser utilizado para a admissão ou rejeição da viabilidade de um projeto de investimento:</p></li>
 <li class="fragment"><p>O VPL pode ser calculado pela <a href="#/eq-vpl" class="quarto-xref">Equação&nbsp;1</a>:</p>
 <ul>
-<li class="fragment"><span id="eq-vpl"><span class="math display">\[VPL = -I + \sum_{t=1}^T \frac{R_t - C_t}{(1+i)^t} \qquad(1)\]</span></span>
+<li class="fragment"><span id="eq-vpl"><span class="math display">\[VPL = -I + \sum_{t=1}^T \frac{R_t - C_t}{(1+i)^t} \tag{1}\]</span></span>
 <ul>
 <li class="fragment"><span class="math inline">\(I\)</span> é o investimento, em geral realizado no início do projeto;</li>
 <li class="fragment"><span class="math inline">\(R_t\)</span> são as receitas do projeto em cada período <span class="math inline">\(t\)</span>;</li>
@@ -212,14 +214,14 @@ Eng.º Luiz F. P. Droubi
 <ul>
 <li class="fragment">Quando o fluxo de caixa é constante, o VPL também pode ser escrito em função do <em>Fator de Recuperação do Capital</em> (FRC):
 <ul>
-<li class="fragment"><span id="eq-vpl2"><span class="math display">\[VPL = -I + \frac{R_l}{\text{FRC}(i,T)} \qquad(2)\]</span></span>
+<li class="fragment"><span id="eq-vpl2"><span class="math display">\[VPL = -I + \frac{R_l}{\text{FRC}(i,T)} \tag{2}\]</span></span>
 <ul>
 <li class="fragment"><span class="math inline">\(R_l = R - C\)</span></li>
 </ul></li>
 </ul></li>
 <li class="fragment">Pode-se considerar, ainda, um valor residual, <span class="math inline">\(D\)</span>, ao final do período de análise:
 <ul>
-<li class="fragment"><span id="eq-vpl3"><span class="math display">\[VPL = -I + \frac{R_l}{\text{FRC}(i,T)} + D.\text{FAC}(i,T) \qquad(3)\]</span></span></li>
+<li class="fragment"><span id="eq-vpl3"><span class="math display">\[VPL = -I + \frac{R_l}{\text{FRC}(i,T)} + D.\text{FAC}(i,T) \tag{3}\]</span></span></li>
 </ul></li>
 </ul>
 </section>
@@ -228,11 +230,11 @@ Eng.º Luiz F. P. Droubi
 <div class="columns">
 <div class="column" style="width:50%;">
 <ul>
-<li class="fragment"><span id="eq-frc"><span class="math display">\[\text{FRC}(i, T) = \frac{i.(1+i)^T}{(1+i)^T-1} \qquad(4)\]</span></span></li>
+<li class="fragment"><span id="eq-frc"><span class="math display">\[\text{FRC}(i, T) = \frac{i.(1+i)^T}{(1+i)^T-1} \tag{4}\]</span></span></li>
 </ul>
 </div><div class="column" style="width:50%;">
 <ul>
-<li class="fragment"><span id="eq-fac"><span class="math display">\[\text{FAC}(i,T) = \frac{1}{(1+i)^T} \qquad(5)\]</span></span></li>
+<li class="fragment"><span id="eq-fac"><span class="math display">\[\text{FAC}(i,T) = \frac{1}{(1+i)^T} \tag{5}\]</span></span></li>
 </ul>
 </div></div>
 </section>
@@ -642,7 +644,7 @@ Figura&nbsp;2: Exemplo 2: Diagrama de Fluxo de Caixa.
 <section id="reflexões-3" class="slide level2" data-background-image="./img/FACULDADE_INBEC_16_9.png">
 <h2>Reflexões</h2>
 <ul>
-<li class="fragment"><span class="citation" data-cites="Machline">Machline (<a href="#/referências" role="doc-biblioref" onclick="">1966, 60</a>)</span>:</li>
+<li class="fragment"><span class="citation" data-cites="Machline">Machline (<a href="#/comparação-por-tir-1" role="doc-biblioref" onclick="">1966, 60</a>)</span>:</li>
 </ul>
 <div class="fragment">
 <blockquote>
@@ -662,7 +664,7 @@ Figura&nbsp;2: Exemplo 2: Diagrama de Fluxo de Caixa.
 </ul></li>
 <li class="fragment"><p>Assim, para investimentos com FC muito longos, a equação <a href="#/eq-vpl2" class="quarto-xref">2</a> torna-se:</p>
 <ul>
-<li class="fragment"><span id="eq-vpl3"><span class="math display">\[VPL = -I + \frac{R}{i} \qquad(6)\]</span></span></li>
+<li class="fragment"><span id="eq-vpl3"><span class="math display">\[VPL = -I + \frac{R}{i} \tag{6}\]</span></span></li>
 </ul></li>
 </ul>
 </section>
@@ -680,12 +682,12 @@ Figura&nbsp;2: Exemplo 2: Diagrama de Fluxo de Caixa.
 <div class="column" style="width:50%;">
 <ul>
 <li class="fragment">O <em>Método da Renda</em>:</li>
-<li class="fragment"><span id="eq-metodoRenda"><span class="math display">\[V_{imóvel} = \frac{Al}{i} \qquad(7)\]</span></span></li>
+<li class="fragment"><span id="eq-metodoRenda"><span class="math display">\[V_{imóvel} = \frac{Al}{i} \tag{7}\]</span></span></li>
 </ul>
 </div><div class="column" style="width:50%;">
 <ul>
 <li class="fragment">O <em>Método da Remuneração do Capital</em>:</li>
-<li class="fragment"><span id="eq-metodoRemuneracaoCapital"><span class="math display">\[Al = V_{imóvel}.i \qquad(8)\]</span></span></li>
+<li class="fragment"><span id="eq-metodoRemuneracaoCapital"><span class="math display">\[Al = V_{imóvel}.i \tag{8}\]</span></span></li>
 </ul>
 </div></div>
 </div>
@@ -720,7 +722,7 @@ Figura&nbsp;2: Exemplo 2: Diagrama de Fluxo de Caixa.
 <section id="taxa-interna-de-retorno" class="slide level2" data-background-image="./img/FACULDADE_INBEC_16_9.png">
 <h2>Taxa interna de retorno</h2>
 <ul>
-<li class="fragment">Segundo <span class="citation" data-cites="barbieri">Barbieri, Álvares, e Machline (<a href="#/referências" role="doc-biblioref" onclick="">2007, 132</a>)</span>:
+<li class="fragment">Segundo <span class="citation" data-cites="barbieri">Barbieri et al. (<a href="#/comparação-por-tir-1" role="doc-biblioref" onclick="">2007, 132</a>)</span>:
 <ul>
 <li class="fragment"><blockquote>
 <p>A literatura especializada define Taxa Interna de Retorno - TIR como sendo a taxa de juros que anula o VPL do fluxo de caixa de um investimento</p>
@@ -733,7 +735,7 @@ Figura&nbsp;2: Exemplo 2: Diagrama de Fluxo de Caixa.
 <h2>Taxa interna de retorno</h2>
 <ul>
 <li class="fragment"><p>Dados os valores do investimento (<span class="math inline">\(I\)</span>), a Renda (<span class="math inline">\(R\)</span>), o Custo (<span class="math inline">\(C\)</span>) e o número de períodos (<span class="math inline">\(T\)</span>), a TIR é o valor da taxa <span class="math inline">\(i\)</span> que zera o VPL na equação <a href="#/eq-vpl" class="quarto-xref">1</a>:</p></li>
-<li class="fragment"><p><span id="eq-tir"><span class="math display">\[0 = -I  + \sum_{t=1}^T \frac{R_t - C_t}{(1+TIR)^t} \qquad(9)\]</span></span></p>
+<li class="fragment"><p><span id="eq-tir"><span class="math display">\[0 = -I  + \sum_{t=1}^T \frac{R_t - C_t}{(1+TIR)^t} \tag{9}\]</span></span></p>
 <ul>
 <li class="fragment">Se <span class="math inline">\(TIR &gt; TMA\)</span>: aceita-se o projeto!</li>
 <li class="fragment">Caso contrário, rejeita-se!</li>
@@ -823,12 +825,12 @@ Figura&nbsp;2: Exemplo 2: Diagrama de Fluxo de Caixa.
 <li class="fragment">Lucratividade:
 <ul>
 <li class="fragment">é a razão entre o lucro líquido (<span class="math inline">\(L_{líquido}\)</span>) e a receita bruta (<span class="math inline">\(R_{bruta}\)</span>):</li>
-<li class="fragment"><span id="eq-lucratividade"><span class="math display">\[L = \frac{L_{líquido}}{R_{bruta}} \qquad(10)\]</span></span></li>
+<li class="fragment"><span id="eq-lucratividade"><span class="math display">\[L = \frac{L_{líquido}}{R_{bruta}} \tag{10}\]</span></span></li>
 </ul></li>
 <li class="fragment">Rentabilidade:
 <ul>
 <li class="fragment">é a razão entre o lucro líquido e o investimento (<span class="math inline">\(I\)</span>):</li>
-<li class="fragment"><span id="eq-rentabilidade"><span class="math display">\[\text{ROI} = \frac{L_{líquido}}{I} \qquad(11)\]</span></span></li>
+<li class="fragment"><span id="eq-rentabilidade"><span class="math display">\[\text{ROI} = \frac{L_{líquido}}{I} \tag{11}\]</span></span></li>
 </ul></li>
 </ul>
 </section>
@@ -868,7 +870,7 @@ Figura&nbsp;2: Exemplo 2: Diagrama de Fluxo de Caixa.
 </ul></li>
 </ul>
 </section>
-<section id="comparação-por-tir-1" class="slide level2" data-background-image="./img/FACULDADE_INBEC_16_9.png">
+<section id="comparação-por-tir-1" class="slide level2 smaller scrollable" data-background-image="./img/FACULDADE_INBEC_16_9.png">
 <h2>Comparação por TIR</h2>
 <ul>
 <li class="fragment">Um bom exercício para este momento é:
@@ -883,92 +885,10 @@ Figura&nbsp;2: Exemplo 2: Diagrama de Fluxo de Caixa.
 </ul></li>
 </ul></li>
 </ul>
-<!-- # Aspectos Legais -->
-</section>
-<section id="lei-do-inquilinato" class="slide level2" data-background-image="./img/FACULDADE_INBEC_16_9.png">
-<h2>Lei do Inquilinato</h2>
-<ul>
-<li class="fragment"><p>A partir da entrada em vigor do Código Civil, em jan/1917, a legislação do inquilinato evoluindo em fases alternadas, ora favorecendo os proprietários, ora os inquilinos <span class="citation" data-cites="damato">(<a href="#/referências" role="doc-biblioref" onclick="">D’Amato e Alonso 2019, 38</a>)</span>.</p></li>
-<li class="fragment"><p>Lei em vigor: a Lei nº 8.245, de 18/10/1991 é uma <strong>lei de ordem pública</strong>, ou seja, atinge os contratos celebrados em particulares, impedindo o estabelecimento de cláusulas contrárias aos seus dispositivos, protegendo assim a parte economicamente mais fraca.</p></li>
-</ul>
-</section>
-<section id="lei-do-inquilinato-1" class="slide level2" data-background-image="./img/FACULDADE_INBEC_16_9.png">
-<h2>Lei do Inquilinato</h2>
-<ul>
-<li class="fragment">Continam regulados pelo Código Civil e pelas leis especiais, portanto fora da Lei do Inquilinato:</li>
-<li class="fragment">As locações:
-<ul>
-<li class="fragment">de imóveis de propriedade da União, dos Estados e Municípios, de suas autarquias e fundações públicas</li>
-<li class="fragment">de vagas autônomas de garagem ou de espaços para estacionamento de veículos;
-<ul>
-<li class="fragment">de espaços destinados à publicidade;</li>
-<li class="fragment">em apart-hotéis, hotéis-residência ou equiparados, assim considerados aqueles que prestam serviços regulares a seus usuários e como tais sejam autorizados a funcionar;</li>
-</ul></li>
-<li class="fragment">o arrendamento mercantil, em qualquer de suas modalidades</li>
-</ul></li>
-</ul>
-</section>
-<section id="direito-de-preferência" class="slide level2" data-background-image="./img/FACULDADE_INBEC_16_9.png">
-<h2>Direito de Preferência</h2>
-<blockquote>
-<p>Art. 27. No caso de venda, promessa de venda, cessão ou promessa de cessão de direitos ou dação em pagamento, o locatário tem preferência para adquirir o imóvel locado, em igualdade de condições com terceiros, devendo o locador dar-lhe conhecimento do negócio mediante notificação judicial, extrajudicial ou outro meio de ciência inequívoca. Parágrafo único. A comunicação deverá conter todas as condições do negócio e, em especial, o preço, a forma de pagamento, a existência de ônus reais, bem como o local e horário em que pode ser examinada a documentação pertinente.</p>
-</blockquote>
-<blockquote>
-<p>Art. 28. O direito de preferência do locatário caducará se não manifestada, de maneira inequívoca, sua aceitação integral à proposta, no prazo de trinta dias.</p>
-</blockquote>
-<blockquote>
-<p>Art. 29. Ocorrendo aceitação da proposta, pelo locatário, a posterior desistência do negócio pelo locador acarreta, a este, responsabilidade pelos prejuízos ocasionados, inclusive lucros cessantes.</p>
-</blockquote>
-</section>
-<section id="direito-de-preferência-1" class="slide level2" data-background-image="./img/FACULDADE_INBEC_16_9.png">
-<h2>Direito de Preferência</h2>
-<blockquote>
-<p>Art. 30. Estando o imóvel sublocado em sua totalidade, caberá a preferência ao sublocatário e, em seguida, ao locatário. Se forem vários os sublocatários, a preferência caberá a todos, em comum, ou a qualquer deles, se um só for o interessado. Parágrafo único. Havendo pluralidade de pretendentes, caberá a preferência ao locatário mais antigo, e, se da mesma data, ao mais idoso.</p>
-</blockquote>
-<blockquote>
-<p>Art. 31. Em se tratando de alienação de mais de uma unidade imobiliária, o direito de preferência incidirá sobre a totalidade dos bens objeto da alienação.</p>
-</blockquote>
-<blockquote>
-<p>Art. 32. O direito de preferência não alcança os casos de perda da propriedade ou venda por decisão judicial, permuta, doação, integralização de capital, cisão, fusão e incorporação.</p>
-</blockquote>
-</section>
-<section id="ação-revisional-de-aluguel" class="slide level2" data-background-image="./img/FACULDADE_INBEC_16_9.png">
-<h2>Ação Revisional de Aluguel</h2>
-<blockquote>
-<p>Art. 68. Na ação revisional de aluguel, que terá o rito sumaríssimo, observar-se-á o seguinte:<br>
-I – além dos requisitos exigidos pelos arts. 276 e 282 do Código de Processo Civil, a petição inicial deverá indicar o valor do aluguel cuja fixação é pretendida. (Vide Nota mental na página seguinte).<br>
-II – ao designar a audiência de instrução e julgamento, o juiz, se houver pedido e com base nos elementos fornecidos pelo autor ou nos que indicar, fixará aluguel provisório, não excedente a oitenta por cento do pedido, que será devido desde a citação.<br>
-III – sem prejuízo da contestação e até a audiência, o réu poderá pedir seja revisto o aluguel provisório, fornecendo os elementos para tanto.<br>
-IV – na audiência de instrução e julgamento, apresentada a contestação, que deverá conter contraproposta se houver discordância quanto ao valor pretendido, o juiz tentará a conciliação e, não sendo esta possível, suspenderá o ato para a <strong>realização de perícia</strong>, se necessária, designando, desde logo, audiência em continuação.</p>
-</blockquote>
-</section>
-<section id="ação-renovatória-de-aluguel" class="slide level2" data-background-image="./img/FACULDADE_INBEC_16_9.png">
-<h2>Ação Renovatória de aluguel</h2>
-<blockquote>
-<p>Art. 51. Nas locações de imóveis destinados ao comércio, o locatário terá direito à renovação do contrato, por igual prazo, desde que, cumulativamente: I. o contrato a renovar tenha sido celebrado por escrito e com prazo determinado; II. o prazo mínimo do contrato a renovar ou a soma dos prazos ininterruptos dos contratos escritos seja de <strong>cinco anos</strong>; (g. n.) III. o locatário esteja explorando seu comércio, no mesmo ramo, pelo prazo mínimo e ininterrupto de três anos. Art. 52. O locador não estará obrigado a renovar o contrato se: I – por determinação do Poder Público, tiver que realizar no imóvel obras que importarem na sua radical transformação; <strong>ou para fazer modificação de tal natureza que aumente o valor do negócio ou da propriedade</strong>;(g. n.) II – o imóvel vier a ser utilizado por ele próprio ou para transferência de fundo de comércio existente há mais de um ano, sendo detentor da maioria do capital o locador, seu cônjuge, ascendente ou descendente.</p>
-</blockquote>
-<ul>
-<li class="fragment">Este direito de renovação pelo locatário nos contratos com prazo maior ou igual a 5 anos é que enseja a cobrança de luvas!</li>
-</ul>
-</section>
-<section id="ação-renovatória-de-aluguel-1" class="slide level2" data-background-image="./img/FACULDADE_INBEC_16_9.png">
-<h2>Ação Renovatória de aluguel</h2>
-<h3 id="contestação">Contestação</h3>
-<blockquote>
-<p>Art. 72. A contestação do locador, além da defesa de direito que possa caber, ficará adstrita, quanto à matéria de fato, ao seguinte: …<br>
-II – não atender, a proposta do locatário, o valor locativo real do imóvel na época da renovação, excluída a valorização trazida por aquele ao ponto ou lugar; III – ter proposta de terceiro para a locação, em condições melhores; IV – não estar obrigado a renovar a locação (incisos I e II do art. 52). § 1o . No caso do inciso II, o locador deverá apresentar, em contraproposta, as condições que repute compatíveis com o valor locativo real e atual do imóvel. § 2o .<br>
-§ 3o . No caso do inciso I do art. 52, a contestação deverá trazer prova da determinação do Poder Público ou relatório pormenorizado das obras a serem realizadas e da estimativa de valorização que sofrerá o imóvel, <strong>assinado por engenheiro devidamente habilitado</strong>. (Grifo nosso!!)</p>
-</blockquote>
-</section>
-<section id="referências" class="slide level2 smaller scrollable" data-background-image="./img/FACULDADE_INBEC_16_9.png">
-<h2>Referências</h2>
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-barbieri" class="csl-entry" role="listitem">
 Barbieri, José Carlos, Antonio Carlos Teixeira Álvares, e Claude Machline. 2007. <span>«Taxa Interna de Retorno: controvérsias e interpretações»</span>. <em>GRPROS: Gestão da Produção, Operações e Sistemas</em> 5 (outubro): 131–42.
-</div>
-<div id="ref-damato" class="csl-entry" role="listitem">
-D’Amato, Mônica, e Nelson Roberto Pereira Alonso. 2019. <em>Avaliação de Aluguéis</em>. Editado por Leud. 4.ª ed. São Paulo.
 </div>
 <div id="ref-Machline" class="csl-entry" role="listitem">
 Machline, Claude. 1966. <span>«Análise de investimentos e inflação»</span>. <em>Revista de Administração de Empresas</em>, n.º 18: 51–126. <a href="https://doi.org/10.1590/S0034-75901966000100002">https://doi.org/10.1590/S0034-75901966000100002</a>.
@@ -1167,7 +1087,7 @@ Machline, Claude. 1966. <span>«Análise de investimentos e inflação»</span>.
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -1194,80 +1114,42 @@ Machline, Claude. 1966. <span>«Análise de investimentos e inflação»</span>.
       });
     </script>
     
-
     <script>
-
       // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-
       // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-
       // slide changes (different for each slide format).
-
       (function () {
-
         // dispatch for htmlwidgets
-
         function fireSlideEnter() {
-
           const event = window.document.createEvent("Event");
-
           event.initEvent("slideenter", true, true);
-
           window.document.dispatchEvent(event);
-
         }
-
-    
 
         function fireSlideChanged(previousSlide, currentSlide) {
-
           fireSlideEnter();
 
-    
-
           // dispatch for shiny
-
           if (window.jQuery) {
-
             if (previousSlide) {
-
               window.jQuery(previousSlide).trigger("hidden");
-
             }
-
             if (currentSlide) {
-
               window.jQuery(currentSlide).trigger("shown");
-
             }
-
           }
-
         }
-
-    
 
         // hookup for slidy
-
         if (window.w3c_slidy) {
-
           window.w3c_slidy.add_observer(function (slide_num) {
-
             // slide_num starts at position 1
-
             fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-
           });
-
         }
 
-    
-
       })();
-
     </script>
-
-    
 
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -1317,13 +1199,14 @@ Machline, Claude. 1966. <span>«Análise de investimentos e inflação»</span>.
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

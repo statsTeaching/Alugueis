@@ -30,6 +30,126 @@ format:
 fontsize: 1.8em
 ---
 
+<!-- # Aspectos Legais -->
+
+## Aspectos Legais: a Lei do Inquilinato {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+-   A partir da entrada em vigor do Código Civil, em jan/1917, a legislação do 
+inquilinato evoluindo em fases alternadas, ora favorecendo os proprietários, ora
+os inquilinos [@damato, p. 38].
+
+-   Lei em vigor: a Lei nº 8.245, de 18/10/1991 é uma **lei de ordem pública**, 
+ou seja, atinge os contratos celebrados em particulares, impedindo o 
+estabelecimento de cláusulas contrárias aos seus dispositivos, protegendo assim 
+a parte economicamente mais fraca.
+
+## Lei do Inquilinato {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+-   Continam regulados pelo Código Civil e pelas leis especiais, portanto fora
+da Lei do Inquilinato:
+  - As locações:
+    - de imóveis de propriedade da União, dos Estados e Municípios, de suas 
+    autarquias e fundações públicas
+    - de vagas autônomas de garagem ou de espaços para estacionamento de 
+    veículos;
+      - de espaços destinados à publicidade;
+      - em apart-hotéis, hotéis-residência ou equiparados, assim considerados 
+      aqueles que prestam serviços regulares a seus usuários e como tais sejam 
+      autorizados a funcionar;
+    - o arrendamento mercantil, em qualquer de suas modalidades
+
+## Direito de Preferência {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+> Art. 27. No caso de venda, promessa de venda, cessão ou promessa de cessão de 
+direitos ou dação em pagamento, o locatário tem preferência para adquirir o 
+imóvel locado, em igualdade de condições com terceiros, devendo o locador 
+dar-lhe conhecimento do negócio mediante notificação judicial, extrajudicial ou
+outro meio de ciência inequívoca. Parágrafo único. A comunicação deverá conter 
+todas as condições do negócio e, em especial, o preço, a forma de pagamento, a 
+existência de ônus reais, bem como o local e horário em que pode ser examinada a
+documentação pertinente.
+
+> Art. 28. O direito de preferência do locatário caducará se não manifestada, de
+maneira inequívoca, sua aceitação integral à proposta, no prazo de trinta dias.
+
+> Art. 29. Ocorrendo aceitação da proposta, pelo locatário, a posterior 
+desistência do negócio pelo locador acarreta, a este, responsabilidade pelos 
+prejuízos ocasionados, inclusive lucros cessantes.
+
+## Direito de Preferência {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+> Art. 30. Estando o imóvel sublocado em sua totalidade, caberá a preferência ao
+sublocatário e, em seguida, ao locatário. Se forem vários os sublocatários, a 
+preferência caberá a todos, em comum, ou a qualquer deles, se um só for o 
+interessado. Parágrafo único. Havendo pluralidade de pretendentes, caberá a 
+preferência ao locatário mais antigo, e, se da mesma data, ao mais idoso.
+
+> Art. 31. Em se tratando de alienação de mais de uma unidade imobiliária, o 
+direito de preferência incidirá sobre a totalidade dos bens objeto da alienação.
+
+> Art. 32. O direito de preferência não alcança os casos de perda da propriedade
+ou venda por decisão judicial, permuta, doação, integralização de capital, 
+cisão, fusão e incorporação.
+
+## Ação Revisional de Aluguel {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+> Art. 68. Na ação revisional de aluguel, que terá o rito sumaríssimo, 
+observar-se-á o seguinte:\
+> I – além dos requisitos exigidos pelos arts. 276 e 282 do Código de Processo 
+Civil, a petição inicial deverá indicar o valor do aluguel cuja fixação é 
+pretendida. (Vide Nota mental na página seguinte).\
+> II – ao designar a audiência de instrução e julgamento, o juiz, se houver 
+pedido e com base nos elementos fornecidos pelo autor ou nos que indicar, 
+fixará aluguel provisório, não excedente a oitenta por cento do pedido, que 
+será devido desde a citação.\
+> III – sem prejuízo da contestação e até a audiência, o réu poderá pedir seja 
+revisto o aluguel provisório, fornecendo os elementos para tanto.\
+> IV – na audiência de instrução e julgamento, apresentada a contestação, que 
+deverá conter contraproposta se houver discordância quanto ao valor pretendido, 
+o juiz tentará a conciliação e, não sendo esta possível, suspenderá o ato para 
+a **realização de perícia**, se necessária, designando, desde logo, audiência em
+continuação.
+
+## Ação Renovatória de aluguel {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+> Art. 51. Nas locações de imóveis destinados ao comércio, o locatário terá 
+direito à renovação do contrato, por igual prazo, desde que, cumulativamente:
+> I. o contrato a renovar tenha sido celebrado por escrito e com prazo 
+determinado;
+> II. o prazo mínimo do contrato a renovar ou a soma dos prazos ininterruptos 
+dos contratos escritos seja de **cinco anos**; (g. n.)
+> III. o locatário esteja explorando seu comércio, no mesmo ramo, pelo prazo 
+mínimo e ininterrupto de três anos.
+> Art. 52. O locador não estará obrigado a renovar o contrato se:
+> I – por determinação do Poder Público, tiver que realizar no imóvel obras que 
+importarem na sua radical transformação; **ou para fazer modificação de tal 
+natureza que aumente o valor do negócio ou da propriedade**;(g. n.)
+> II – o imóvel vier a ser utilizado por ele próprio ou para transferência de 
+fundo de comércio existente há mais de um ano, sendo detentor da maioria do 
+capital o locador, seu cônjuge, ascendente ou descendente.
+
+-   Este direito de renovação pelo locatário nos contratos com prazo maior ou 
+igual a 5 anos é que enseja a cobrança de luvas!
+
+## Ação Renovatória de aluguel {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+### Contestação
+
+> Art. 72. A contestação do locador, além da defesa de direito que possa caber,
+ficará adstrita, quanto à matéria de fato, ao seguinte:
+> ...\
+> II – não atender, a proposta do locatário, o valor locativo real do imóvel na 
+época da renovação, excluída a valorização trazida por aquele ao ponto ou lugar;
+> III – ter proposta de terceiro para a locação, em condições melhores;
+> IV – não estar obrigado a renovar a locação (incisos I e II do art. 52).
+> § 1o . No caso do inciso II, o locador deverá apresentar, em contraproposta, 
+as condições que repute compatíveis com o valor locativo real e atual do imóvel.
+> § 2o .\
+> § 3o . No caso do inciso I do art. 52, a contestação deverá trazer prova da
+determinação do Poder Público ou relatório pormenorizado das obras a serem 
+realizadas e da estimativa de valorização que sofrerá o imóvel, **assinado por
+engenheiro devidamente habilitado**. (Grifo nosso!!)
+
 <!-- # O Método Comparativo -->
 
 ## O Método Comparativo {background-image="./img/FACULDADE_INBEC_16_9.png"}
@@ -848,21 +968,5 @@ p <- predict(fit, newdata = list(Area = 110, Atividade = "roupas masculinas",
 ```
 
 -   O valor calculado foi de: `r brf(exp(p[, "fit"]))` \[`r brf(exp(p[, "lwr"]))`; `r brf(exp(p[, "upr"]))`\]
-
-## Terrenos {background-image="./img/FACULDADE_INBEC_16_9.png"}
-
-### Considerações importantes
-
--   Primeiro há de se considerar o melhor uso, se comercial ou residencial
--   Terrenos residenciais, em geral, não são para locar.
--   Apenas os terrenos comerciais nos interessam aqui.
--   Deve-se dar preferência ao Método Comparativo
--   Problema: pode haver falta de dados para comparação
--   Com poucos dados, pode ser viável apenas o tratamento por fatores
--   Pode-se buscar dados de terrenos com construções para aumentar a amostra, 
-descontando, é claro, o valor das construções para efeito de comparativo
--   Na ausência de dados em número suficiente, deve-se utilizar o Método da 
-Remuneração do Capital
-
 
 ## Referências {background-image="./img/FACULDADE_INBEC_16_9.png"}

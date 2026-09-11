@@ -6,8 +6,8 @@
 <script src="03b_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="03b_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="03b_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="03b_files/libs/quarto-html/quarto-syntax-highlighting-985aa47af68dae11cd4d235c71fb941e.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.27">
+<link href="03b_files/libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.38">
 
   <meta name="author" content="Eng.º Luiz F. P. Droubi">
   <title>Método Comparativo (2)</title>
@@ -17,6 +17,9 @@
   <link rel="stylesheet" href="03b_files/libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="03b_files/libs/revealjs/dist/reveal.css">
   <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -98,7 +101,6 @@
     div.csl-bib-body { }
     div.csl-entry {
       clear: both;
-      margin-bottom: 0em;
     }
     .hanging-indent div.csl-entry {
       margin-left:2em;
@@ -115,7 +117,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="03b_files/libs/revealjs/dist/theme/quarto-77914c2d4cf3c3cbfd54b2fb7c6641ee.css">
+  <link rel="stylesheet" href="03b_files/libs/revealjs/dist/theme/quarto-95d99237c61c0e6735c2d9ec45f2ce4b.css">
   <link href="03b_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="03b_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="03b_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -225,7 +227,7 @@ Eng.º Luiz F. P. Droubi
 </div>
 </div>
 
-  <p class="date">23 de dezembro de 2025</p>
+  <p class="date">9 de setembro de 2026</p>
 </section>
 <section class="slide level2">
 
@@ -1119,7 +1121,7 @@ Eng.º Luiz F. P. Droubi
 </ul>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a><span class="fu">outlier_analysis</span>(dados<span class="sc">$</span>PUhom, <span class="at">criterion =</span> <span class="st">"Chauvenet"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a><span class="fu">outlier_analysis</span>(dados<span class="sc">$</span>PUhom, <span class="at">criterion =</span> <span class="st">"Chauvenet"</span>)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>           Novo Reparos simples Reparos simples Reparos simples Reparos simples 
        26.76103        35.55444        29.76139        29.26367        26.94005 
@@ -1879,10 +1881,10 @@ Eng.º Luiz F. P. Droubi
 </ul>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a>p <span class="ot">&lt;-</span> <span class="fu">predict</span>(fit1, <span class="at">newdata =</span> <span class="fu">list</span>(<span class="at">AreaTerreno =</span> <span class="dv">15000</span>, <span class="at">AreaConstruida =</span> <span class="fl">12086.22</span>,</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a>p <span class="ot">&lt;-</span> <span class="fu">predict</span>(fit1, <span class="at">newdata =</span> <span class="fu">list</span>(<span class="at">AreaTerreno =</span> <span class="dv">15000</span>, <span class="at">AreaConstruida =</span> <span class="fl">12086.22</span>,</span>
 <span id="cb5-2"><a href=""></a>                                  <span class="at">Idade =</span> <span class="dv">5</span>),</span>
 <span id="cb5-3"><a href=""></a>             <span class="at">interval =</span> <span class="st">"confidence"</span>, <span class="at">level =</span> <span class="fl">0.80</span>)</span>
-<span id="cb5-4"><a href=""></a><span class="fu">exp</span>(p)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-4"><a href=""></a><span class="fu">exp</span>(p)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       fit      lwr      upr
 1 6.602145 5.823431 7.484988</code></pre>
@@ -1978,7 +1980,7 @@ Eng.º Luiz F. P. Droubi
 <section id="problema" class="slide level2" data-background-image="./img/FACULDADE_INBEC_16_9.png">
 <h2>Problema</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a><span class="fu">tapply</span>(dadosCinema<span class="sc">$</span><span class="st">`</span><span class="at">Renda Líquida Descontada</span><span class="st">`</span>, dadosCinema<span class="sc">$</span>Ano, mean)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a><span class="fu">tapply</span>(dadosCinema<span class="sc">$</span><span class="st">`</span><span class="at">Renda Líquida Descontada</span><span class="st">`</span>, dadosCinema<span class="sc">$</span>Ano, mean)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    2015     2016     2017 
 167305.2 185869.9 202900.5 </code></pre>
@@ -2002,9 +2004,9 @@ Eng.º Luiz F. P. Droubi
 <section id="referências" class="slide level2 smaller scrollable" data-background-image="./img/FACULDADE_INBEC_16_9.png">
 <h2>Referências</h2>
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-damato" class="csl-entry" role="listitem">
-D’Amato, Mônica, e Nelson Roberto Pereira Alonso. 2019. <em>Avaliação de Aluguéis</em>. Editado por Leud. 4.ª ed. São Paulo.
+D’Amato, Mônica, e Nelson Roberto Pereira Alonso. 2019. <em>Avaliação de Aluguéis</em>. 4.ª ed. Editado por Leud. São Paulo.
 </div>
 </div>
 </section>
@@ -2200,7 +2202,7 @@ D’Amato, Mônica, e Nelson Roberto Pereira Alonso. 2019. <em>Avaliação de Al
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -2227,80 +2229,42 @@ D’Amato, Mônica, e Nelson Roberto Pereira Alonso. 2019. <em>Avaliação de Al
       });
     </script>
     
-
     <script>
-
       // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-
       // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-
       // slide changes (different for each slide format).
-
       (function () {
-
         // dispatch for htmlwidgets
-
         function fireSlideEnter() {
-
           const event = window.document.createEvent("Event");
-
           event.initEvent("slideenter", true, true);
-
           window.document.dispatchEvent(event);
-
         }
-
-    
 
         function fireSlideChanged(previousSlide, currentSlide) {
-
           fireSlideEnter();
 
-    
-
           // dispatch for shiny
-
           if (window.jQuery) {
-
             if (previousSlide) {
-
               window.jQuery(previousSlide).trigger("hidden");
-
             }
-
             if (currentSlide) {
-
               window.jQuery(currentSlide).trigger("shown");
-
             }
-
           }
-
         }
-
-    
 
         // hookup for slidy
-
         if (window.w3c_slidy) {
-
           window.w3c_slidy.add_observer(function (slide_num) {
-
             // slide_num starts at position 1
-
             fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-
           });
-
         }
 
-    
-
       })();
-
     </script>
-
-    
 
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -2350,13 +2314,14 @@ D’Amato, Mônica, e Nelson Roberto Pereira Alonso. 2019. <em>Avaliação de Al
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

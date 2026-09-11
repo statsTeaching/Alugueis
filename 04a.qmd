@@ -1,0 +1,98 @@
+---
+title: "Métodos Especiais"
+subtitle: "Avaliação de Aluguéis"
+author: "Eng.º Luiz F. P. Droubi"
+date: last-modified
+date-format: long
+bibliography: referencias.bib
+title-slide-attributes:
+  data-background-image: img/Fundo_Capa.png
+  data-background-size: cover
+lang: pt
+format: 
+  # pptx:
+  #   reference-doc: TEMPLATE_EDUFOR.pptx
+  revealjs:
+#    background-image: "./img/FACULDADE_INBEC_16_9.jpg"
+    parallax-background-size: cover 
+    width: 1280
+    height: 720
+    # margin-top: 20%
+    theme: [default, style.scss]
+    # logo: img/logo.png
+    # theme: beige
+    # smaller: true
+    slide-number: true
+    scrollable: true
+    incremental: true
+    transition: slide
+    background-transition: fade
+fontsize: 1.8em
+---
+
+```{r}
+#| include: false
+library(readxl)
+library(kableExtra)
+```
+
+<!-- # Métodos Especiais -->
+
+## Cinemas: o Método da Participação {background-image="./img/FACULDADE_INBEC_16_9.png"}
+  
+  -   Em casos especiais, como nos cinemas, pode ser utilizado o *Método da Participação*
+  -   Tal método consiste em:
+  -   Aferir a renda líquida do estabelecimento
+-   Aplicar a esta renda líquida um percentual médio de mercado para calcular o aluguel justo ao locador
+-   Segundo @damato [p. 296]:
+  
+. . . 
+    
+> Obtida a média final (das rendas líquidas), seria a mesma capitalizada em base às taxas de renda usuais para cinemas que são: 10% quando os equipamentos e instalações são de propriedade do inquilino e 15% quando pertencem ao proprietário do imóvel.
+    
+## Cinemas {.smaller background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+### Exemplo [@damato, p. 297]
+
+```{r}
+dadosCinema <- read_excel("data/DamatoAlonso_p296.xlsx")
+kable(head(dadosCinema), digits = 2,
+     format.args = list(big.mark = ".", decimal.mark =","))
+```
+
+```{r}
+library(lubridate)
+dadosCinema$Ano <- year(dadosCinema$Mês)
+```
+
+-   @damato [p. 297]: $Al = 185.358,54\times12\% =\text{R\$ }22.240,00$
+ 
+## Problema {background-image="./img/FACULDADE_INBEC_16_9.png"}
+ 
+```{r}
+#| echo: true
+tapply(dadosCinema$`Renda Líquida Descontada`, dadosCinema$Ano, mean)
+```
+
+-   O resultado tem aumentado anualmente em torno de 10% a.a.
+-   Ao considerar a média dos rendimentos anuais, @damato obtiveram um aluguel condizente com o ano de 2016!
+ -   Isto não me parece correto!
+      
+## Problemas com o Método da Participação {.smaller background-image="./img/FACULDADE_INBEC_16_9.png"}
+      
+> Foram apresentados métodos de participação para "postos de gasolina" e para
+"cinemas". O método para "postos de serviços" foi desenvolvido pelo engenheiro
+José Carlos Pellegrino e para os "cinemas", pelo engenheiro Nelson Roberto
+Pereira Alonso. Nesses processos de participação, o aluguel é vinculado ao
+resultado comercial do estabelecimento empresarial do inquilino. Se, por um
+lado, possui a vantagem de permitir o estabelecimento do aluguel para imóveis
+com destinação específica, tem, na opinião do autor, as desvantagens de punir o
+bom e permiar o mau comerciante, e ainda de impedir que o proprietário usufrua
+da renda de seu patrimônio de uma forma mais lucrativa do que aquela para o qual
+originalmente foi destinado.
+    
+> Se, por qualquer motivo, a destinação original que foi dada ao imóvel passar a
+ser inviável, não é dado ao proprietário do prédio o direito de se afastar desse
+"prejuízo"...
+    
+## Referências {background-image="./img/FACULDADE_INBEC_16_9.png"}

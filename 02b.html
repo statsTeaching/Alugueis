@@ -6,8 +6,8 @@
 <script src="02b_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="02b_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="02b_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="02b_files/libs/quarto-html/quarto-syntax-highlighting-985aa47af68dae11cd4d235c71fb941e.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.27">
+<link href="02b_files/libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.38">
 
   <meta name="author" content="Eng.º Luiz F. P. Droubi">
   <title>Método da Renda (2)</title>
@@ -17,6 +17,9 @@
   <link rel="stylesheet" href="02b_files/libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="02b_files/libs/revealjs/dist/reveal.css">
   <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -32,7 +35,6 @@
     div.csl-bib-body { }
     div.csl-entry {
       clear: both;
-      margin-bottom: 0em;
     }
     .hanging-indent div.csl-entry {
       margin-left:2em;
@@ -49,7 +51,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="02b_files/libs/revealjs/dist/theme/quarto-cb4cf6ad73c513e5fca7835a556c5a18.css">
+  <link rel="stylesheet" href="02b_files/libs/revealjs/dist/theme/quarto-95d99237c61c0e6735c2d9ec45f2ce4b.css">
   <link href="02b_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="02b_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="02b_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -159,7 +161,7 @@ Eng.º Luiz F. P. Droubi
 </div>
 </div>
 
-  <p class="date">18 de janeiro de 2026</p>
+  <p class="date">9 de setembro de 2026</p>
 </section>
 <section class="slide level2">
 
@@ -173,7 +175,7 @@ Eng.º Luiz F. P. Droubi
 <ul>
 <li class="fragment">A composição do valor total do imóvel avaliando (<span class="math inline">\(V_i\)</span>) pode ser obtida através da conjugação de métodos, a partir do valor do terreno (<span class="math inline">\(V_t\)</span>), considerados o custo de reprodução das benfeitorias devidamente depreciado (<span class="math inline">\(C_b\)</span>) e o fator de comercialização (<span class="math inline">\(\text{FC}\)</span>), ou seja:
 <ul>
-<li class="fragment"><span id="eq-Evolutivo"><span class="math display">\[V_i = (V_t + C_b)\cdot \text{FC} \qquad(1)\]</span></span></li>
+<li class="fragment"><span id="eq-Evolutivo"><span class="math display">\[V_i = (V_t + C_b)\cdot \text{FC} \tag{1}\]</span></span></li>
 </ul></li>
 </ul></li>
 <li class="fragment"><p>Na NBR 14.653-01 <span class="citation" data-cites="NBR1465301">(<a href="#/referências" role="doc-biblioref" onclick="">ABNT 2019, 14</a>)</span>:</p>
@@ -236,7 +238,7 @@ Eng.º Luiz F. P. Droubi
 <ul>
 <li class="fragment">O coeficiente de aproveitamento pode ser descrito pela fórmula a seguir (Candeloro, n.d., 19; D’Amato e Alonso 2019, p, 129):
 <ul>
-<li class="fragment"><span id="eq-CA"><span class="math display">\[\text{CA} = \frac{A_{h-existente}}{A_{h-máxima}} \qquad(2)\]</span></span></li>
+<li class="fragment"><span id="eq-CA"><span class="math display">\[\text{CA} = \frac{A_{h-existente}}{A_{h-máxima}} \tag{2}\]</span></span></li>
 </ul></li>
 <li class="fragment">Deve-se notar que o Coeficiente de Aproveitamento é calculado com áreas homogeneizadas, <em>i.e.</em> com áreas ponderadas conforme a escolha de pesos convenientes.</li>
 <li class="fragment">Ponderar a área edificada segundo o aproveitamento do terreno (zoneamento)</li>
@@ -392,8 +394,8 @@ Eng.º Luiz F. P. Droubi
 <h2>Coeficiente de Aproveitamento</h2>
 <h3 id="redução-do-coeficiente-pela-idade-1">Redução do Coeficiente pela idade</h3>
 <ul>
-<li class="fragment">Fórmula de Dante Guerrero <span class="citation" data-cites="candeloro">(<a href="#/referências" role="doc-biblioref" onclick="">Candeloro, s.d., 20</a>)</span>:</li>
-<li class="fragment"><span id="eq-DanteGuerrero"><span class="math display">\[\text{CA}_R = \text{CA}\left [R + (1-R).\frac{v}{V}\right ] \qquad(3)\]</span></span>
+<li class="fragment">Fórmula de Dante Guerrero <span class="citation" data-cites="candeloro">(<a href="#/referências" role="doc-biblioref" onclick="">Candeloro, sem data, 20</a>)</span>:</li>
+<li class="fragment"><span id="eq-DanteGuerrero"><span class="math display">\[\text{CA}_R = \text{CA}\left [R + (1-R).\frac{v}{V}\right ] \tag{3}\]</span></span>
 <ul>
 <li class="fragment"><span class="math inline">\(R\)</span>: residual da construção</li>
 <li class="fragment"><span class="math inline">\(v\)</span>: idade aparente da benfeitoria</li>
@@ -405,7 +407,7 @@ Eng.º Luiz F. P. Droubi
 <h2>Coeficiente de Aproveitamento</h2>
 <h3 id="redução-do-coeficiente-pela-idade-2">Redução do Coeficiente pela idade</h3>
 <ul>
-<li class="fragment">Fórmula de Dante Guerrero <span class="citation" data-cites="candeloro">(<a href="#/referências" role="doc-biblioref" onclick="">Candeloro, s.d., 20</a>)</span>:</li>
+<li class="fragment">Fórmula de Dante Guerrero <span class="citation" data-cites="candeloro">(<a href="#/referências" role="doc-biblioref" onclick="">Candeloro, sem data, 20</a>)</span>:</li>
 <li class="fragment">Exemplo:
 <ul>
 <li class="fragment">Mesmo caso anterior, em que <span class="math inline">\(\text{CA} = 750/800 = 0,9375\)</span>, considerar vida útil igual a 50 anos e Residual igual a 20%:
@@ -425,7 +427,7 @@ Eng.º Luiz F. P. Droubi
 <ul>
 <li class="fragment">Correto seria:
 <ul>
-<li class="fragment"><span id="eq-DanteGuerrero2"><span class="math display">\[\text{CA}_R = \text{CA}\left [R + (1-R)\left (1-\frac{v}{V}\right )\right ] \qquad(4)\]</span></span></li>
+<li class="fragment"><span id="eq-DanteGuerrero2"><span class="math display">\[\text{CA}_R = \text{CA}\left [R + (1-R)\left (1-\frac{v}{V}\right )\right ] \tag{4}\]</span></span></li>
 <li class="fragment"><span class="math display">\[\text{CA}_R = \frac{750}{800}\left [20\% + (1-20\%)\left(1-\frac{10}{50}\right)\right ]\]</span></li>
 <li class="fragment"><span class="math inline">\(\text{CA}_R = 0,9375 \cdot (0,2+0,64) = 0,7875\)</span></li>
 </ul></li>
@@ -469,7 +471,7 @@ Eng.º Luiz F. P. Droubi
 </li>
 <li class="fragment">Aplicou-se:
 <ul>
-<li class="fragment"><span id="eq-NelsonAlonso"><span class="math display">\[\text{CA}_{Ap} = 1 – [((E – e)/E)\cdot (0,20 + (0,80\cdot (V – v)/V))] \qquad(5)\]</span></span></li>
+<li class="fragment"><span id="eq-NelsonAlonso"><span class="math display">\[\text{CA}_{Ap} = 1 – [((E – e)/E)\cdot (0,20 + (0,80\cdot (V – v)/V))] \tag{5}\]</span></span></li>
 </ul></li>
 <li class="fragment">E chegou-se a:
 <ul>
@@ -491,7 +493,7 @@ Eng.º Luiz F. P. Droubi
 <li class="fragment">Pode-se perceber que o erro está no componente básico da fórmula!</li>
 <li class="fragment">Correto seria:
 <ul>
-<li class="fragment"><span id="eq-NelsonAlonsocorrigida"><span class="math display">\[C_{Ap} = 1 – [ (e/E) \cdot ( 0,20 + ( 0,80 \cdot (V – v)/V))] \qquad(6)\]</span></span></li>
+<li class="fragment"><span id="eq-NelsonAlonsocorrigida"><span class="math display">\[C_{Ap} = 1 – [ (e/E) \cdot ( 0,20 + ( 0,80 \cdot (V – v)/V))] \tag{6}\]</span></span></li>
 <li class="fragment"><span class="math inline">\(C_{Ap} = 1 – (0,26\cdot 0,7067) = 0,184\)</span></li>
 </ul></li>
 </ul></li>
@@ -508,7 +510,7 @@ Eng.º Luiz F. P. Droubi
 <p>Então, aos dois fatores endógenos (área e idade) deve ser acrescentado o padrão regional, de natureza exógena, portanto de caráter somatório <span class="citation" data-cites="alonso2017">(<a href="#/referências" role="doc-biblioref" onclick="">Alonso e D’Amato 2017, 6</a>)</span>.</p>
 </blockquote>
 <ul>
-<li class="fragment"><span id="eq-NelsonAlonso2"><span class="math display">\[C_{Ap} = 1 – (1 - \frac{e}{E})\cdot (0,20 + (0,80.(1 - v/V))) + (1 - p/P) \qquad(7)\]</span></span></li>
+<li class="fragment"><span id="eq-NelsonAlonso2"><span class="math display">\[C_{Ap} = 1 – (1 - \frac{e}{E})\cdot (0,20 + (0,80.(1 - v/V))) + (1 - p/P) \tag{7}\]</span></span></li>
 </ul>
 </section>
 <section id="coeficiente-de-aproveitamento-9" class="slide level2" data-background-image="./img/FACULDADE_INBEC_16_9.png">
@@ -531,7 +533,7 @@ Eng.º Luiz F. P. Droubi
 </ul></li>
 <li class="fragment">Solução lógica:
 <ul>
-<li class="fragment"><span id="eq-NelsonAlonso2corrigida"><span class="math display">\[C_{Ap} = 1 – [ (e/E) \cdot  (0,20 + (0,80\cdot (V – v)/V))\cdot (p/P)] \qquad(8)\]</span></span></li>
+<li class="fragment"><span id="eq-NelsonAlonso2corrigida"><span class="math display">\[C_{Ap} = 1 – [ (e/E) \cdot  (0,20 + (0,80\cdot (V – v)/V))\cdot (p/P)] \tag{8}\]</span></span></li>
 <li class="fragment"><span class="math inline">\(C_{Ap} = 1 – (0,26\cdot 0,7067\cdot 0,763)\)</span></li>
 <li class="fragment"><span class="math inline">\(C_{Ap} = 0,14\)</span></li>
 </ul></li>
@@ -546,8 +548,8 @@ Eng.º Luiz F. P. Droubi
 <li class="fragment">Assim surge o problema, nos casos de aplicação do método evolutivo, de saber qual cota-parte do terreno cabe àquela unidade que se deseja avaliar.</li>
 <li class="fragment">Matematicamente:
 <ul>
-<li class="fragment"><span id="eq-CP"><span class="math display">\[CP = \frac{A_{hu}}{A_{ht}} \qquad(9)\]</span></span></li>
-<li class="fragment"><span id="eq-CTun"><span class="math display">\[CT_{un} = CT \cdot CP \qquad(10)\]</span></span>
+<li class="fragment"><span id="eq-CP"><span class="math display">\[CP = \frac{A_{hu}}{A_{ht}} \tag{9}\]</span></span></li>
+<li class="fragment"><span id="eq-CTun"><span class="math display">\[CT_{un} = CT \cdot CP \tag{10}\]</span></span>
 <ul>
 <li class="fragment">CP: Cota-Parte</li>
 <li class="fragment">CT: Capital Terreno (Total)</li>
@@ -565,7 +567,7 @@ Eng.º Luiz F. P. Droubi
 <ul>
 <li class="fragment">Solução:
 <ul>
-<li class="fragment"><span id="eq-CP"><span class="math display">\[CP = \frac{A_{hu}}{A_{ht}} = \frac{A_{Terreo}\cdot p_{Terreo}}{A_{Terreo}\cdot p_{Terreo} + A_{Superiores}\cdot p_{Superiores}} \qquad(11)\]</span></span></li>
+<li class="fragment"><span id="eq-CP"><span class="math display">\[CP = \frac{A_{hu}}{A_{ht}} = \frac{A_{Terreo}\cdot p_{Terreo}}{A_{Terreo}\cdot p_{Terreo} + A_{Superiores}\cdot p_{Superiores}} \tag{11}\]</span></span></li>
 <li class="fragment"><span class="math display">\[CP = \frac{200\cdot 3}{200\cdot 3+400\cdot 1} = \frac{600}{1.000} = 60\%\]</span></li>
 </ul></li>
 </ul></li>
@@ -578,7 +580,7 @@ Eng.º Luiz F. P. Droubi
 <li class="fragment">No entanto, se o objetivo for calcular apenas o valor do aluguel da unidade, pode-se calcular o Capital terreno referente à unidade (CTun) diretamente através da fórmula (Candeloro, p.63):</li>
 </ul>
 <div class="fragment">
-<p><span id="eq-CTun"><span class="math display">\[CT_{un} = q_t.\frac{A_{hu}}{\text{TO}\cdot p_{Térreo} + (\text{CA}_{\text{básico}}-\text{TO})\cdot p_{\text{Superiores}}} \qquad(12)\]</span></span></p>
+<p><span id="eq-CTun"><span class="math display">\[CT_{un} = q_t.\frac{A_{hu}}{\text{TO}\cdot p_{Térreo} + (\text{CA}_{\text{básico}}-\text{TO})\cdot p_{\text{Superiores}}} \tag{12}\]</span></span></p>
 <ul>
 <li class="fragment"><span class="math inline">\(q_t\)</span>: Unitário do Terreno</li>
 <li class="fragment"><span class="math inline">\(\text{TO}\)</span>: Taxa de Ocupação do Terreno</li>
@@ -684,18 +686,18 @@ Eng.º Luiz F. P. Droubi
 <section id="referências" class="slide level2 smaller scrollable" data-background-image="./img/FACULDADE_INBEC_16_9.png">
 <h2>Referências</h2>
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-NBR1465302" class="csl-entry" role="listitem">
-ABNT. 2011. <em><span>NBR</span> 14653-2: Avaliacao de Bens – Parte 2: Imoveis Urbanos</em>. Rio de Janeiro: Associacao Brasileira de Normas Tecnicas.
+ABNT. 2011. <em><span>NBR</span> 14653-2: Avaliacao de Bens – Parte 2: Imoveis Urbanos</em>. Associacao Brasileira de Normas Tecnicas.
 </div>
 <div id="ref-NBR1465301" class="csl-entry" role="listitem">
-———. 2019. <em><span>NBR</span> 14653-1: Avaliacao de Bens – Parte 1: Procedimentos Gerais</em>. Rio de Janeiro: Associacao Brasileira de Normas Tecnicas.
+ABNT. 2019. <em><span>NBR</span> 14653-1: Avaliacao de Bens – Parte 1: Procedimentos Gerais</em>. Associacao Brasileira de Normas Tecnicas.
 </div>
 <div id="ref-alonso2017" class="csl-entry" role="listitem">
-Alonso, Nelson Roberto Pereira, e Mônica D’Amato. 2017. <span>«O aproveitamento do terreno à luz das normas técnicas»</span>, 10.
+Alonso, Nelson Roberto Pereira, e Mônica D’Amato. 2017. <em>O aproveitamento do terreno à luz das normas técnicas</em>. 10.
 </div>
 <div id="ref-candeloro" class="csl-entry" role="listitem">
-Candeloro, Milton. s.d. <span>«Avaliação de Aluguéis»</span>. Instituto Brasileiro de Educação Continuada.
+Candeloro, Milton. sem data. <em>Avaliação de Aluguéis</em>. Instituto Brasileiro de Educação Continuada.
 </div>
 </div>
 </section>
@@ -891,7 +893,7 @@ Candeloro, Milton. s.d. <span>«Avaliação de Aluguéis»</span>. Instituto Bra
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -965,13 +967,14 @@ Candeloro, Milton. s.d. <span>«Avaliação de Aluguéis»</span>. Instituto Bra
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

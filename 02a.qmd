@@ -593,8 +593,33 @@ ggplot() +
 
 <!-- # Economia Urbana -->
 
-## Economia Urbana {background-image="./img/FACULDADE_INBEC_16_9.png"}
+## Atividade: Economia Urbana - Demanda {background-image="./img/FACULDADE_INBEC_16_9.png"}
 
-{{< video https://youtu.be/BSMJk8gSyrs?si=MUBWrkpX2oyZbbbA title="A demanda por cidades" start="0" width="600" height="450" >}}
+{{< video https://youtu.be/BSMJk8gSyrs?si=MUBWrkpX2oyZbbbA title="A demanda por cidades." start="0" width="600" height="450" >}}
+
+## Atividade: Economia Urbana - Oferta {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+{{< video https://youtu.be/QKUeWjIX1KI?si=EHNy9p9vEx_Mot6h title="A oferta de espaço urbano." start="0" width="600" height="450" >}}
+
+## Atividade: Economia Urbana - Equilíbrio {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+{{< video https://youtu.be/RWD9h535gvM?si=u6MFe92knpVcbUNr title="A convergência de oferta e demanda." start="0" width="600" height="450" >}}
+
+## Atividade: Economia Urbana {background-image="./img/FACULDADE_INBEC_16_9.png"}
+
+- [A demanda por cidades](https://youtu.be/BSMJk8gSyrs?si=MUBWrkpX2oyZbbbA)
+
+- [A oferta de espaço urbano](https://youtu.be/QKUeWjIX1KI?si=EHNy9p9vEx_Mot6h)
+
+- [A convergência de oferta e demanda](https://youtu.be/RWD9h535gvM?si=u6MFe92knpVcbUNr)
+
+. . . 
+
+- Assista aos vídeos acima e responda:
+  - Quais são os fatores que influenciam na demanda por cidades? (2,5 pontos)
+  - Em três palavras, o que determina a oferta de espaço urbano? (2,5 pontos)
+  - Quais são os fatores que você vislumbra que podem tornar a oferta de espaço
+  urbano mais alta em algumas localidades do que em outras? (2,5 pontos)
+  - O que é *Tâtonnement*? (2,5 pontos)
 
 ## Referências {background-image="./img/FACULDADE_INBEC_16_9.png"}

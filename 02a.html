@@ -6,8 +6,8 @@
 <script src="02a_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="02a_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="02a_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="02a_files/libs/quarto-html/quarto-syntax-highlighting-985aa47af68dae11cd4d235c71fb941e.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.27">
+<link href="02a_files/libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.38">
 
   <meta name="author" content="Eng.º Luiz F. P. Droubi">
   <title>Método da Renda</title>
@@ -17,6 +17,9 @@
   <link rel="stylesheet" href="02a_files/libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="02a_files/libs/revealjs/dist/reveal.css">
   <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -98,7 +101,6 @@
     div.csl-bib-body { }
     div.csl-entry {
       clear: both;
-      margin-bottom: 0em;
     }
     .hanging-indent div.csl-entry {
       margin-left:2em;
@@ -115,7 +117,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="02a_files/libs/revealjs/dist/theme/quarto-77914c2d4cf3c3cbfd54b2fb7c6641ee.css">
+  <link rel="stylesheet" href="02a_files/libs/revealjs/dist/theme/quarto-95d99237c61c0e6735c2d9ec45f2ce4b.css">
   <link href="02a_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="02a_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="02a_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -225,7 +227,7 @@ Eng.º Luiz F. P. Droubi
 </div>
 </div>
 
-  <p class="date">18 de janeiro de 2026</p>
+  <p class="date">11 de setembro de 2026</p>
 </section>
 <section class="slide level2">
 
@@ -252,7 +254,7 @@ Eng.º Luiz F. P. Droubi
 <p>Obtida a taxa nominal de renda (<span class="math inline">\(t_r\)</span>), após a obtenção do Capital-Imóvel que produz renda (<span class="math inline">\(C_I\)</span>), o aluguel mensal pelo Método da Renda (<span class="math inline">\(A_{\text{renda}}\)</span>) é dado por:</p>
 </blockquote>
 <ul>
-<li class="fragment"><span id="eq-Renda"><span class="math display">\[A_{\text{renda}} = \frac{C_I \cdot t_r}{12 \text{ meses}} \qquad(1)\]</span></span></li>
+<li class="fragment"><span id="eq-Renda"><span class="math display">\[A_{\text{renda}} = \frac{C_I \cdot t_r}{12 \text{ meses}} \tag{1}\]</span></span></li>
 </ul></li>
 </ul></li>
 </ul></li>
@@ -367,7 +369,7 @@ Eng.º Luiz F. P. Droubi
 <ul>
 <li class="fragment">Uma vez obtidas as taxas de desconto para o terreno e para as benfeitorias, pode-se calcular a <strong>taxa composta</strong> <span class="citation" data-cites="ibapesp15">(<a href="#/referências" role="doc-biblioref" onclick="">Candeloro 2014, 141</a>)</span>:
 <ul>
-<li class="fragment"><span id="eq-TaxaComposta"><span class="math display">\[i=\frac{V_T.i_T+V_B.i_B}{V_T + V_B} \qquad(2)\]</span></span></li>
+<li class="fragment"><span id="eq-TaxaComposta"><span class="math display">\[i=\frac{V_T.i_T+V_B.i_B}{V_T + V_B} \tag{2}\]</span></span></li>
 </ul></li>
 <li class="fragment">Com a taxa composta, os valores do terreno e do capital (benfeitorias), pode ser feito o cálculo do valor do aluguel.</li>
 </ul>
@@ -400,13 +402,13 @@ Eng.º Luiz F. P. Droubi
 <ul>
 <li class="fragment">Segundo <span class="citation" data-cites="Malpezzi2002TheRO">Malpezzi e Wachter (<a href="#/referências" role="doc-biblioref" onclick="">2002</a>)</span>:
 <ul>
-<li class="fragment"><span id="eq-Malpezzi"><span class="math display">\[V_{imovel} = \sum_{t=0}^{T}\frac{E(R_t-C_t)}{(1+i)^t} = \sum_{t=0}^{T}\frac{E(R_l)}{(1+i)^t} \approx \frac{R_l}{i} \qquad(3)\]</span></span></li>
+<li class="fragment"><span id="eq-Malpezzi"><span class="math display">\[V_{imovel} = \sum_{t=0}^{T}\frac{E(R_t-C_t)}{(1+i)^t} = \sum_{t=0}^{T}\frac{E(R_l)}{(1+i)^t} \approx \frac{R_l}{i} \tag{3}\]</span></span></li>
 </ul></li>
 <li class="fragment">A eventual taxa de valorização (<span class="math inline">\(g\)</span>) pode ser levada em conta assim <span class="citation" data-cites="Malpezzi2002TheRO">(<a href="#/referências" role="doc-biblioref" onclick="">Malpezzi e Wachter 2002</a>)</span>:
 <ul>
 <li class="fragment"><span class="math display">\[V_{imovel} = \frac{R_l}{i-g}\]</span></li>
 <li class="fragment"><span class="math inline">\(i-g\)</span> é chamada de <strong>taxa de capitalização</strong>, ou <span class="math inline">\(c\)</span> (<em>cap rate</em>)</li>
-<li class="fragment"><span id="eq-Malpezzi2"><span class="math display">\[V_{imovel} = \frac{R_l}{c} \qquad(4)\]</span></span></li>
+<li class="fragment"><span id="eq-Malpezzi2"><span class="math display">\[V_{imovel} = \frac{R_l}{c} \tag{4}\]</span></span></li>
 </ul></li>
 </ul>
 </section>
@@ -646,7 +648,7 @@ Eng.º Luiz F. P. Droubi
 <h2>Método da Renda</h2>
 <div class="cell">
 <div class="cell-output-display">
-<table class="caption-top" data-quarto-postprocess="true">
+<table class="caption-top">
 <caption>Amostra para aplicação do Método da Renda. Fonte: Apostila Prof. Norberto.</caption>
 <thead>
 <tr class="header">
@@ -735,7 +737,7 @@ Eng.º Luiz F. P. Droubi
 <h2>Método da Renda</h2>
 <div class="cell">
 <div class="cell-output-display">
-<table class="caption-top" data-quarto-postprocess="true">
+<table class="caption-top">
 <caption>Exemplo Método da Renda</caption>
 <thead>
 <tr class="header">
@@ -839,7 +841,7 @@ Eng.º Luiz F. P. Droubi
 <div class="fragment">
 <div class="cell">
 <div class="cell-output-display">
-<table class="caption-top" data-quarto-postprocess="true">
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: right;" data-quarto-table-cell-role="th">Id</th>
@@ -932,7 +934,7 @@ Eng.º Luiz F. P. Droubi
 <div class="fragment">
 <div class="cell">
 <div class="cell-output-display">
-<table class="caption-top" data-quarto-postprocess="true">
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: right;" data-quarto-table-cell-role="th">Id</th>
@@ -1050,7 +1052,7 @@ Eng.º Luiz F. P. Droubi
 <section id="método-da-remuneração-do-capital-6" class="slide level2" data-background-image="./img/FACULDADE_INBEC_16_9.png">
 <h2>Método da Remuneração do Capital</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="fu">t.test</span>(df<span class="sc">$</span>TaxaAnual, <span class="at">conf.level =</span> .<span class="dv">80</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="fu">t.test</span>(df<span class="sc">$</span>TaxaAnual, <span class="at">conf.level =</span> .<span class="dv">80</span>)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     One Sample t-test
@@ -1082,7 +1084,7 @@ mean of x
 <h2>Método da Remuneração do Capital</h2>
 <h3 id="em-uma-perícia-faça-isto">Em uma perícia, faça isto:</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a><span class="fu">t.test</span>(df<span class="sc">$</span>TaxaMensal, <span class="at">conf.level =</span> .<span class="dv">80</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a><span class="fu">t.test</span>(df<span class="sc">$</span>TaxaMensal, <span class="at">conf.level =</span> .<span class="dv">80</span>)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     One Sample t-test
@@ -1126,8 +1128,8 @@ mean of x
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(Aluguel <span class="sc">~</span> PrecoVenda, <span class="at">data =</span> df)</span>
-<span id="cb5-2"><a href=""></a><span class="fu">predict</span>(fit, <span class="at">newdata =</span> <span class="fu">list</span>(<span class="at">PrecoVenda =</span> <span class="dv">500000</span>), <span class="at">interval =</span> <span class="st">"confidence"</span>, <span class="at">level =</span> .<span class="dv">80</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(Aluguel <span class="sc">~</span> PrecoVenda, <span class="at">data =</span> df)</span>
+<span id="cb5-2"><a href=""></a><span class="fu">predict</span>(fit, <span class="at">newdata =</span> <span class="fu">list</span>(<span class="at">PrecoVenda =</span> <span class="dv">500000</span>), <span class="at">interval =</span> <span class="st">"confidence"</span>, <span class="at">level =</span> .<span class="dv">80</span>)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       fit      lwr      upr
 1 2840.258 2723.016 2957.501</code></pre>
@@ -1151,8 +1153,8 @@ mean of x
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(Aluguel <span class="sc">~</span> PrecoVenda <span class="sc">-</span> <span class="dv">1</span>, <span class="at">data =</span> df)</span>
-<span id="cb7-2"><a href=""></a><span class="fu">predict</span>(fit, <span class="at">newdata =</span> <span class="fu">list</span>(<span class="at">PrecoVenda =</span> <span class="dv">500000</span>), <span class="at">interval =</span> <span class="st">"confidence"</span>, <span class="at">level =</span> .<span class="dv">80</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(Aluguel <span class="sc">~</span> PrecoVenda <span class="sc">-</span> <span class="dv">1</span>, <span class="at">data =</span> df)</span>
+<span id="cb7-2"><a href=""></a><span class="fu">predict</span>(fit, <span class="at">newdata =</span> <span class="fu">list</span>(<span class="at">PrecoVenda =</span> <span class="dv">500000</span>), <span class="at">interval =</span> <span class="st">"confidence"</span>, <span class="at">level =</span> .<span class="dv">80</span>)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       fit      lwr      upr
 1 2808.721 2672.885 2944.557</code></pre>
@@ -1180,28 +1182,55 @@ mean of x
 </ul>
 <!-- # Economia Urbana -->
 </section>
-<section id="economia-urbana" class="slide level2" data-background-image="./img/FACULDADE_INBEC_16_9.png">
-<h2>Economia Urbana</h2>
-<iframe data-external="1" src="https://www.youtube.com/embed/BSMJk8gSyrs?si=MUBWrkpX2oyZbbbA?start=0" width="600" height="450" title="A demanda por cidades" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+<section id="atividade-economia-urbana---demanda" class="slide level2" data-background-image="./img/FACULDADE_INBEC_16_9.png">
+<h2>Atividade: Economia Urbana - Demanda</h2>
+<iframe data-external="1" src="https://www.youtube.com/embed/BSMJk8gSyrs?si=MUBWrkpX2oyZbbbA?start=0" width="600" height="450" title="A demanda por cidades." frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+</section>
+<section id="atividade-economia-urbana---oferta" class="slide level2" data-background-image="./img/FACULDADE_INBEC_16_9.png">
+<h2>Atividade: Economia Urbana - Oferta</h2>
+<iframe data-external="1" src="https://www.youtube.com/embed/QKUeWjIX1KI?si=EHNy9p9vEx_Mot6h?start=0" width="600" height="450" title="A oferta de espaço urbano." frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+</section>
+<section id="atividade-economia-urbana---equilíbrio" class="slide level2" data-background-image="./img/FACULDADE_INBEC_16_9.png">
+<h2>Atividade: Economia Urbana - Equilíbrio</h2>
+<iframe data-external="1" src="https://www.youtube.com/embed/RWD9h535gvM?si=u6MFe92knpVcbUNr?start=0" width="600" height="450" title="A convergência de oferta e demanda." frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+</section>
+<section id="atividade-economia-urbana" class="slide level2" data-background-image="./img/FACULDADE_INBEC_16_9.png">
+<h2>Atividade: Economia Urbana</h2>
+<ul>
+<li class="fragment"><p><a href="https://youtu.be/BSMJk8gSyrs?si=MUBWrkpX2oyZbbbA">A demanda por cidades</a></p></li>
+<li class="fragment"><p><a href="https://youtu.be/QKUeWjIX1KI?si=EHNy9p9vEx_Mot6h">A oferta de espaço urbano</a></p></li>
+<li class="fragment"><p><a href="https://youtu.be/RWD9h535gvM?si=u6MFe92knpVcbUNr">A convergência de oferta e demanda</a></p></li>
+</ul>
+<div class="fragment">
+<ul>
+<li class="fragment">Assista aos vídeos acima e responda:
+<ul>
+<li class="fragment">Quais são os fatores que influenciam na demanda por cidades? (2,5 pontos)</li>
+<li class="fragment">Em três palavras, o que determina a oferta de espaço urbano? (2,5 pontos)</li>
+<li class="fragment">Quais são os fatores que você vislumbra que podem tornar a oferta de espaço urbano mais alta em algumas localidades do que em outras? (2,5 pontos)</li>
+<li class="fragment">O que é <em>Tâtonnement</em>? (2,5 pontos)</li>
+</ul></li>
+</ul>
+</div>
 </section>
 <section id="referências" class="slide level2 smaller scrollable" data-background-image="./img/FACULDADE_INBEC_16_9.png">
 <h2>Referências</h2>
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-NBR1465302" class="csl-entry" role="listitem">
-ABNT. 2011. <em><span>NBR</span> 14653-2: Avaliacao de Bens – Parte 2: Imoveis Urbanos</em>. Rio de Janeiro: Associacao Brasileira de Normas Tecnicas.
+ABNT. 2011. <em><span>NBR</span> 14653-2: Avaliacao de Bens – Parte 2: Imoveis Urbanos</em>. Associacao Brasileira de Normas Tecnicas.
 </div>
 <div id="ref-ibapesp15" class="csl-entry" role="listitem">
-Candeloro, Milton. 2014. <span>«Avaliação de Aluguéis»</span>. Em <em>Engenharia de Avaliações</em>, editado por Instituto Brasileiro de Avaliações e Perícias de Engenharia, 2.ª ed. Vol. 2. São Paulo, SP: Leud.
+Candeloro, Milton. 2014. <span>«Avaliação de Aluguéis»</span>. Em <em>Engenharia de Avaliações</em>, 2.ª ed., editado por Instituto Brasileiro de Avaliações e Perícias de Engenharia, vol. 2. Leud.
 </div>
 <div id="ref-damato" class="csl-entry" role="listitem">
-D’Amato, Mônica, e Nelson Roberto Pereira Alonso. 2019. <em>Avaliação de Aluguéis</em>. Editado por Leud. 4.ª ed. São Paulo.
+D’Amato, Mônica, e Nelson Roberto Pereira Alonso. 2019. <em>Avaliação de Aluguéis</em>. 4.ª ed. Editado por Leud. São Paulo.
 </div>
 <div id="ref-Machline" class="csl-entry" role="listitem">
 Machline, Claude. 1966. <span>«Análise de investimentos e inflação»</span>. <em>Revista de Administração de Empresas</em>, n.º 18: 51–126. <a href="https://doi.org/10.1590/S0034-75901966000100002">https://doi.org/10.1590/S0034-75901966000100002</a>.
 </div>
 <div id="ref-Malpezzi2002TheRO" class="csl-entry" role="listitem">
-Malpezzi, Stephen, e Susan M. Wachter. 2002. <span>«The Role of Speculation in Real Estate Cycles»</span>. https://doi.org/<a href="https://dx.doi.org/10.2139/ssrn.2585241">https://dx.doi.org/10.2139/ssrn.2585241</a>.
+Malpezzi, Stephen, e Susan M. Wachter. 2002. <em>The Role of Speculation in Real Estate Cycles</em>. https://doi.org/<a href="https://dx.doi.org/10.2139/ssrn.2585241">https://dx.doi.org/10.2139/ssrn.2585241</a>.
 </div>
 </div>
 </section>
@@ -1397,7 +1426,7 @@ Malpezzi, Stephen, e Susan M. Wachter. 2002. <span>«The Role of Speculation in 
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -1424,80 +1453,42 @@ Malpezzi, Stephen, e Susan M. Wachter. 2002. <span>«The Role of Speculation in 
       });
     </script>
     
-
     <script>
-
       // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-
       // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-
       // slide changes (different for each slide format).
-
       (function () {
-
         // dispatch for htmlwidgets
-
         function fireSlideEnter() {
-
           const event = window.document.createEvent("Event");
-
           event.initEvent("slideenter", true, true);
-
           window.document.dispatchEvent(event);
-
         }
-
-    
 
         function fireSlideChanged(previousSlide, currentSlide) {
-
           fireSlideEnter();
 
-    
-
           // dispatch for shiny
-
           if (window.jQuery) {
-
             if (previousSlide) {
-
               window.jQuery(previousSlide).trigger("hidden");
-
             }
-
             if (currentSlide) {
-
               window.jQuery(currentSlide).trigger("shown");
-
             }
-
           }
-
         }
-
-    
 
         // hookup for slidy
-
         if (window.w3c_slidy) {
-
           window.w3c_slidy.add_observer(function (slide_num) {
-
             // slide_num starts at position 1
-
             fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-
           });
-
         }
 
-    
-
       })();
-
     </script>
-
-    
 
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -1547,13 +1538,14 @@ Malpezzi, Stephen, e Susan M. Wachter. 2002. <span>«The Role of Speculation in 
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy
